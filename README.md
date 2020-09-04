@@ -1,6 +1,6 @@
 # Organizing tech / computer science knowledge
 
-공부, 개발하면서 공부했던 개념이나 cs기초들을 정리합니다.
+사소한 질문들에 대한 공부, 개발하면서 공부했던 개념이나 cs기초들을 정리합니다.
 
 <br>
 
