@@ -6,4 +6,3 @@
 - [힙 ( Heap )](dataStructure/Heap)
 - [그래프 ( Graph )](/dataStructure/Graph)
 - 해시 ( Hash )
-- 레드 블랙 트리 ( Red Black Tree )
