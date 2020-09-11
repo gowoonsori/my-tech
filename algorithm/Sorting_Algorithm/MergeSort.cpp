@@ -21,8 +21,8 @@ void display(int *array,int arrlen){
         cout << array[i] << endl;
     }
 }
+
 void Merge(int array[],int left,int mid,int right){
-    cout<< "1" <<endl;
     int l;
     int i=left;
     int j=mid+1;
@@ -49,11 +49,10 @@ void Merge(int array[],int left,int mid,int right){
     /*배열 복사*/
     for(l=left; l<=right; l++){
         array[l]=sorted[l];
-
     }
 }
 void Merge_sort(int array[],int left, int right){
-        int mid;
+    int mid;
     if(left<right){
         mid = (left+right) /2;
         Merge_sort(array,left,mid);
