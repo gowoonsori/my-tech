@@ -23,7 +23,7 @@ void display(int *array,int arrlen){
 
 /*기본은 삽입정렬 알고리즘
 gap차이만큼의 숫자들을 삽입정렬로 정렬*/
-void swap(int *array,int first,int last,int gap){
+void insertionSort(int *array,int first,int last,int gap){
     int item,j;
     for(int i=first+gap; i<last ; i+=gap ){
         item=array[i];
@@ -41,7 +41,7 @@ void Shell_sort(int *array,int arrlen){
         if(gap%2 == 0) gap++;         //gap이 짝수라면 홀수로 맞추는 것이 더 좋은 것으로 분석이 됨
         
         for(int i=0;i<gap;i++){
-            swap(array,i,arrlen,gap);
+            insertionSort(array,i,arrlen,gap);
         }
     }
 }
