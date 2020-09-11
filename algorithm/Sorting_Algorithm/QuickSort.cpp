@@ -30,8 +30,8 @@ void QuickSort(int array[],int pivot, int arrlen){
 
     if(pivot>=arrlen-1) return;
     while(left<=right){
-        while(left <= arrlen-1 && array[left]<=array[pivot])left++;    //피벗보다 작은 값 왼쪽부터 찾기
-        while(right > pivot && array[right]>=array[pivot])right--;   //피벗보다 큰 값 오른쪽부터 찾기
+        while(left <= arrlen-1 && array[left]<=array[pivot])left++;    //피벗보다 큰 값 왼쪽부터 찾기
+        while(right > pivot && array[right]>=array[pivot])right--;   //피벗보다 작은 값 오른쪽부터 찾기
         if(left<right) swap(array[left],array[right]);
         else swap(array[pivot],array[right]);
    }
