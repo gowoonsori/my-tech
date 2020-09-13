@@ -250,4 +250,22 @@ void RadixSort(int *array,int arrlen){
     - 배열 C는 배열 A의 값들의 인덱스 값이므로, 배열 A를 끝에서부터 역순으로 훑으면서 배열 B에 정렬해 준다. (이때, 한 값을 B에 옮겨주었다면, 해당하는 인덱스의 배열 C의 값은 1을 빼준다.)
 
 ```cpp
+    int *c = new int[maxValue+1];   //0도 포함한 숫자를 정렬 할 경우 maxValue + 1만큼 생성해주어야 한다.
+
+/*각 숫자 횟수 카운틱하며 c배열 인덱스 값 증가*/
+    for(int i = 0; i < a_size ; i++){
+        c[a[i]]++;
+    }
+
+    /*배열 c의 인덱스 값 누적합 구하기*/
+    for(int i=1; i < c_size; i++){
+        c[i] += c[i-1];
+    }
+
+    /*배열 A역순으로 훑으며, 배열 C참조하여 정렬*/
+    for(int i = a_size-1; i >= 0; i-- ){
+        b[c[a[i]]-1] = a[i];
+        --c[a[i]];
+    }
 ```
+[Code 보기 (c++)](/algorithm/Sorting_Algorithm/CountSort.cpp)
