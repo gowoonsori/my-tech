@@ -7,15 +7,15 @@
 
 ## ✔ 종류
 
-- 선택 정렬 ( Selection Sort )
-- 삽입 정렬 ( Insertion Sort )
-- 버블 정렬 ( Bubble Sort )
-- 셸 정렬 ( Shell Sort )
-- 퀵 정렬 ( Quick Sort )
-- 힙 정렬 ( Heap Sort )
-- 합병 정렬 ( Merge Sort )
-- 기수 정렬 ( Radix Sort )
-- 계수(카운트) 정렬 ( Count Sort )
+- [선택 정렬 ( Selection Sort )](#Selection-Sort)
+- [삽입 정렬 ( Insertion Sort )](Insertion-Sort)
+- [버블 정렬 ( Bubble Sort )](Bubble-Sort)
+- [셸 정렬 ( Shell Sort )](Shell-Sort)
+- [퀵 정렬 ( Quick Sort )](Quick-Sort)
+- [힙 정렬 ( Heap Sort )](Heap-Sort)
+- [합병 정렬 ( Merge Sort )](Merge-Sort)
+- [기수 정렬 ( Radix Sort )](Radix-Sort)
+- [계수(카운트) 정렬 ( Count Sort )](Count-Sort)
 
 <br><br>
 
@@ -38,7 +38,7 @@
 <Br><br>
 
 
-### 선택 정렬 ( Selection Sort )
+### Selection Sort 
 
 - 추가 메모리 생성할 필요 X
 - 배열 쭉 탐색 후 가장 작은 값 왼쪽부터 차곡차곡 쌓는 방식
@@ -58,7 +58,7 @@
 
 <br>
 
-### 삽입 정렬 ( Insertion Sort )
+### Insertion Sort 
 
 - 추가 메모리 생성할 필요 X
 - 인덱스값을 한개씩 늘려가며 해당 값이 맞는 위치에 삽입
@@ -77,7 +77,7 @@
 
 <br>
 
-### 버블 정렬 ( Bubble Sort )
+### Bubble Sort
 
 - 추가 메모리 생성할 필요 X
 - 배열을 모두 탐색하며 가장 큰 값을 오른쪽부터 쌓는다.
@@ -93,7 +93,7 @@
 
 <br>           
 
-### 합병 정렬 ( Merge Sort )
+### Merge Sort
 - `분할과 정복` 원리 ( Divide & Conquer )
 - 더이상 나누어지지 않을 때까지 반으로 분할하다가 더이상 나누어지지 않은경우, 원소(value)를 결합(combine)할 때,양쪽의 value를 비교 후 정렬방식대로 combine을 실행한다.
 - `재귀`를 이용 ( recursion )
@@ -124,7 +124,7 @@
 
 <br>
 
-### 퀵 정렬 ( Quick Sort )
+### Quick Sort
 - `분할과 정복` 이용 ( Divide & Conquer )
 - 분할시 `기준 값 (pivot)`을 설정 후 해당 pivot을 기준으로 좌, 우로 작은, 큰 값을 배치 시킨 후 pivot보다 작은 숫자들, 큰 숫자들의 집합을 다시 재귀 함수를 이용하여 분할 정렬을 하는 방식
 - pivot은 기준점으로 중간값이기 때문에 재귀에 포함시키지 않는다.
@@ -157,7 +157,7 @@ void QuickSort(int array[],int pivot, int arrlen){
 
 <br>
 
-### 셀 정렬 ( Shell Sort )
+### Shell Sort 
 - 삽입정렬을 보완한 알고리즘 ( 어느정도 정렬된 배열에서 속도가 빠른 것에서 착안 )
 - 삽입정렬은 삽입할 때, 이웃한 위치로만 이동이 가능하다는 단점이 있다. -> 이를 보완하여 셀 정렬은 멀리 떨어진 곳을 삽입정렬을 이용하여 정렬한다. 
 - 삽입정렬과 다르게 한 번에 정렬하지 않는다.
@@ -185,7 +185,7 @@ void QuickSort(int array[],int pivot, int arrlen){
 
 <br>
 
-### 힙 정렬 ( Heap Sort )
+### Heap Sort
 - `Heap` 자료구조 ( BST 의 일종 )을 이용한 정렬 방법
 - 배열을 `heapify`( heap으로 만들어 주는 것 ) 을 거쳐서 value를 꺼내는 방식의 정렬
 
@@ -194,7 +194,7 @@ void QuickSort(int array[],int pivot, int arrlen){
 
 
 
-### 기수 정렬 ( Radix Sort )
+### Radix Sort
 - `Non-Comparisions` Sorting Algorithm ( 비교하지 않는 정렬 알고리즘 )
 - `기수 (Radix)` : 데이터를 구성하는 기본요소
 - 하나의 기수마다 버킷 (데이터 공간)을 생성하여 분류하여 버킷안에서 다시 정렬하는 방식
@@ -238,7 +238,7 @@ void RadixSort(int *array,int arrlen){
 
 <br>
 
-### 계수 정렬 ( Count Sort )
+### Count Sort
 -` Non-Comparisions Sorting Algorithm `( 비교하지 않는 정렬 알고리즘 )
 - 좁은 범위의 데이터를 정렬할 때 유용 ( ex. Score )
 - 정렬을 위해 추가 배열을 생성하는데 사이즈를 정렬할 배열의 가장 큰 값만큼 생성해 준다.
