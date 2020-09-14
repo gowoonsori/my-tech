@@ -1,6 +1,6 @@
 #include <iostream>
-#include <ctime>
-#include <cstdlib>
+#include <cstdlib>  //time
+#include <ctime>    //rand, srand
 
 using namespace std;
 

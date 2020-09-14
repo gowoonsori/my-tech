@@ -1,7 +1,6 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
-
+#include <iostream>
+#include <cstdlib>  //time
+#include <ctime>    //rand, srand
 using namespace std;
 //배열의 item을 random으로 삽입
 void input_random(int *array,int arrlen){

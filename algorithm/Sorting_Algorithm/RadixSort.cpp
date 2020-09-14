@@ -1,7 +1,7 @@
-#include<iostream>
+#include <iostream>
 #include<queue>
-#include<stdlib.h>
-#include<ctime>
+#include <cstdlib>  //time
+#include <ctime>    //rand, srand
 
 std::queue<int> q[10];   //10진수 정수형을 정렬하기 때문에 0-9의 버킷
 int MAXVALUE=0;         //정렬할 수 중 가장 큰 수
