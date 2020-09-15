@@ -28,9 +28,9 @@
 버블 정렬 | O(n^2) | O(n^2) | O(n^2)
 삽입 정렬 | O(n) | O(n^2) | O(n^2)
 셸 정렬 | O(n) | O(n^1.5) | O(n^1.5)
-퀵 정렬 | O(nlogn) | O(nlogn) | O(n^2)
-힙 정렬 | O(nlogn) | O(nlogn) | O(nlogn)
-합병 정렬 |O(nlogn) | O(nlogn) | O(nlogn)
+퀵 정렬 | O(nlgn) | O(nlgn) | O(n^2)
+힙 정렬 | O(nlgn) | O(nlgn) | O(nlgn)
+합병 정렬 |O(nlgn) | O(nlgn) | O(nlgn)
 기수 정렬 | O(dn) |  O(dn) |  O(dn)
 계수 정렬 | O(dn) |  O(dn) |  O(dn)
 
@@ -254,6 +254,7 @@ void RadixSort(int *array,int arrlen){
 ### Count Sort
 -` Non-Comparisions Sorting Algorithm `( 비교하지 않는 정렬 알고리즘 )
 - 좁은 범위의 데이터를 정렬할 때 유용 ( ex. Score )
+- 법위가 넓어지게 되면 추가 메모리 공간이 많이 필요해지기 때문에 비효율
 - 정렬을 위해 추가 배열을 생성하는데 사이즈를 정렬할 배열의 가장 큰 값만큼 생성해 준다.
 - 과정
     - 정렬할 배열 A, 추가 배열 C를 생성해준다.
