@@ -1,8 +1,11 @@
 #include <iostream>
 #include <cstdlib>  //time
 #include <ctime>    //rand, srand
+#include <time.h>   //시간 측정
 
 using namespace std;
+
+clock_t start, finish, used_time=0;    //실행 시간 측정을 위한 변수
 
 //배열의 item을 random으로 삽입
 void input_random(int *array,int arrlen){
@@ -21,10 +24,10 @@ void display(int *array,int arrlen){
     }
 }
 
-void swap(int *a,int* b){
-    int t=*b;
-    *b=*a;
-    *a=t;
+//실행 시간을 측정 및 출력하는 함수
+void CalcTime(void){
+    used_time=finish-start;
+    printf("\n*********** result **********\n     time : %lf sec\n", (double)(used_time)/CLOCKS_PER_SEC);
 }
 
 void Bubble_sort(int *array,int arrlen){
@@ -35,15 +38,20 @@ void Bubble_sort(int *array,int arrlen){
         /*배열의 첫번째부터 다음 값과 비교해보면서
         큰 값은 점점 뒤로 민다*/
         for(int j=0;j<i;j++)
-            if(array[j]>array[j+1]) swap(&array[j],&array[j+1]); 
+            if(array[j]>array[j+1]) swap(array[j],array[j+1]); 
     }
 }
 
 int main(){
-   
- int array[64];
+    int array[64];
+
     int arr_sz= sizeof(array)/sizeof(int);
     input_random(array,arr_sz);   //배열에 랜덤값 삽입
+    start = clock();
     Bubble_sort(array,arr_sz);    //버블 정렬
+    finish = clock();
     display(array,arr_sz);         //show array
+    CalcTime();
+
+    return 0;
 }

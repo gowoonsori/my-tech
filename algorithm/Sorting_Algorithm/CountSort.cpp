@@ -2,6 +2,7 @@
 #include <cstdlib>  //time
 #include <ctime>    //rand, srand
 #include <string.h> //memset
+#include <time.h>   //시간 측정
 
 using namespace std;
 
@@ -9,6 +10,7 @@ using namespace std;
 
 int maxValue=0;
 
+clock_t start, finish, used_time=0;    //실행 시간 측정을 위한 변수
 
 //배열의 item을 random으로 삽입
 void input_random(int *array,int arrlen){
@@ -28,6 +30,11 @@ void display(int *array,int arrlen){
     }
 }
 
+//실행 시간을 측정 및 출력하는 함수
+void CalcTime(void){
+    used_time=finish-start;
+    printf("\n*********** result **********\n     time : %lf sec\n", (double)(used_time)/CLOCKS_PER_SEC);
+}
 
 int* count_sort(int *array,int arrlen){
     int *c = new int[maxValue+1]; 
@@ -59,6 +66,14 @@ int main(){
     int *array = new int[MAX_ARRAY_SIZE];
 
     input_random(array,MAX_ARRAY_SIZE);     //배열에 랜덤값 삽입
+    delete array;
+
+    start = clock();
     array = count_sort(array,MAX_ARRAY_SIZE);       //계수 정렬
+    finish = clock();
     display(array,MAX_ARRAY_SIZE);          //show array
+    CalcTime();
+
+    delete array;
+    return 0;
 }
