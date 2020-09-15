@@ -186,12 +186,25 @@ void QuickSort(int array[],int pivot, int arrlen){
 <br>
 
 ### Heap Sort
-- `Heap` 자료구조 ( BST 의 일종 )을 이용한 정렬 방법
+- `Heap` 자료구조 ( Complete Binary Tree 의 일종 )을 이용한 정렬 방법
 - 배열을 `heapify`( heap으로 만들어 주는 것 ) 을 거쳐서 value를 꺼내는 방식의 정렬
-
+- 추가 메모리 생성이 필요 없다.
+- 오름차순 정렬을 위해 최대 힙을 구성하고, 내림차순 정렬을 위해 최소 힙을 구성
 ```cpp
-```
 
+void HeapSort(int *array, int arrlen){
+    heapify(array,arrlen);  //maxHeap형태로 만들어준다.
+
+    for(int i= arrlen-1 ; i>=0; i--){   //가장 큰 숫자(루트)를 맨 뒷 노드로 swap해준다.
+        swap(array[i],array[0]);        //swap한 마지막 노드를 제외하고 heapify를 해준다.
+        heapify(array,i);               //결과적으로 큰 숫자들이 뒤에 오게 되며 오름차순으로 정렬이 된다.
+    }                               
+}
+
+```
+[Code 보기 (c++)](/algorithm/Sorting_Algorithm/HeapSort.cpp)
+
+<br>
 
 
 ### Radix Sort
