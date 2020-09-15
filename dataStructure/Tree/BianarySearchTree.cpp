@@ -220,8 +220,8 @@ int main() {
     tree.add(new Node<int>(30));
     tree.add(new Node<int>(22));
     tree.showTree(1);
-     tree.showTree(2);
-      tree.showTree(3);
+    tree.showTree(2);
+    tree.showTree(3);
     tree.Delete(18);
     tree.showTree(1);
 
