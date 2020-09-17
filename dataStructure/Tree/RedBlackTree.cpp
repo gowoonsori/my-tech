@@ -11,11 +11,11 @@ enum Color{ RED , BLACK };
 
 typedef node* NodePtr;
 
-class RB_TREE{
+class RBTREE{
     private:
         NodePtr root;       //루트 노드
         NodePtr leafNode;   //단말노드
-
+        
         //key값이 있는지 없는지 검사 있으면 pointer 값, 없으면 nullptr
         NodePtr IsKey(int item){
             NodePtr t = root;
@@ -325,7 +325,7 @@ class RB_TREE{
         }
     
     public:
-        RB_TREE(){
+        RBTREE(){
             leafNode = new node;
             leafNode->color = BLACK;
             leafNode->left = nullptr;
@@ -354,9 +354,8 @@ class RB_TREE{
             std::cout <<"          3. Show Tree      "<<std::endl;
             std::cout <<"          4. choose order   "<<std::endl;
             std::cout <<"          5. show Menu      "<<std::endl;
-            std::cout <<"          6. All Delete     "<<std::endl;
-            std::cout <<"          7. clear Display  "<<std::endl;
-            std::cout <<"          8. exit           "<<std::endl;
+            std::cout <<"          6. clear Display  "<<std::endl;
+            std::cout <<"          7. exit           "<<std::endl;
             std::cout<<std::endl;
         }
         void SelectMenu(){
@@ -383,12 +382,10 @@ class RB_TREE{
                         DisplayMenuBoard();
                         break;
                      case 6 :
-                        break;
-                     case 7 :
                         system("cls");
                         DisplayMenuBoard();
                         break;
-                     case 8 :
+                     case 7 :
                         return;
                     default : 
                         std::cout<<" !!! Wrong entered !!!\n" <<std::endl;
@@ -450,7 +447,7 @@ class RB_TREE{
 };
 
 int main(){
-    RB_TREE tree;
+    RBTREE tree;
     tree.SelectMenu();
     
     return 0;
