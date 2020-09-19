@@ -80,7 +80,7 @@ key값은 중복되지 않으며, 부모의 키가 왼쪽 자식보다는 크며
 
 <br><br>
 
-## **Rebalancing 기법 종류**
+## Rebalancing 기법 종류
 <br>
 
 ### ✔ Red Black Tree
