@@ -38,7 +38,7 @@ void CalcTime(void){
 
 void heapify(int* array,int arrlen){
 
-/*인덱스 0을 루트로 삼고 인덱스 1(왼쪽 자식)부터 maxHeap형태로
+/*인덱스 0을 루트(부모 노드)로 삼고 인덱스 1(왼쪽 자식)부터 maxHeap형태로
  *만들어 주기 위해 swap*/
     for(int i=1; i < arrlen ; i++){
         int child = i;

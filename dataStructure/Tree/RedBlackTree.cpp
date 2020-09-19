@@ -119,17 +119,6 @@ class RBTREE{
 	            else if(!z->right){
 		            Transplant(z,x= z->left);
 	            }
-
-
-                /*자식이 2개인 경우
-                 1.   b     2.     r
-                    r   r        b   b
-                  
-                  1. 의 경우 r이 b로 바뀌면서 올라가기 때문에 black height가 변하지 않는다.
-                  2. 의 경우 b가 r자리로 올라가게 되면 double-black 즉, black-height가 일정하지 않게 되므로
-                    fix해주어야한다.
-                    자식이 2개인 경우는 삭제하고 대체할 노드의 색에 따라서 fix
-                  */
 	            else{
 		            y = tree_minimum(z->right);
 		            OriginalColor = y->color;  

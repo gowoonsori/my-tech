@@ -1,5 +1,5 @@
 
-# 트리
+# 트리 ( Tree )
 ```
 그래프의 일종으로, 여러 노드가 한개의 노드를 가리킬 수 없는 구조
 
@@ -8,6 +8,7 @@
 <br>
 
 ## 개념
+------
 - `Node (노드)` : 트리를 구성하고 있는 각각의 요소를 의미한다.
 
 - `Edge (간선)` : 트리를 구성하기 위해 노드와 노드를 연결하는 선을 의미한다.
@@ -18,6 +19,7 @@
 <br>
 
 ## 종류
+-----
 ```
 - Binary tree  : 부모 노드가 자식 노드를 최대 2개씩만 갖는 트리
 
@@ -48,6 +50,7 @@ key값의 `중복`이 **허용되지 않는다.**
 <br>
 
 ## Binary Tree 순회 방법
+-----
 ```
 - 전위 순회 : root를 제일 먼저 순회
 - 중위 순회 : root를 중간에 순회
@@ -65,16 +68,20 @@ key값은 중복되지 않으며, 부모의 키가 왼쪽 자식보다는 크며
 ```
 탐색 연산은 O(logn)을 갖으며 (엄밀히 말하면 O(h), h는 높이 ), 한쪽으로 치우쳐진 `편향 트리(Skewed Tree)`가 되면 **worst case**로 `O(n)`을 갖는다.
 
-배열보다 많은 메모리를 사용했지만 시간복잡도가 같게되는 비효율적이 상황이 발생하기도 한다. 
-
 [코드 보기 (c++)](/dataStructure/Tree/BinarySearchTree.cpp)
+
 <br>
+
+## Tree의 단점
+-----
+배열보다 많은 메모리를 사용했지만 시간복잡도가 같게되는 비효율적이 상황이 발생하기도 한다. 
 
 ➡ **Rebalancing 기법의 등장**
 
 <br><br>
 
--**Rebalancing 기법 종류**
+## **Rebalancing 기법 종류**
+<br>
 
 ### ✔ Red Black Tree
 -----
@@ -150,16 +157,14 @@ BST (이진 탐색 트리)를 기반으로 둔 Tree.
     NULL node(leaf node) 역시 black 이다.
 
     
-    🔴 case default : 삭제할 노드를 z라 할때, z가 RED라면 그냥 삭제하고,
-    검은색인 경우, 그 자리를 대체하는 노드를 검은색으로 바꿔준다.
-    but, 검은색으로 새로 칠한 노드의 색이 원래 검은색이라면 이중 흑색노드가 되므로 별도로 처리해주어야한다.
+    🔴 case default : 삭제할 노드를 z라 할때, z가 RED라면 그냥 삭제하고, (z의 자식이 두개인 경우는 오른쪽 자식의 가장 작은 key와 key값을 교환 후 z->right의 minimum 노드를 삭제하게 되므로 이 노드의 색이 RED라면)
+    BLACK이라면,  black-height가 안맞게 되므로 fix up을 수행한다. (이때, double-black개념이 등장한다.)
 
     삭제도 삽입과 마찬가지로 삭제한 노드 대신에 새로온 노드가 왼쪽 자식인지, 오른쪽 자식인지에 대해 대칭한다. 이번에도, 왼쪽의 경우만 살펴보겠다.
 
-
     삭제한 노드 z대신 새로 위치한 노드를 x, 그 형제 노드를 s라고 할때,
     🔴 case 1 : s가 RED인 경우 ➡ 
-        이때는 s의 자식들은 leafNode 일 수 없다.(조건 5 위반)
+        이때는 s의 자식들은 leafNode 일 수 없다.(조건 5 위반) => 한개라도 leafnode일 시 black-heigh가 달라지므로 무조건 두개를 가지고 있다.
 
         - s를 BLACK으로 p[x]를 RED로 바꿔준다.
         - p[x]를 left-Rotate 시켜준다.
@@ -185,4 +190,23 @@ BST (이진 탐색 트리)를 기반으로 둔 Tree.
         - p[x]에 대해서 left-rotate를 시켜준다.
         - x의 double-black을 제거하고 종료한다.
     ```
-    [코드 보기(c++)]([코드 보기 (c++)](/dataStructure/Tree/RedBlackTree.cpp))
+   
+   <br>
+
+    - Search ( 탐색 ) 
+    ```
+    Red Black Tree는 BST의 일종이기 때문에 탐색의 밥법은 일반적인 Bianry Tree의 탐색 방법과 다르지 않다. 
+    ```
+
+    
+    [코드 보기(c++)](/dataStructure/Tree/RedBlackTree.cpp)
+
+
+<br>
+
+### AVL Tree
+
+
+### B-Tree
+
+### B+Tree
