@@ -15,6 +15,7 @@
 공간 복잡도라면 뒤로 갈수록 공간(자원)을 많이 사용하는 알고리즘. 
 
 ![](/algorithm/Calculate-complexity/graph.PNG)
+
 (사진 출처 : https://www.bigocheatsheet.com/ )
 
 
