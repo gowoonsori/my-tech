@@ -1,6 +1,6 @@
 # 알고리즘 ( algorithm )
 
-## 목차 ( Categories )
+## 🗃 목차 ( Categories )
 - [복잡도 계산 ( Computational Complexity )](/algorithm/Computational-Complexity)
 - [시간복잡도 와 공간복잡도 ( Time Complexity & Space Complexity )](/algorithm/Calculate-complexity)
 - [정렬 알고리즘 ( sorting algorithm )](/algorithm/Sorting_Algorithm)
