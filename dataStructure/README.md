@@ -18,7 +18,7 @@
 || 접근 (Access) | 탐색 (Search) | 삽입 (Insertion)| 삭제 (Deletion) |  접근 (Access) | 탐색 (Search) | 삽입 (Insertion)| 삭제 (Deletion) | 
 배열 (Array) | Θ(1) | Θ(n) | Θ(n) | Θ(n) | O(1) | O(n) | O(n) | O(n) | O(n) 
 스택 (Stack) | Θ(n) | Θ(n) | Θ(1) | Θ(1) | O(n) | O(n) | O(1) | O(1) | O(n) 
-큐 (Queue) | Θ(n) | O(n) | O(1) | O(1) | O(n) | O(n) | O(1) | O(1) | O(n) 
+큐 (Queue) | Θ(n) | Θ(n) | Θ(1) | Θ(1) | O(n) | O(n) | O(1) | O(1) | O(n) 
 단일 연결리스트 (Single-Linked-List) | Θ(n) | Θ(n) | Θ(1) | Θ(1) | O(n) | O(n) | O(1) | O(1) | O(n) 
 이중 연결리스트 (Doubly-Linked-List) | Θ(n) | Θ(n) | Θ(1) | Θ(1) | O(n) | O(n) | O(1) | O(1) | O(n) 
 스킵 리스트 (Skip List) | Θ(logn) | Θ(logn) | Θ(logn) | Θ(logn) | O(n) | O(n) | O(n) | O(n) | O(nlogn) 
