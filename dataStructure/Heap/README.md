@@ -41,6 +41,23 @@ Tree의 형태로, Tree 중에서도 최대,최솟값을 찾아내는 연산을 
 ```
 <br>
 
+
+## ✔ 시간 복잡도 ( Big-O )
+
+<br>
+
+|자료구조 ||| 시간 복잡도 ||||
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+||최댓값 찾기 (Find Max) | 최댓값 추출 (Extract Max) | 키 증가 (Increase Key) | 삽입 (Insert) | 삭제 (Delete) | 합병 (Merge)
+| 이진 힙 (Binary Heap) | O(1) | O(logn) |O(logn) |O(logn) |O(logn) | O(m+n) |
+| 페어링 힙 (Pairing Heap) | O(1) | O(logn) |O(logn) |O(1) |O(logn) | O(1) |
+| 이항 힙 (Binomial Heap) | O(1) | O(logn) |O(logn) |O(1) |O(logn) | O(logn) |
+| 피보나치 힙 (fibonacci Heap) | O(1) | O(logn) |O(1) |O(1) |O(logn) | O(1) |
+
+------
+
+<br><br>
+
 ## ✔ 사용 예 
  -  허프만 코드
 ```

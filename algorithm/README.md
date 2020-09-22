@@ -1,8 +1,8 @@
 # 알고리즘 ( algorithm )
 
 ## 목차 ( Categories )
-- [복잡도 계산 ( Asymptotic Complexity )](/algorithm/asymptotic-complexity)
-- 시간복잡도 와 공간복잡도 ( Time Complexity & Space Complexity )
+- [복잡도 계산 ( Computational Complexity )](/algorithm/Coputational-Complexity)
+- [시간복잡도 와 공간복잡도 ( Time Complexity & Space Complexity )](/algorithm/Calculate-complexity)
 - [정렬 알고리즘 ( sorting algorithm )](/algorithm/Sorting_Algorithm)
 - [동적 계획법( Dynamic Programming )](/algorithm/Dynamic_Programming)
 - 탐욕법 ( Greedy )

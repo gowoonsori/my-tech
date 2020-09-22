@@ -25,18 +25,41 @@
 알고리즘 | 최선 | 평균 | 최악
 :---:|:---:|:---:|:---:
 선택 정렬 | O(n^2) | O(n^2) | O(n^2)
-버블 정렬 | O(n^2) | O(n^2) | O(n^2)
+버블 정렬 | O(n) | O(n^2) | O(n^2)
 삽입 정렬 | O(n) | O(n^2) | O(n^2)
 셸 정렬 | O(n) | O(n^1.5) | O(n^1.5)
 퀵 정렬 | O(nlgn) | O(nlgn) | O(n^2)
 힙 정렬 | O(nlgn) | O(nlgn) | O(nlgn)
 합병 정렬 |O(nlgn) | O(nlgn) | O(nlgn)
-기수 정렬 | O(dn) |  O(dn) |  O(dn)
-계수 정렬 | O(dn) |  O(dn) |  O(dn)
-
+기수 정렬 | O(nk) |  O(nk) |  O(nk)
+계수 정렬 | O(n+k) |  O(n+k) |  O(n+k)
+큐브 정렬 | O(n) | O(nlogn) | O(nlogn)
+트리 정렬 | O(nlogn) | O(nlogn) | O(n^2)
+팀 정렬 | O(n) | O(nlogn) | O(nlogn)
 ------
+
 <Br><br>
 
+## ✔ 공간 복잡도 ( Big-O )
+<br>
+
+알고리즘 | 최악
+:---:|:---:|
+선택 정렬 | O(1) 
+버블 정렬 | O(1) 
+삽입 정렬 | O(1) 
+셸 정렬 | O(1) 
+힙 정렬 | O(1)
+퀵 정렬 | O(logn) 
+합병 정렬 |O(n)
+기수 정렬 | O(n+k) 
+계수 정렬 | O(k) 
+큐브 정렬 | O(n) 
+트리 정렬 | O(n)
+팀 정렬 | O(n)
+------
+
+<br><br>
 
 ### Selection Sort 
 
