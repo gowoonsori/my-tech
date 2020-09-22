@@ -8,14 +8,18 @@
 ## ✔ 종류
 
 - [선택 정렬 ( Selection Sort )](#Selection-Sort)
-- [삽입 정렬 ( Insertion Sort )](#Insertion-Sort)
 - [버블 정렬 ( Bubble Sort )](#Bubble-Sort)
+- [삽입 정렬 ( Insertion Sort )](#Insertion-Sort)
 - [셸 정렬 ( Shell Sort )](#Shell-Sort)
+- 트리 정렬 ( Tree Sort)
 - [퀵 정렬 ( Quick Sort )](#Quick-Sort)
 - [힙 정렬 ( Heap Sort )](#Heap-Sort)
 - [합병 정렬 ( Merge Sort )](#Merge-Sort)
+- 큐브 정렬 ( Cube Sort )
+- 팀 정렬 ( Tim Sort )
 - [기수 정렬 ( Radix Sort )](#Radix-Sort)
 - [계수(카운트) 정렬 ( Count Sort )](#Count-Sort)
+
 
 <br><br>
 
@@ -24,18 +28,19 @@
 
 알고리즘 | 최선 | 평균 | 최악
 :---:|:---:|:---:|:---:
-선택 정렬 | O(n^2) | O(n^2) | O(n^2)
-버블 정렬 | O(n) | O(n^2) | O(n^2)
-삽입 정렬 | O(n) | O(n^2) | O(n^2)
-셸 정렬 | O(n) | O(n^1.5) | O(n^1.5)
-퀵 정렬 | O(nlgn) | O(nlgn) | O(n^2)
-힙 정렬 | O(nlgn) | O(nlgn) | O(nlgn)
-합병 정렬 |O(nlgn) | O(nlgn) | O(nlgn)
-기수 정렬 | O(nk) |  O(nk) |  O(nk)
-계수 정렬 | O(n+k) |  O(n+k) |  O(n+k)
-큐브 정렬 | O(n) | O(nlogn) | O(nlogn)
-트리 정렬 | O(nlogn) | O(nlogn) | O(n^2)
-팀 정렬 | O(n) | O(nlogn) | O(nlogn)
+선택 정렬 | Ω(n^2) | Θ(n^2) | O(n^2)
+버블 정렬 | Ω(n) | Θ(n^2) | O(n^2)
+삽입 정렬 | Ω(n) | Θ(n^2) | O(n^2)
+트리 정렬 | Ω(nlogn) | Θ(nlogn) | O(n^2)
+퀵 정렬 | Ω(nlogn) | Θ(nlogn) | O(n^2)
+셸 정렬 | Ω(n) | Θ(n^1.5) | O(n^1.5)
+힙 정렬 | Ω(nlogn) | Θ(nlogn) | O(nlogn)
+합병 정렬 |Ω(nlogn) | Θ(nlogn) | O(nlogn)
+큐브 정렬 | Ω(n) | Θ(nlogn) | O(nlogn)
+팀 정렬 | Ω(n) | Θ(nlogn) | O(nlogn)
+기수 정렬 | Ω(nk) |  Θ(nk) |  O(nk)
+계수 정렬 | Ω(n+k) |  Θ(n+k) |  O(n+k)
+
 ------
 
 <Br><br>
@@ -52,11 +57,11 @@
 힙 정렬 | O(1)
 퀵 정렬 | O(logn) 
 합병 정렬 |O(n)
-기수 정렬 | O(n+k) 
-계수 정렬 | O(k) 
 큐브 정렬 | O(n) 
 트리 정렬 | O(n)
 팀 정렬 | O(n)
+계수 정렬 | O(k)
+기수 정렬 | O(n+k) 
 ------
 
 <br><br>

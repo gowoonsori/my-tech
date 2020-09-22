@@ -14,7 +14,7 @@
 
 자료구조 ||||| 시간복잡도 (Time Complexity) |||| 공간복잡도 (space Complexity) 
 :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
-||| average ||||Worst||| Worst
+|| average ||||Worst|||| Worst
 || 접근 (Access) | 탐색 (Search) | 삽입 (Insertion)| 삭제 (Deletion) |  접근 (Access) | 탐색 (Search) | 삽입 (Insertion)| 삭제 (Deletion) | 
 배열 (Array) | O(1) | O(n) | O(n) | O(n) | O(1) | O(n) | O(n) | O(n) | O(n) 
 스택 (Stack) | O(n) | O(n) | O(1) | O(1) | O(n) | O(n) | O(1) | O(1) | O(n) 
