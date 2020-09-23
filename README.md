@@ -1,4 +1,4 @@
-# 💻 [TIL] Organizing tech / computer science knowledge
+# 💻 [TIL] Studying tech / computer science knowledge
 
 TIL은 Today I Learned 의 약자로 오늘도 나는 배웠다는 뜻입니다. 
 
