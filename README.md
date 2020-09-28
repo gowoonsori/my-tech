@@ -14,4 +14,4 @@ TIL은 Today I Learned 의 약자로 오늘도 나는 배웠다는 뜻입니다.
 - 운영체제
 - 데이터베이스
 - [알고리즘](/algorithm)
-- 개발언어
+- [개발언어](/language)
