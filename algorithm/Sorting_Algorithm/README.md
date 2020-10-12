@@ -3,6 +3,7 @@
 ```
 데이터를 오름차순 / 내림차순으로 나열 하는 것.
 ```
+
 <br>
 
 ## ✔ 종류
@@ -17,80 +18,130 @@
 - [합병 정렬 ( Merge Sort )](#Merge-Sort)
 - 큐브 정렬 ( Cube Sort )
 - 팀 정렬 ( Tim Sort )
+- 버킷 정렬 ( Bucket Sort )
 - [기수 정렬 ( Radix Sort )](#Radix-Sort)
-- [계수(카운트) 정렬 ( Count Sort )](#Count-Sort)
-
+- [계수(카운트) 정렬 ( Counting Sort )](#Count-Sort)
 
 <br><br>
 
 ## ✔ 시간 복잡도 ( Big-O )
+
 <br>
 
-알고리즘 | 최선 | 평균 | 최악
-:---:|:---:|:---:|:---:
-선택 정렬 | Ω(n^2) | Θ(n^2) | O(n^2)
-버블 정렬 | Ω(n) | Θ(n^2) | O(n^2)
-삽입 정렬 | Ω(n) | Θ(n^2) | O(n^2)
-트리 정렬 | Ω(nlogn) | Θ(nlogn) | O(n^2)
-퀵 정렬 | Ω(nlogn) | Θ(nlogn) | O(n^2)
-셸 정렬 | Ω(n) | Θ(n^1.5) | O(n^1.5)
-힙 정렬 | Ω(nlogn) | Θ(nlogn) | O(nlogn)
-합병 정렬 |Ω(nlogn) | Θ(nlogn) | O(nlogn)
-큐브 정렬 | Ω(n) | Θ(nlogn) | O(nlogn)
-팀 정렬 | Ω(n) | Θ(nlogn) | O(nlogn)
-기수 정렬 | Ω(nk) |  Θ(nk) |  O(nk)
-계수 정렬 | Ω(n+k) |  Θ(n+k) |  O(n+k)
+| 알고리즘  |   최선   |   평균   |   최악   |
+| :-------: | :------: | :------: | :------: |
+| 선택 정렬 |  Ω(n^2)  |  Θ(n^2)  |  O(n^2)  |
+| 버블 정렬 |   Ω(n)   |  Θ(n^2)  |  O(n^2)  |
+| 삽입 정렬 |   Ω(n)   |  Θ(n^2)  |  O(n^2)  |
+| 트리 정렬 | Ω(nlogn) | Θ(nlogn) |  O(n^2)  |
+|  퀵 정렬  | Ω(nlogn) | Θ(nlogn) |  O(n^2)  |
+|  셸 정렬  |   Ω(n)   | Θ(n^1.5) | O(n^1.5) |
+|  힙 정렬  | Ω(nlogn) | Θ(nlogn) | O(nlogn) |
+| 합병 정렬 | Ω(nlogn) | Θ(nlogn) | O(nlogn) |
+| 큐브 정렬 |   Ω(n)   | Θ(nlogn) | O(nlogn) |
+|  팀 정렬  |   Ω(n)   | Θ(nlogn) | O(nlogn) |
+| 기수 정렬 |  Ω(nk)   |  Θ(nk)   |  O(nk)   |
+| 계수 정렬 |  Ω(n+k)  |  Θ(n+k)  |  O(n+k)  |
 
-------
+---
 
 <Br><br>
 
 ## ✔ 공간 복잡도 ( Big-O )
+
 <br>
 
-알고리즘 | 최악
-:---:|:---:|
-선택 정렬 | O(1) 
-버블 정렬 | O(1) 
-삽입 정렬 | O(1) 
-셸 정렬 | O(1) 
-힙 정렬 | O(1)
-퀵 정렬 | O(logn) 
-합병 정렬 |O(n)
-큐브 정렬 | O(n) 
-트리 정렬 | O(n)
-팀 정렬 | O(n)
-계수 정렬 | O(k)
-기수 정렬 | O(n+k) 
-------
+| 알고리즘  |  최악   |
+| :-------: | :-----: |
+| 선택 정렬 |  O(1)   |
+| 버블 정렬 |  O(1)   |
+| 삽입 정렬 |  O(1)   |
+|  셸 정렬  |  O(1)   |
+|  힙 정렬  |  O(1)   |
+|  퀵 정렬  | O(logn) |
+| 합병 정렬 |  O(n)   |
+| 큐브 정렬 |  O(n)   |
+| 트리 정렬 |  O(n)   |
+|  팀 정렬  |  O(n)   |
+| 계수 정렬 |  O(k)   |
+| 기수 정렬 | O(n+k)  |
+
+---
 
 <br><br>
 
-### Selection Sort 
+## 정렬의 특성
 
+- 안정 정렬 ( stable sort )
+
+  - 정렬되지 않은 상태의 같은 키값을 가진 원소의 순서가 정렬 후에도 유지 되는 정렬
+
+  - 상황에 따라서 `객체`나 `키값이 여러개`인 값들을 정렬 하려고 할때 원래의 순서가 바뀌게 되면 안될 수 있기 때문에 그때는 `stable`한 sort를 이용해야한다.
+  - `Bubble`, `Insertion`, `Merge`, `Counting`, `Bucket`, `Radix` Sort가 해당된다.
+
+예를 들어, 같은 5이더라도 a가 앞에 있는 5, b가 뒤에 있는 5라고 한다면
+
+```
+  3 5(a) 1 4 5(b) 2
+
+  이 정렬 후에
+
+  1 2 3 4 5(a) 5(b)
+
+  와 같이 같은 키값의 원소의 순서가 유지 되는 것.
+```
+
+- 불안정 정렬 ( unstable sort )
+
+  - 정렬되지 않은 상태의 같은 키값을 가진 원소의 순서가 정렬 후에 유지되는 것을 보장 할 수 없는 정렬
+
+  - `Selection`, `Shell`, `Heap`, `Quick` Sort가 해당된다.
+
+예를 들어, 같은 5이더라도 a가 앞에 있는 5, b가 뒤에 있는 5라고 한다면
+
+```
+  3 5(a) 1 4 5(b) 2
+
+  이 정렬 후에
+
+  1 2 3 4 5(a) 5(b)
+
+  와 같이 같은 키값의 원소의 순서가 유지 되지 않는 것.
+```
+
+<br><br>
+
+### Selection Sort
+
+- Unstable sort
 - 추가 메모리 생성할 필요 X
 - 배열 쭉 탐색 후 가장 작은 값 왼쪽부터 차곡차곡 쌓는 방식
+
 ```cpp
     int min;
     /*배열을 순차 탐색하며 제일 최솟값을 왼쪽부터 정렬*/
     for(int i=0; i<arrlen-1;i++){
         min=i;
-        for(int j=i+1;j<arrlen;j++)         
+        for(int j=i+1;j<arrlen;j++)
         //최솟값이 들어있는 인덱스 search
-            if(array[j]<array[min]) min=j;  
-        swap( &array[i], &array[min] );  //가장 작은값을 왼쪽으로 이동     
-        
+            if(array[j]<array[min]) min=j;
+        swap( &array[i], &array[min] );  //가장 작은값을 왼쪽으로 이동
+
     }
 ```
+
 [Code 보기 (c++)](/algorithm/Sorting_Algorithm/SelectionSort.cpp)
 
 <br>
 
-### Insertion Sort 
+### Insertion Sort
+
+- Stable sort
 
 - 추가 메모리 생성할 필요 X
 - 인덱스값을 한개씩 늘려가며 해당 값이 맞는 위치에 삽입
 - 상황에 따라 모두 비교하지 않으므로 best case 경우 O(n)으로 빠른 시간을 갖는다.
+
 ```cpp
     for(int i=1;i<arrlen;i++){
         item=array[i];
@@ -101,11 +152,14 @@
         array[j+1]=item;
     }
 ```
- [Code 보기 (c++)](/algorithm/Sorting_Algorithm/InsertionSort.cpp)
+
+[Code 보기 (c++)](/algorithm/Sorting_Algorithm/InsertionSort.cpp)
 
 <br>
 
 ### Bubble Sort
+
+- Stable sort
 
 - 추가 메모리 생성할 필요 X
 - 배열을 모두 탐색하며 가장 큰 값을 오른쪽부터 쌓는다.
@@ -115,13 +169,17 @@
         for(int i=arrlen-1;i>0;i--){
             /*배열의 첫번째부터 다음 값과 비교해보면서 큰 값은 점점 뒤로 민다*/
             for(int j=0;j<i;j++)
-                if(array[j]>array[j+1]) swap(&array[j],&array[j+1]); 
+                if(array[j]>array[j+1]) swap(&array[j],&array[j+1]);
 ```
- [Code 보기 (c++)](/algorithm/Sorting_Algorithm/BubbleSort.cpp)
 
-<br>           
+[Code 보기 (c++)](/algorithm/Sorting_Algorithm/BubbleSort.cpp)
+
+<br>
 
 ### Merge Sort
+
+- stable sort
+
 - `분할과 정복` 원리 ( Divide & Conquer )
 - 더이상 나누어지지 않을 때까지 반으로 분할하다가 더이상 나누어지지 않은경우, 원소(value)를 결합(combine)할 때,양쪽의 value를 비교 후 정렬방식대로 combine을 실행한다.
 - `재귀`를 이용 ( recursion )
@@ -131,28 +189,32 @@
     /*merge (병합) 과정*/
     /*
      * 왼쪽 배열과 오른쪽 배열 비교하며 sorted배열 ( 추가 메모리 공간 )에 삽입
-     * 
+     *
      * 한쪽먼저 다 sorted에 삽입되었다면 남아 있는 다른쪽 배열 값 sorted 배열에 모두 삽입
-     * 
+     *
      * sorted의 배열 ( 정렬되어 있는 배열 )을 원래 배열에 복사
      */
 
-    
+
     void Merge_sort(int array[],int left, int right){
         int mid;
         if(left<right){
             mid = (left+right) /2;
-            Merge_sort(array,left,mid);     // 재귀 
+            Merge_sort(array,left,mid);     // 재귀
             Merge_sort(array,mid+1,right);  // 재귀
             Merge(array,left,mid,right);    // merge (병합)
         }
     }
 ```
+
 [Code 보기 (c++)](/algorithm/Sorting_Algorithm/MergeSort.cpp)
 
 <br>
 
 ### Quick Sort
+
+- Unstable sort
+
 - `분할과 정복` 이용 ( Divide & Conquer )
 - 분할시 `기준 값 (pivot)`을 설정 후 해당 pivot을 기준으로 좌, 우로 작은, 큰 값을 배치 시킨 후 pivot보다 작은 숫자들, 큰 숫자들의 집합을 다시 재귀 함수를 이용하여 분할 정렬을 하는 방식
 - pivot은 기준점으로 중간값이기 때문에 재귀에 포함시키지 않는다.
@@ -175,23 +237,28 @@ void QuickSort(int array[],int pivot, int arrlen){
         if(left<right) swap(array[left],array[right]);  //left와 right가 교차하지 않았다면 두 값을 swap
 
         /*교차 했다면, pivot의 값과 right값을 swap ( 이때 right값은 pivot보다 작은 값을 가리키고 있기 때문이다.)*/
-        else swap(array[pivot],array[right]);  
+        else swap(array[pivot],array[right]);
    }
     QuickSort(array,pivot,right);   //pivot의 왼쪽 배열 정렬
     QuickSort(array,right+1,arrlen); //pivot의 오른쪽 배열 정렬
 }
 ```
+
 [Code 보기 (c++)](/algorithm/Sorting_Algorithm/QuickSort.cpp)
 
 <br>
 
-### Shell Sort 
+### Shell Sort
+
+- Unstable sort
+
 - 삽입정렬을 보완한 알고리즘 ( 어느정도 정렬된 배열에서 속도가 빠른 것에서 착안 )
-- 삽입정렬은 삽입할 때, 이웃한 위치로만 이동이 가능하다는 단점이 있다. -> 이를 보완하여 셀 정렬은 멀리 떨어진 곳을 삽입정렬을 이용하여 정렬한다. 
+- 삽입정렬은 삽입할 때, 이웃한 위치로만 이동이 가능하다는 단점이 있다. -> 이를 보완하여 셀 정렬은 멀리 떨어진 곳을 삽입정렬을 이용하여 정렬한다.
 - 삽입정렬과 다르게 한 번에 정렬하지 않는다.
 - 간격을 설정 하여 k번째 요소들을 추출하여 해당 숫자들을 삽입정렬로 정렬 후, k를 절반으로 줄여 1이 될 때까지 반복
 - 간격(gap) : 초깃값 = 정렬할 값의 수/2 <br>
-생성된 부분 리스트의 개수는 gap과 같다.
+  생성된 부분 리스트의 개수는 gap과 같다.
+
 ```cpp
     void shell_sort(int list[], int n){
         int i, gap;  // gap의 초기 값 : 정렬할 값의 수/2
@@ -209,25 +276,29 @@ void QuickSort(int array[],int pivot, int arrlen){
         }
     }
 ```
+
 [Code 보기 (c++)](/algorithm/Sorting_Algorithm/ShellSort.cpp)
 
 <br>
 
 ### Heap Sort
+
+- Unstable sort
+
 - `Heap` 자료구조 ( Complete Binary Tree 의 일종 )을 이용한 정렬 방법
 - 배열을 `heapify`( heap으로 만들어 주는 것 ) 을 거쳐서 value를 꺼내는 방식의 정렬
 - 추가 메모리 생성이 필요 없다.
 - 오름차순 정렬을 위해 최대 힙을 구성하고, 내림차순 정렬을 위해 최소 힙을 구성.
 - heapify를 작성할때 top-down 방식과 bottom-up방식으로 구현할 수 있으며 bottom-up이 살짝 더 성능이 좋다.
-    - top-down : 아래에서 부터 위까지  올라가며 비교/교환하여 heapify를 수행
-    - bottom-up : 위에서부터 아래로 내려가며 비교/교환하여 heapify를 수행 
-        - leaf node는 heapify를 수행하지 않아도 되기 때문에 leaf node의 부모 부터 heapify를 수행하기 때문에 build heap과정에서 top-down방식은 n번을 비교하지만 bottom-up방식은  2/n 번만 수행가능하다.
+  - top-down : 아래에서 부터 위까지 올라가며 비교/교환하여 heapify를 수행
+  - bottom-up : 위에서부터 아래로 내려가며 비교/교환하여 heapify를 수행
+    - leaf node는 heapify를 수행하지 않아도 되기 때문에 leaf node의 부모 부터 heapify를 수행하기 때문에 build heap과정에서 top-down방식은 n번을 비교하지만 bottom-up방식은 2/n 번만 수행가능하다.
 
 ```cpp
 
 void top_down_HeapSort(int *array, int arrlen){
     //build heap
-    top_down_heapify(array,arrlen);  
+    top_down_heapify(array,arrlen);
 
     for(int i= arrlen-1 ; i>=0; i--){
         swap(array[i],array[0]);    //가장 큰 숫자(루트)를 맨 뒷 노드로 swap해준다.
@@ -237,7 +308,7 @@ void top_down_HeapSort(int *array, int arrlen){
 
 void bottom_up_HeapSort(int *array, int arrlen){
     //build heap
-    for(int i= arrlen / 2 - 1; i >= 0; i--){    
+    for(int i= arrlen / 2 - 1; i >= 0; i--){
         bottom_up_heapify(array,i,arrlen);
     }
 
@@ -248,19 +319,22 @@ void bottom_up_HeapSort(int *array, int arrlen){
 }
 
 ```
+
 [Code 보기 (c++)](/algorithm/Sorting_Algorithm/HeapSort.cpp)
 
 <br>
 
-
 ### Radix Sort
+
+- Stable sort
+
 - `Non-Comparisions` Sorting Algorithm ( 비교하지 않는 정렬 알고리즘 )
 - `기수 (Radix)` : 데이터를 구성하는 기본요소
 - 하나의 기수마다 버킷 (데이터 공간)을 생성하여 분류하여 버킷안에서 다시 정렬하는 방식
 - 정렬 방식
-    - `LSD ( Least Significant Digit )` : 덜 중요한 기수부터 정렬 <br>
+  - `LSD ( Least Significant Digit )` : 덜 중요한 기수부터 정렬 <br>
     예를들어서 일의 자리수자부터 정렬하는 방식이다. 따라서 중간에 정렬 결과를 확인할 수 없다.
-    - `MSD ( Most Significant Digit ) `: 가장 중요한 기수부터 정렬 <br>
+  - `MSD ( Most Significant Digit ) `: 가장 중요한 기수부터 정렬 <br>
     예를들어서 백의 자리숫자부터 정렬하는 방식이다. 따라서 중간에 정렬 결과를 확인 할 수있으나 확인하는 과정에서 메모리를 더 사용하게 된다.
 
 ```cpp
@@ -272,12 +346,12 @@ void RadixSort(int *array,int arrlen){
     /*배열의 값 중 가장 큰 값의 자릿수 알아내기*/
     while(digit<MAXVALUE)
         digit*=10;
-    
+
     /*가장 큰 값의 자릿수 만큼 만큼 반복*/
     for(int i=1; i<digit ; i*=10){
         /*queue(bucket)에 옮기기*/
         for(int j=0;j<arrlen;j++){
-            k=(array[j]/i)%10;      
+            k=(array[j]/i)%10;
             q[k].push(array[j]);  //q는 bucket
         }
 
@@ -293,22 +367,26 @@ void RadixSort(int *array,int arrlen){
     }
 }
 ```
+
 [Code 보기 (c++)](/algorithm/Sorting_Algorithm/RadixSort.cpp)
 
 <br>
 
-### Count Sort
-- ` Non-Comparisions Sorting Algorithm `( 비교하지 않는 정렬 알고리즘 )
+### Counting Sort
+
+- stable sort
+
+- `Non-Comparisions Sorting Algorithm`( 비교하지 않는 정렬 알고리즘 )
 - 좁은 범위의 데이터를 정렬할 때 유용 ( ex. Score )
 - 법위가 넓어지게 되면 추가 메모리 공간이 많이 필요해지기 때문에 비효율
 - 정렬을 위해 추가 배열을 생성하는데 사이즈를 정렬할 배열의 가장 큰 값만큼 생성해 준다.
 - 과정
-    - 정렬할 배열 A, 추가 배열 C를 생성해준다.
-    - 배열 C는 모든 값을 0으로 초기화해준다.
-    - 배열 A의 값을 토대로 배열 C의 인덱스값을 참조하여 값을 1씩올려준다. (예를 들어 배열 A의 값중 3이 있다고 한다면, C의 3번째 인덱스 값을 1더해준다.)
-    - 배열 c의 각 값들을 직전 값을 더해 업데이트 해준다. <br>
+  - 정렬할 배열 A, 추가 배열 C를 생성해준다.
+  - 배열 C는 모든 값을 0으로 초기화해준다.
+  - 배열 A의 값을 토대로 배열 C의 인덱스값을 참조하여 값을 1씩올려준다. (예를 들어 배열 A의 값중 3이 있다고 한다면, C의 3번째 인덱스 값을 1더해준다.)
+  - 배열 c의 각 값들을 직전 값을 더해 업데이트 해준다. <br>
     (예를 들어, 배열 C가 1,0,2,2 였다면, 1,1,3,5로 업데이트 해준다.)
-    - 배열 C는 배열 A의 값들의 인덱스 값이므로, 배열 A를 끝에서부터 역순으로 훑으면서 배열 B에 정렬해 준다. (이때, 한 값을 B에 옮겨주었다면, 해당하는 인덱스의 배열 C의 값은 1을 빼준다.)
+  - 배열 C는 배열 A의 값들의 인덱스 값이므로, 배열 A를 끝에서부터 역순으로 훑으면서 배열 B에 정렬해 준다. (이때, 한 값을 B에 옮겨주었다면, 해당하는 인덱스의 배열 C의 값은 1을 빼준다.)
 
 ```cpp
     int *c = new int[maxValue+1];   //0도 포함한 숫자를 정렬 할 경우 maxValue + 1만큼 생성해주어야 한다.
@@ -329,4 +407,5 @@ void RadixSort(int *array,int arrlen){
         --c[a[i]];
     }
 ```
+
 [Code 보기 (c++)](/algorithm/Sorting_Algorithm/CountSort.cpp)
