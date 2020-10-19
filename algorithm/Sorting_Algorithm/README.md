@@ -95,7 +95,7 @@
 
   - 정렬되지 않은 상태의 같은 키값을 가진 원소의 순서가 정렬 후에 유지되는 것을 보장 할 수 없는 정렬
 
-  - `Selection`, `Shell`, `Heap`, `Quick` Sort가 해당된다.
+  - `Selection`, `Shell`, `Heap`, `Quick Sort`가 해당된다.
 
 예를 들어, 같은 5이더라도 a가 앞에 있는 5, b가 뒤에 있는 5라고 한다면
 
@@ -104,7 +104,7 @@
 
   이 정렬 후에
 
-  1 2 3 4 5(a) 5(b)
+  1 2 3 4 5(b) 5(a)
 
   와 같이 같은 키값의 원소의 순서가 유지 되지 않는 것.
 ```
@@ -122,9 +122,10 @@
     /*배열을 순차 탐색하며 제일 최솟값을 왼쪽부터 정렬*/
     for(int i=0; i<arrlen-1;i++){
         min=i;
-        for(int j=i+1;j<arrlen;j++)
-        //최솟값이 들어있는 인덱스 search
+        for(int j=i+1;j<arrlen;j++){
+            //최솟값이 들어있는 인덱스 search
             if(array[j]<array[min]) min=j;
+        }
         swap( &array[i], &array[min] );  //가장 작은값을 왼쪽으로 이동
 
     }
@@ -379,6 +380,7 @@ void RadixSort(int *array,int arrlen){
 - `Non-Comparisions Sorting Algorithm`( 비교하지 않는 정렬 알고리즘 )
 - 좁은 범위의 데이터를 정렬할 때 유용 ( ex. Score )
 - 법위가 넓어지게 되면 추가 메모리 공간이 많이 필요해지기 때문에 비효율
+- 위와 같은 이유로 Radix Sort와 같이 사용할 경우 메모리를 아낄 수 있다.
 - 정렬을 위해 추가 배열을 생성하는데 사이즈를 정렬할 배열의 가장 큰 값만큼 생성해 준다.
 - 과정
   - 정렬할 배열 A, 추가 배열 C를 생성해준다.

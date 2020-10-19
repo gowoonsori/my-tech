@@ -15,5 +15,6 @@ UI 컴포넌트를 만드는 일을 하여 캡슐화를 시켜서 코드의 재�
 
 - 데이터의 흐름이 단방향 : react는 상위 컴포넌트에서 하위 컴포넌트 방향으로만 흐르고 반대로는 올라갈 수 없다. 이는 장기적으로 데이터 흐름을 이해하기 쉬워져 개발 비용의 감소 효과를 볼 수 있다.
 
-- SPA (single page application) : 하나의 페이지로 이루어진 어플리케이션 으로 하나의 html 파일을 기반으로 js를 이용해 동적으로 화면의 컨텐츠를 바꾸는 방식이다. CSR (client side rendering)방식을 채택. <br>
+- SPA (single page application) : 하나의 페이지로 이루어진 어플리케이션 으로 하나의 html 파일을 기반으로 js를 이용해 동적으로 화면의 컨텐츠를 바꾸는 방식이다. CSR (client side rendering)방식을 채택.
+ <br>
 ReactDOMServer, next.js와 같은 라이브러리를 이용하여 ssr (server side rendering)을 구현할 수도 있다. 
