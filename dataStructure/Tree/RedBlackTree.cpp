@@ -8,10 +8,38 @@
 *       이중 연결 리스트로 구현
 *       Red / Black은 식별하기 쉽게 enum이용 했으며, bool 이용시 데이터 크기 절약
 * 
-*       각 case에 대한 설명은 github에 적어 놓았다.
+*       class RBTree
+* 
+*       변수 :   root node => root노드는 항상 black
+*               leaf node => 끝에 해당하는 노드들은 leaf node들을 가지고 있다.
+*                            leaf node라는 것만 알면 되기 때문에 새로운 노드 삽입 때마다 leaf node를 생성 해줄 필요없이
+*                            모든 말단 노드들은 이 leaf node를 가리키는 식으로 구현
+*                            leaf node는 항상 black
+*       
+*       생성자 : RBTREE =>  node 구조체 생성후
+*                          색은 black 초기화
+*                          모든 자식은 nullptr로 초기화.
+*       
+*       함수 :   IsKey => key값이 있는지 검사하는 함수
+*               Insert => 삽입 함수
+*               InsertFixUp => 삽입 후 규칙 깨졌을 시 재조정 함수
+*               Delete => 삭제 함수
+*               DeleteFixUp => 삭제 후 규칙 깨졌을 시 재조정 함수
+*               Transplant => 삭제 시 이용하며, 삭제할 노드의 자식 노드를 부모노드에 연결해주는 함수
+*               RotateRight(x) => x기준 오른쪽으로 회전
+*               RotateLeft(x) => x기준 왼쪽으로 회전
+*
+*               Inorder,Preorder,Postorder => 순회 함수
+*               tree_minimum(x), tree_maximum(x) => 노드 x 기준으로 가장 왼쪽, 오른쪽 return 함수
+*
+*               DisplayMenu, SelectMenu => 초기 Menu판 print 함수
+*               Insert_helper,Delete_helper,order_helper,print_helper => 각각 수행시 입력받고 조건 에러 처리 위한 함수 와 tree print 해주는 함수
+*
+*       InsertFixUp과 DeleteFixUp에서 각 case에 대한 설명은 github에 적어 놓았다.
 *
 * 작성자 : gowoonsori 
-* github : https://github.com/gowoonsori
+* github : https://github.com/gowoonsori/my-tech/tree/master/dataStructure/Tree
+* 해당 source gist : https://gist.github.com/gowoonsori/a725e29ef1880f0592fe5760f4908c6b
 */
 
 #include <iostream>
@@ -24,10 +52,10 @@ enum Color
 struct node
 {
     int key;
-    node *left;
-    node *right;
-    node *parent;
-    Color color;
+    node *left = nullptr;
+    node *right = nullptr;
+    node *parent = nullptr;
+    Color color = BLACK;
 };
 
 typedef node *NodePtr;
@@ -53,56 +81,50 @@ private:
         return t;
     }
 
-    bool Insert(int item)
+    void Insert(int item)
     {
-        if (IsKey(item))
-            return false; //key가 중복이라면 return
+        // x : 삽입할 곳 찾기위한 포인터 | y : 삽입할 곳의 부모노드
+        NodePtr x = this->root, y = nullptr;
+        NodePtr z = new node();
+        z->key = item;
+        z->color = RED;
+        z->parent = nullptr;
+        z->left = leafNode;
+        z->right = leafNode;
 
-        else
+        /*BST의 일반 삽입 연산*/
+        while (x != leafNode)
         {
-            // x : 삽입할 곳 찾기위한 포인터 | y : 삽입할 곳의 부모노드
-            NodePtr x = this->root, y = nullptr;
-            NodePtr z = new node();
-            z->key = item;
-            z->color = RED;
-            z->parent = nullptr;
-            z->left = leafNode;
-            z->right = leafNode;
-
-            /*BST의 삽입 연산*/
-            while (x != leafNode)
-            {
-                y = x;
-                if (x->key < item)
-                    x = x->right;
-                else
-                    x = x->left;
-            }
-
-            z->parent = y;
-
-            if (y == nullptr)
-                root = z;
-            else if (z->key > y->key)
-                y->right = z;
+            y = x;
+            if (x->key < item)
+                x = x->right;
             else
-                y->left = z;
-
-            //z가 root노드
-            if (z->parent == nullptr)
-            {
-                z->color = BLACK;
-                return true;
-            }
-            // z의 부모노드가 root노드라면 Fix Up 필요없이 red컬러로 붙여주면 된다.
-            if (z->parent->parent == nullptr)
-            {
-                return true;
-            }
-
-            InsertFixUp(z);
+                x = x->left;
         }
-        return true;
+
+        z->parent = y;
+
+        if (y == nullptr)
+            root = z;
+        else if (z->key > y->key)
+            y->right = z;
+        else
+            y->left = z;
+
+        //z가 root노드라면
+        if (z->parent == nullptr)
+        {
+            z->color = BLACK;
+            return;
+        }
+        // z의 부모노드가 root노드라면 Fix Up 필요없이 red컬러로 붙여주면 된다.
+        if (z->parent->parent == nullptr)
+        {
+            return;
+        }
+        InsertFixUp(z);
+
+        return;
     }
 
     void InsertFixUp(NodePtr z)
@@ -112,7 +134,7 @@ private:
         {
             NodePtr grandparent = z->parent->parent;
             NodePtr uncle = (z->parent == grandparent->left) ? grandparent->right : grandparent->left;
-            bool side = (z->parent == grandparent->left) ? true : false; //if left : 1 / right : 0
+            bool side = (z->parent == grandparent->left) ? true : false; //if p[z]가 p[p[z]]의 왼쪽 자식이면 1 / 오른쪽이면 0
 
             /*case 1*/
             if (uncle && uncle->color == RED)
@@ -148,7 +170,6 @@ private:
         NodePtr z = IsKey(item);
         if (!z)
             return false;
-
         else
         {
             NodePtr x, y;
@@ -156,13 +177,15 @@ private:
 
             /*자식이 없거나 1개인 경우
                     삭제할 노드(z)가 블랙이면 doulbe red이므로 fix*/
-            if (!z->left)
+            if (z->left == leafNode)
             {
-                Transplant(z, x = z->right);
+                x = z->right;
+                Transplant(z, z->right);
             }
-            else if (!z->right)
+            else if (z->right == leafNode)
             {
-                Transplant(z, x = z->left);
+                x = z->left;
+                Transplant(z, z->left);
             }
             else
             {
@@ -187,7 +210,9 @@ private:
             }
             delete z;
             if (OriginalColor == BLACK)
+            {
                 DelteFixUp(x);
+            }
         }
         return true;
     }
@@ -277,6 +302,7 @@ private:
             }
         }
         x->color = BLACK;
+        root->color = BLACK;
     }
 
     /* u의 위치에 v를 이식 */
@@ -298,8 +324,10 @@ private:
 
         y = x->right;
         x->right = y->left;
-        if (y->left)
+        if (y->left != leafNode)
+        {
             y->left->parent = x;
+        }
         y->parent = x->parent;
 
         if (!x->parent)
@@ -324,8 +352,10 @@ private:
 
         x = y->left;
         y->left = x->right;
-        if (x->right)
+        if (x->right != leafNode)
+        {
             x->right->parent = y;
+        }
         x->parent = y->parent;
 
         if (!y->parent)
@@ -340,7 +370,6 @@ private:
         {
             y->parent->right = x;
         }
-
         y->parent = x;
         x->right = y;
     }
@@ -405,6 +434,7 @@ public:
         leafNode->color = BLACK;
         leafNode->left = nullptr;
         leafNode->right = nullptr;
+        leafNode->parent = nullptr;
         root = leafNode;
     }
     //최솟값 찾기
@@ -482,12 +512,12 @@ public:
         int item;
         std::cout << "Key to insert  :  ";
         std::cin >> item;
-        if (!Insert(item))
+        if (IsKey(item))
         {
             std::cout << "!!! " << item << " is already exists !!!\n";
             return;
         }
-        return;
+        Insert(item);
     }
     void Delete_helper()
     {
