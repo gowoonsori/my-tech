@@ -334,7 +334,7 @@ class RBTREE {
             }
 
             std::string sColor = (root->color == RED) ? "RED" : "BLACK";
-            std::cout << root->key << "(" << sColor << ")" << std::endl;
+            std::cout << root->key << " (" << sColor << ")" << std::endl;
             print_helper(root->left, indent, false);
             print_helper(root->right, indent, true);
         }

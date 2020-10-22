@@ -161,7 +161,8 @@ class AVLTREE {
                 indent += "|    ";
             }
 
-            std::cout << root->key << std::endl;
+            int height = std::max(getHeight(root->left), getHeight(root->right)) + 1;
+            std::cout << root->key << " (" << height << ")" << std::endl;
             print_helper(root->left, indent, false);
             print_helper(root->right, indent, true);
         }
