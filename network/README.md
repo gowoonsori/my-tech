@@ -2,4 +2,4 @@
 
 ## 🗃 목차 ( Categories )
 
-- [ 오류 검출 / 정정 ](/errorDetection_Correction)
+- [ 오류 검출 / 정정 ](/network/errorDetection_Correction)
