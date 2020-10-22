@@ -44,13 +44,11 @@
 
 #include <iostream>
 
-enum Color
-{
+enum Color {
     RED,
     BLACK
 };
-struct node
-{
+struct node {
     int key;
     node *left = nullptr;
     node *right = nullptr;
@@ -60,29 +58,25 @@ struct node
 
 typedef node *NodePtr;
 
-class RBTREE
-{
-private:
-    NodePtr root;     //루트 노드
-    NodePtr leafNode; //단말노드
+class RBTREE {
+   private:
+    NodePtr root;      //루트 노드
+    NodePtr leafNode;  //단말노드
 
     //key값이 있는지 없는지 검사 있으면 pointer 값, 없으면 nullptr
-    NodePtr IsKey(int item)
-    {
+    NodePtr IsKey(int item) {
         NodePtr t = root;
         NodePtr parent = NULL;
 
         /*key값을 찾거나 없다면 break*/
-        while (t != NULL && t->key != item)
-        {
+        while (t != NULL && t->key != item) {
             parent = t;
             t = (item < parent->key) ? parent->left : parent->right;
         }
         return t;
     }
 
-    void Insert(int item)
-    {
+    void Insert(int item) {
         // x : 삽입할 곳 찾기위한 포인터 | y : 삽입할 곳의 부모노드
         NodePtr x = this->root, y = nullptr;
         NodePtr z = new node();
@@ -93,8 +87,7 @@ private:
         z->right = leafNode;
 
         /*BST의 일반 삽입 연산*/
-        while (x != leafNode)
-        {
+        while (x != leafNode) {
             y = x;
             if (x->key < item)
                 x = x->right;
@@ -112,14 +105,12 @@ private:
             y->left = z;
 
         //z가 root노드라면
-        if (z->parent == nullptr)
-        {
+        if (z->parent == nullptr) {
             z->color = BLACK;
             return;
         }
         // z의 부모노드가 root노드라면 Fix Up 필요없이 red컬러로 붙여주면 된다.
-        if (z->parent->parent == nullptr)
-        {
+        if (z->parent->parent == nullptr) {
             return;
         }
         InsertFixUp(z);
@@ -127,18 +118,15 @@ private:
         return;
     }
 
-    void InsertFixUp(NodePtr z)
-    {
+    void InsertFixUp(NodePtr z) {
         /*root 노드가 아니고 부모 색이 red라면*/
-        while (z != root && z->parent->color == RED)
-        {
+        while (z != root && z->parent->color == RED) {
             NodePtr grandparent = z->parent->parent;
             NodePtr uncle = (z->parent == grandparent->left) ? grandparent->right : grandparent->left;
-            bool side = (z->parent == grandparent->left) ? true : false; //if p[z]가 p[p[z]]의 왼쪽 자식이면 1 / 오른쪽이면 0
+            bool side = (z->parent == grandparent->left) ? true : false;  //if p[z]가 p[p[z]]의 왼쪽 자식이면 1 / 오른쪽이면 0
 
             /*case 1*/
-            if (uncle && uncle->color == RED)
-            {
+            if (uncle && uncle->color == RED) {
                 z->parent->color = BLACK;
                 uncle->color = BLACK;
                 grandparent->color = RED;
@@ -148,11 +136,9 @@ private:
             /*case 2
                 side == true ) p[z]는 p[p[z]]의 왼쪽 자식 인 경우이다.
                 side == false ) p[z]는 p[p[z]]의 오른쪽 자식 인 경우이다. */
-            else
-            {
+            else {
                 /*case 2-1*/
-                if (z == (side ? z->parent->right : z->parent->left))
-                {
+                if (z == (side ? z->parent->right : z->parent->left)) {
                     z = z->parent;
                     side ? RotateLeft(z) : RotateRight(z);
                 }
@@ -165,40 +151,30 @@ private:
         root->color = BLACK;
     }
 
-    bool Delete(int item)
-    {
+    bool Delete(int item) {
         NodePtr z = IsKey(item);
         if (!z)
             return false;
-        else
-        {
+        else {
             NodePtr x, y;
             Color OriginalColor = z->color;
 
             /*자식이 없거나 1개인 경우
                     삭제할 노드(z)가 블랙이면 doulbe red이므로 fix*/
-            if (z->left == leafNode)
-            {
+            if (z->left == leafNode) {
                 x = z->right;
                 Transplant(z, z->right);
-            }
-            else if (z->right == leafNode)
-            {
+            } else if (z->right == leafNode) {
                 x = z->left;
                 Transplant(z, z->left);
-            }
-            else
-            {
+            } else {
                 y = tree_minimum(z->right);
                 OriginalColor = y->color;
-                x = y->right; //y의 왼쪽 자식은 없다.
+                x = y->right;  //y의 왼쪽 자식은 없다.
 
-                if (y->parent == z)
-                {                  //z의 오른쪽 자식이 가장 작은 key
-                    x->parent = y; // x가 leafnode일 때, fix하게 될 때 사용
-                }
-                else
-                {
+                if (y->parent == z) {  //z의 오른쪽 자식이 가장 작은 key
+                    x->parent = y;     // x가 leafnode일 때, fix하게 될 때 사용
+                } else {
                     Transplant(y, y->right);
                     y->right = z->right;
                     y->right->parent = y;
@@ -209,28 +185,23 @@ private:
                 y->color = z->color;
             }
             delete z;
-            if (OriginalColor == BLACK)
-            {
+            if (OriginalColor == BLACK) {
                 DelteFixUp(x);
             }
         }
         return true;
     }
 
-    void DelteFixUp(NodePtr x)
-    {
-        NodePtr s; //형제노드 s
+    void DelteFixUp(NodePtr x) {
+        NodePtr s;  //형제노드 s
 
         //root이거나 double black 이 깨질때 까지
-        while (x != root && x->color == BLACK)
-        {
+        while (x != root && x->color == BLACK) {
             /* x가 p[x]의 왼쪽자식인 경우 */
-            if (x == x->parent->left)
-            {
+            if (x == x->parent->left) {
                 s = x->parent->right;
                 // case 1
-                if (s->color == RED)
-                {
+                if (s->color == RED) {
                     s->color = BLACK;
                     x->parent->color = RED;
                     RotateLeft(x->parent);
@@ -238,16 +209,12 @@ private:
                 }
 
                 // case 2
-                if (s->left->color == BLACK && s->right->color == BLACK)
-                {
+                if (s->left->color == BLACK && s->right->color == BLACK) {
                     s->color = RED;
                     x = x->parent;
-                }
-                else
-                {
+                } else {
                     // case 3
-                    if (s->right->color == BLACK)
-                    {
+                    if (s->right->color == BLACK) {
                         s->left->color = BLACK;
                         s->color = RED;
                         RotateRight(s);
@@ -264,12 +231,10 @@ private:
             }
 
             /*x가 p[x]의 오른쪽 자식인 경우*/
-            else
-            {
+            else {
                 s = x->parent->left;
                 // case 1
-                if (s->color == RED)
-                {
+                if (s->color == RED) {
                     s->color = BLACK;
                     x->parent->color = RED;
                     RotateRight(x->parent);
@@ -277,16 +242,12 @@ private:
                 }
 
                 // case 2
-                if (s->left->color == BLACK && s->right->color == BLACK)
-                {
+                if (s->left->color == BLACK && s->right->color == BLACK) {
                     s->color = RED;
                     x = x->parent;
-                }
-                else
-                {
+                } else {
                     // case 3
-                    if (s->left->color == BLACK)
-                    {
+                    if (s->left->color == BLACK) {
                         s->right->color = BLACK;
                         s->color = RED;
                         RotateLeft(s);
@@ -306,8 +267,7 @@ private:
     }
 
     /* u의 위치에 v를 이식 */
-    void Transplant(NodePtr u, NodePtr v)
-    {
+    void Transplant(NodePtr u, NodePtr v) {
         if (u->parent == nullptr)
             root = v;
         else if (u == u->parent->left)
@@ -318,56 +278,42 @@ private:
         v->parent = u->parent;
     }
     /*x를 중심으로 왼쪽으로 회전*/
-    void RotateLeft(NodePtr x)
-    {
+    void RotateLeft(NodePtr x) {
         NodePtr y;
 
         y = x->right;
         x->right = y->left;
-        if (y->left != leafNode)
-        {
+        if (y->left != leafNode) {
             y->left->parent = x;
         }
         y->parent = x->parent;
 
-        if (!x->parent)
-        {
+        if (!x->parent) {
             root = y;
-        }
-        else if (x == x->parent->left)
-        {
+        } else if (x == x->parent->left) {
             x->parent->left = y;
-        }
-        else
-        {
+        } else {
             x->parent->right = y;
         }
         x->parent = y;
         y->left = x;
     }
     /*x를 중심으로 오른쪽으로 회전*/
-    void RotateRight(NodePtr y)
-    {
+    void RotateRight(NodePtr y) {
         NodePtr x;
 
         x = y->left;
         y->left = x->right;
-        if (x->right != leafNode)
-        {
+        if (x->right != leafNode) {
             x->right->parent = y;
         }
         x->parent = y->parent;
 
-        if (!y->parent)
-        {
+        if (!y->parent) {
             root = x;
-        }
-        else if (y == y->parent->left)
-        {
+        } else if (y == y->parent->left) {
             y->parent->left = x;
-        }
-        else
-        {
+        } else {
             y->parent->right = x;
         }
         y->parent = x;
@@ -375,19 +321,14 @@ private:
     }
 
     /*show tree*/
-    void print_helper(NodePtr root, std::string indent, bool last)
-    {
+    void print_helper(NodePtr root, std::string indent, bool last) {
         // print the tree structure on the screen
-        if (root != leafNode)
-        {
+        if (root != leafNode) {
             std::cout << indent;
-            if (last)
-            {
+            if (last) {
                 std::cout << "R----";
                 indent += "     ";
-            }
-            else
-            {
+            } else {
                 std::cout << "L----";
                 indent += "|    ";
             }
@@ -400,8 +341,7 @@ private:
     }
 
     /*중위순회*/
-    void Inorder(NodePtr target)
-    {
+    void Inorder(NodePtr target) {
         if (target == leafNode)
             return;
         Inorder(target->left);
@@ -409,8 +349,7 @@ private:
         Inorder(target->right);
     }
     /*후위순회*/
-    void Postorder(NodePtr target)
-    {
+    void Postorder(NodePtr target) {
         if (target == leafNode)
             return;
         Postorder(target->left);
@@ -418,8 +357,7 @@ private:
         std::cout << target->key << " ";
     }
     /*전위순회*/
-    void Preorder(NodePtr target)
-    {
+    void Preorder(NodePtr target) {
         if (target == leafNode)
             return;
         std::cout << target->key << " ";
@@ -427,9 +365,8 @@ private:
         Preorder(target->right);
     }
 
-public:
-    RBTREE()
-    {
+   public:
+    RBTREE() {
         leafNode = new node;
         leafNode->color = BLACK;
         leafNode->left = nullptr;
@@ -438,27 +375,24 @@ public:
         root = leafNode;
     }
     //최솟값 찾기
-    NodePtr tree_minimum(NodePtr x)
-    {
-        while (x->left != leafNode)
-        {
+    NodePtr tree_minimum(NodePtr x) {
+        while (x->left != leafNode) {
             x = x->left;
         }
         return x;
     }
     //최댓값 찾기
-    NodePtr tree_maximum(NodePtr x)
-    {
-        while (x->right != leafNode)
-        {
+    NodePtr tree_maximum(NodePtr x) {
+        while (x->right != leafNode) {
             x = x->right;
         }
         return x;
     }
 
-    void DisplayMenuBoard()
-    {
-        std::cout << "               Menu " << std::endl;
+    void DisplayMenuBoard() {
+        std::cout << "      ** Red Black Tree **  " << std::endl;
+        std::cout << "                            " << std::endl;
+        std::cout << "              Menu          " << std::endl;
         std::cout << "          1. Insert Key     " << std::endl;
         std::cout << "          2. Delete Key     " << std::endl;
         std::cout << "          3. Show Tree      " << std::endl;
@@ -468,71 +402,63 @@ public:
         std::cout << "          7. exit           " << std::endl;
         std::cout << std::endl;
     }
-    void SelectMenu()
-    {
+    void SelectMenu() {
         DisplayMenuBoard();
         int i = -1;
 
-        while (i != 8)
-        {
+        while (i != 8) {
             std::cout << "--> select   :   ";
             std::cin >> i;
-            switch (i)
-            {
-            case 1:
-                Insert_helper();
-                break;
-            case 2:
-                Delete_helper();
-                break;
-            case 3:
-                print_helper(root, "", true);
-                break;
-            case 4:
-                Order_helper();
-                break;
-            case 5:
-                DisplayMenuBoard();
-                break;
-            case 6:
-                system("cls");
-                DisplayMenuBoard();
-                break;
-            case 7:
-                return;
-            default:
-                std::cout << " !!! Wrong entered !!!\n"
-                          << std::endl;
+            switch (i) {
+                case 1:
+                    Insert_helper();
+                    break;
+                case 2:
+                    Delete_helper();
+                    break;
+                case 3:
+                    print_helper(root, "", true);
+                    break;
+                case 4:
+                    Order_helper();
+                    break;
+                case 5:
+                    DisplayMenuBoard();
+                    break;
+                case 6:
+                    system("cls");
+                    DisplayMenuBoard();
+                    break;
+                case 7:
+                    return;
+                default:
+                    std::cout << " !!! Wrong entered !!!\n"
+                              << std::endl;
             }
         }
     }
 
-    void Insert_helper()
-    {
+    void Insert_helper() {
         int item;
         std::cout << "Key to insert  :  ";
         std::cin >> item;
-        if (IsKey(item))
-        {
+        if (IsKey(item)) {
             std::cout << "!!! " << item << " is already exists !!!\n";
             return;
         }
         Insert(item);
     }
-    void Delete_helper()
-    {
+    void Delete_helper() {
         int item;
         std::cout << "Key to delete  :  ";
         std::cin >> item;
-        if (!Delete(item))
-        {
+        if (!Delete(item)) {
             std::cout << "!!! " << item << " is not exists !!!\n";
             return;
         }
         return;
     }
-    void Order_helper()
-    {
+    void Order_helper() {
         int i;
         std::cout << "         == Order Menu ==" << std::endl;
         std::cout << "          1. PreOrder" << std::endl;
@@ -542,33 +468,31 @@ public:
         std::cout << " --> select  :  ";
 
         std::cin >> i;
-        switch (i)
-        {
-        case 1:
-            Preorder(this->root);
-            std::cout << std::endl;
-            break;
-        case 2:
-            Inorder(this->root);
-            std::cout << std::endl;
-            break;
-        case 3:
-            Postorder(this->root);
-            std::cout << std::endl;
-            break;
-        case 4:
-            return;
-        default:
-            std::cout << " !!! Wrong enter !!!\n"
-                      << std::endl;
-            break;
+        switch (i) {
+            case 1:
+                Preorder(this->root);
+                std::cout << std::endl;
+                break;
+            case 2:
+                Inorder(this->root);
+                std::cout << std::endl;
+                break;
+            case 3:
+                Postorder(this->root);
+                std::cout << std::endl;
+                break;
+            case 4:
+                return;
+            default:
+                std::cout << " !!! Wrong enter !!!\n"
+                          << std::endl;
+                break;
         }
         return;
     }
 };
 
-int main()
-{
+int main() {
     RBTREE tree;
     tree.SelectMenu();
 
