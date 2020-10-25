@@ -1,7 +1,7 @@
 /*
-* C++ 이용하여 Red Black Tree 구현하기
+* C++ 이용하여 AVL Tree 구현하기
 * 
-* 목적 : Red Black Tree 공부 하기 위해 작성했으며, 
+* 목적 : AVL Tree 공부 하기 위해 작성했으며, 
 *       C++ 이용하여 작성하시는 분들에게 도움이 되고자 했다. 
 * 
 * 설명 : key 값은 int만 가능 하며 중복 key는 허용 x
@@ -9,16 +9,19 @@
 * 
 *       class AVLTree
 * 
-*       변수 :   root node => 초기 null
+*       변수 :   root => root node 
 *       
 *       생성자 : RBTREE =>  root 를 null로 초기화
 *       
 *       함수 :   IsKey => key값이 있는지 검사하는 함수
-*               Insert => 재귀를 통한 삽입 함수 (최종적으로 root를 return)
-*               InsertFixUp => 삽입 후 규칙 깨졌을 시 재조정 함수
-*               Delete => 삭제 함수
-*               DeleteFixUp => 삭제 후 규칙 깨졌을 시 재조정 함수
+*
+*               Insert => 재귀를 이용한 삽입 함수 (최종적으로 root를 return)
+*               Delete => 재귀를 이용한 삭제 함수 (최종적을 root를 return)
+*               Balancing => 삽입 / 삭제후 BF 검사하여 규칙깨졌을시 재조정 함수
 *               Transplant => 삭제 시 이용하며, 삭제할 노드의 자식 노드를 부모노드에 연결해주는 함수
+*               
+*               getHeight(x) => x의 높이 getter
+*               getBalanceBacotr(x) => x의 BF 계산하여 return
 *               RotateRight(x) => x기준 오른쪽으로 회전
 *               RotateLeft(x) => x기준 왼쪽으로 회전
 *
@@ -26,9 +29,9 @@
 *               tree_minimum(x), tree_maximum(x) => 노드 x 기준으로 가장 왼쪽, 오른쪽 return 함수
 *
 *               DisplayMenu, SelectMenu => 초기 Menu판 print 함수
-*               Insert_helper,Delete_helper,order_helper,print_helper => 각각 수행시 입력받고 조건 에러 처리 위한 함수 와 tree print 해주는 함수
+*               Insert_helper,Delete_helper,order_helper,print_helper => 각각 이벤트 수행시 입력받고 조건 에러 처리 위한 함수 와 tree print 해주는 함수
 *
-*       InsertFixUp과 DeleteFixUp에서 각 case에 대한 설명은 github에 적어 놓았다.
+*        Balancing에서 각 case에 대한 설명은 github에 적어 놓았다.
 *
 * 작성자 : gowoonsori 
 * github : https://github.com/gowoonsori/my-tech/tree/master/dataStructure/Tree
@@ -54,7 +57,7 @@ class AVLTREE {
         NodePtr t = root;
 
         /*key값을 찾거나 없다면 break*/
-        while (t != NULL && t->key != item) {
+        while (t != nullptr && t->key != item) {
             t = (item < t->key) ? t->left : t->right;
         }
         return t;
@@ -73,14 +76,32 @@ class AVLTREE {
         } else {  //item이 key값보다 작다면 왼쪽으로 이동
             r->left = Insert(r->left, item);
         }
-        InsertFixUp(r, item);  //새로운 노드가 추가되었으므로 재귀적으로 부모노드들 높이 1증가 시켜주고
-                               //Balace Factor 측정하여 2이상이라면 재조정함수
+        r->height = std::max(getHeight(r->left), getHeight(r->right)) + 1;
+        Balancing(r, item);  //새로운 노드가 추가되었으므로 재귀적으로 부모노드들 높이 1증가 시켜주고
+                             //Balace Factor 측정하여 2이상이라면 재조정함수
         return r;
     }
 
-    /* 높이값 갱신하고 balance Factor 측정후 재조정*/
-    void InsertFixUp(NodePtr &r, int item) {
-        r->height = std::max(getHeight(r->left), getHeight(r->right)) + 1;
+    /*key 삭제 함수*/
+    NodePtr Delete(NodePtr r, int item) {
+        if (r->key > item && r->left != nullptr) {
+            r->left = Delete(r->left, item);
+        } else if (r->key < item && r->right != nullptr) {
+            r->right = Delete(r->right, item);
+        } else if (r->key == item) {
+            Transplant(r);
+        }
+        /*root를 지운게 아니라면*/
+        if (r != nullptr) {
+            r->height = std::max(getHeight(r->left), getHeight(r->right)) + 1;
+            Balancing(r, item);
+        }
+
+        return r;
+    }
+
+    /* balance Factor 측정후 재조정*/
+    void Balancing(NodePtr &r, int item) {
         int bF = getBalanceFactor(r);
 
         //case 1 (left left)
@@ -103,13 +124,36 @@ class AVLTREE {
         }
     }
 
-    bool Delete(int item) {
-        return false;
-    }
+    /* 삭제시 자식 이식 함수*/
+    void Transplant(NodePtr &x) {
+        NodePtr y = x;  //y를 통해 노드 삭제
 
-    void DelteFixUp(NodePtr x) {
-    }
+        if (x->left == nullptr) {
+            x = x->right;
+        } else if (x->right == nullptr) {
+            x = x->left;
+        } else {
+            NodePtr z = x->right;  //z : 삭제할 x의 다음으로 가장 작은 수
+            NodePtr pZ = x;        //p[z] : z의 부모 노드
 
+            /* 오른쪽 자식중 가장 작은 값*/
+            while (z->left != nullptr) {
+                pZ = z;
+                z = z->left;
+            }
+
+            x->key = z->key;  //successor과 key값 교환
+
+            /*오른쪽 자식이 가장 작다면*/
+            if (pZ == x) {
+                x->right = z->right;  // z의 오른쪽 자식 붙여주기
+            } else {
+                pZ->left = z->right;  // 오른쪽 자식의 왼쪽 자식이 있다면
+            }                         // 그 z(successor)의 오른쪽 자식 p[z]의 왼쪽에 붙여주기
+            y = z;                    //값 삭제를 위해 y <- z;
+        }
+        delete y;
+    }
     /*높이 getter */
     int getHeight(NodePtr r) {
         if (r == nullptr)
@@ -117,7 +161,6 @@ class AVLTREE {
         else
             return r->height;
     }
-
     /*좌우 자식 깊이 비교하여 Balnace Factor get*/
     int getBalanceFactor(NodePtr r) {
         return getHeight(r->left) - getHeight(r->right);
@@ -230,7 +273,7 @@ class AVLTREE {
         int i = -1;
 
         while (i != 8) {
-            std::cout << "--> select   :   ";
+            std::cout << "(show Menu : 5) -->  select :   ";
             std::cin >> i;
             switch (i) {
                 case 1:
@@ -277,10 +320,11 @@ class AVLTREE {
         int item;
         std::cout << "Key to delete  :  ";
         std::cin >> item;
-        if (!Delete(item)) {
+        if (!IsKey(item)) {
             std::cout << "!!! " << item << " is not exists !!!\n";
             return;
         }
+        this->root = Delete(this->root, item);
         return;
     }
 
