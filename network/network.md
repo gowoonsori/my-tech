@@ -1,4 +1,4 @@
-[컴퓨터 네트워킹 (하향식 접근)](https://book.naver.com/bookdb/book_detail.nhn?bid=12500834) 이 책을 Base로 배운 개념들을 정리 해보았습니다.
+[컴퓨터 네트워킹 (하향식 접근)](https://book.naver.com/bookdb/book_detail.nhn?bid=12500834) 이 책을 Base로 공부한 개념들을 정리 해보았습니다.
 
 <br>
 
