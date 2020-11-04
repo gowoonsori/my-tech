@@ -51,6 +51,7 @@
         "unordered_map": "cpp",
         "xhash": "cpp",
         "cctype": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "random": "cpp"
     }
 }
