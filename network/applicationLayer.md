@@ -2,7 +2,7 @@
 
 <br>
 
-## 🔵 응용 계층 ( Application Layer )
+# 응용 계층 ( Application Layer )
 
 ---
 
