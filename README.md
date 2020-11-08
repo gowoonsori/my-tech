@@ -32,7 +32,9 @@
 - [dp (동적 계획법)](/algorithm/dynamic-programming.md)
 - [정렬 알고리즘](/algorithm/sorting-algorithm.md)
 - [Disjoint Set과 union-find](/algorithm/DisjointSet-unionFind.md)
-- [Kruskal algorithm](/algorithm/kruskal-algorithm.md)
+- MST
+  - [Kruskal's algorithm](/algorithm/kruskal-algorithm.md)
+  - [Prim's algorithm](/algorithm/prim-algorithm.md)
 
 <br>
 
