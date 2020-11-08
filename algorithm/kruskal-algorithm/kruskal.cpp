@@ -1,13 +1,13 @@
-#include <algorithm>
-#include <cstdlib>
-#include <ctime>
+#include <algorithm>  //sort
+#include <cstdlib>    //rand
+#include <ctime>      //time
 #include <iostream>
-#include <vector>
+#include <vector>  //vector
 
 typedef struct edge {
-    int src;
-    int dest;
-    int weight;
+    int src;     //출발 vertex
+    int dest;    //도착 vertex
+    int weight;  //가중치(비용)
 } edge;
 
 class Edge {
@@ -29,7 +29,7 @@ class Edge {
 int Kruskal(std::vector<Edge> &);
 int Find(std::vector<int> &, int);
 bool Union(std::vector<int> &, std::vector<int> &, int, int);
-void randomPush(std::vector<Edge> &);
+void randomPush(std::vector<Edge> &);  // graph에 사이클 없는 연결그래프 무작위 생성
 
 int main() {
     std::vector<Edge> g;     // graph g
@@ -52,14 +52,15 @@ int main() {
 
 int Kruskal(std::vector<Edge> &g) {
     int sum = 0;
-    sort(g.begin(), g.end());  //내림차순으로 정렬
 
-    /*set, rank 초기화*/
+    /*set, rank 초기화 == > make_set */
     std::vector<int> set(g.size());
     std::vector<int> rank(g.size(), 0);
     for (int i = 0; i < g.size(); i++) {
         set[i] = i;
     }
+
+    sort(g.begin(), g.end());  //오름차순으로 정렬
 
     /*minumum edge 선택*/
     std::cout << "\nselected edge : \n";

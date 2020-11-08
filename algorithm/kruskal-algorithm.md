@@ -1,4 +1,4 @@
-# Kruskal Algorithm
+# Kruskal's Algorithm
 
 그래프 중에서 `MST (Minumum Spannig Tree)`를 찾는 알고리즘중에 하나이다.
 
@@ -7,6 +7,18 @@
 사이클의 여부를 확인할때 `union-find` 알고리즘을 이용하여 찾게 된다.
 
 <br>[union find 알고리즘 설명 보기](./DisjointSet-unionFind.md)
+
+<br>
+
+## 특징
+
+- 탐욕적인 방법( Greedy Method )
+
+- 간선 선택 기반 알고리즘
+- 간선 선택 단계에서 사이클을 포함하지 않고 최소 비용 간선을 선택
+- 부분 트리집합을 병합하면서 하나의 트리로 확장
+- 희소그래프에 적합 ( V > E )
+- 정렬 속도가 시간복잡도에 영향
 
 <br>
 
@@ -89,14 +101,15 @@ int main() {
 
 int Kruskal(std::vector<Edge> &g) {
     int sum = 0;
-    sort(g.begin(), g.end());  //내림차순으로 정렬
 
-    /*set, rank 초기화*/
+    /*set, rank 초기화 == > make_set */
     std::vector<int> set(g.size());
     std::vector<int> rank(g.size(), 0);
     for (int i = 0; i < g.size(); i++) {
         set[i] = i;
     }
+
+    sort(g.begin(), g.end());  //오름차순으로 정렬
 
     /*minumum edge 선택*/
     std::cout << "\nselected edge : \n";
@@ -159,3 +172,14 @@ void randomPush(std::vector<Edge> &g) {
 
   </div>
 </details>
+
+<br><br>
+
+## 시간복잡도
+
+make_set 하는데 O(E), 정렬하는데 걸리는 시간은 T (간선 E를 가지고 정렬 => O(E), O(1), O(ElgE), O(E^2) 등등 이 될 수있다.)
+
+Union하기 위해 집합이 속하는지 검사하는 Find가 O(E)번 일어나며, Find 에 O(lgV)번 일어난다.
+<br>따라서 Union을 끝내는데 O(ElgV)만큼 걸린다.
+
+때문에 O(ElgV + T)만큼 걸리게 된다.

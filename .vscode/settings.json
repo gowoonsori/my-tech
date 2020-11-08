@@ -52,6 +52,7 @@
         "xhash": "cpp",
         "cctype": "cpp",
         "string": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "set": "cpp"
     }
 }

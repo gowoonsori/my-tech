@@ -1,0 +1,340 @@
+# Prim's Algorithm
+
+그래프 중에서 `MST (Minumum Spannig Tree)`를 찾는 알고리즘중에 하나이다.
+
+`우선순위 큐`의 방법을 이용하는 알고리즘이다.
+
+vertex를 한개씩 선택하며 트리를 구성하는 방법
+
+<br><br>
+
+## 특징
+
+- 탐욕적인 방법( Greedy Method )
+
+- 정점 선택 기반
+- 시작 정점부터 출발하여 최소 비용의 간선을 갖는 정점을 선택하여 신장 트리 집합을 단계적으로 확장
+- 밀집 그래프에 적합
+
+- 자료구조중 하나인 `우선순위 큐`를 이용하며, 우선순위 큐를 어떻게 구현했는가가 시간복잡도에 영향
+
+<br><br>
+
+## 구현 방법
+
+<br>
+
+1. vertex들의 key값을 Infinity로 초기화한다.
+1. start vertex의 key값을 0으로 초기화한다. (어떤 vertex를 선택하더라고 MST가 나온다.)
+1. 현재 vertex에 인접한 vertex들 중 선택하지 않았고, 가장 vertex의 key값이 작은 vertex을 찾는다. (`exract-min = 최소값 추출`)
+1. 현재 vertex를 선택한다.
+1. 인접한 vertex중 vertex의 key값보다 간선의 가중치가 더 작다면 key값을 가중치로 갱신 한다. (`decrease -key`)
+1. 인접한 vertex중 선택하지 않았고, 가장 vertex의 key값이 작은 vertex를 기준으로 `3번`부터 다시 반복한다.
+
+1. 모든 vertex가 선택되었다면 끝난다.
+
+<br>
+
+### 인접 행렬
+
+---
+
+위에 설명한 `3번 방법`의 extract-min을 아래와 같이 배열로 구현하며, 매번 V회 반복한다.
+
+```cpp
+    int v = -1;              //인접 vertex중 가장 작은 가중치를 갖는 vertex
+    int min_key = INFINITY;  //인접 vertex중 가장 작은 가중치
+
+    /* 인접 vertex중 가장 작은 가중치를 갖는 vertex 찾기*/
+    for (int j = 0; j < V; j++) {
+        if (!selected[j] && (min_key > vertex_key[j])) {
+            v = j;
+            min_key = vertex_key[j];
+        }
+    }
+```
+
+아래는 `5번 방법`으로 인접한 vertex중 vertex의 key값보다 간선의 가중치가 더 작다면 key값을 가중치로 갱신 한다.
+
+```cpp
+    for (int j = 0; j < V; j++) {
+        if (vertex_key[j] > adjMatrix[v][j]) {
+            vertex_key[j] = adjMatrix[v][j];
+        }
+    }
+```
+
+<br>
+
+### 인접 리스트
+
+---
+
+인접 리스트는 인접한 vertex의 가중치를 priority queue를 통해 저장한다.
+
+때문에, `3번 방법의` exract-min은 맨앞에서 pop을 시켜 찾아주면 된다.
+
+```cpp
+std::set<II> q;  //이진힙으로 queue 만들기 ( set은 red-black tree로 만들어짐 )
+auto u = q.begin();  // extract-min
+```
+
+`5번 방법`으로 인접한 vertex중 vertex의 key값보다 간선의 가중치가 더 작다면 key값을 가중치로 갱신 하는 방법은 아래와 같이 인접한 간선의 개수만큼 수행한다.
+
+```cpp
+    /*select한 vertex와 인접한 간선인 e*/
+        for (auto e : adjList[현재 vertex]) {
+            /* 선택되지 않은 vertex이고 해당 vertex의 key값과 edge의 cost를 비교해 cost가 더 작다면*/
+            if (!selected[인접한 vertex] && vertex_key[인접한 vertex] > 가중치) {
+                q.erase({vertex_key[인접한 vertex], e.second});  //같은 vertex로 향하는 간선중 weight가 더 작은 간선이 있다면 그 전 간선은 삭제
+                vertex_key[인접한 vertex] = 가중치;  // vertex key값 갱신
+                q.insert({가중치, 인접한 vertex});   //큐에 삽입
+            }
+        }
+```
+
+<br><br>
+
+## 시간 복잡도
+
+<br>
+
+시간복잡도는 초기화하는데 O(\|V\|), MST계산하는데 O(\|V\|) \* T(extract-min) (가장 적은 값 추출하는데 걸린시간) + O(\|E\|) \* T(decrease-key) ( key값 변경하는데 걸리는 시간 )와 같다.
+
+따라서, priority-queue를 어떻게 구현했는지에 따라 시간복잡도가 달라진다.
+
+일반 배열로 구현했을 경우 T(extract)가 O(\|V\|), T(decrease)는 O(1)만큼 걸려 총 O(\|V^2\|)이 걸린다.
+
+binary heap(이진 힙)으로 구현하면 T(extract)가 O(lgV), T(decrease)는 O(lgV)만큼 걸려 총 O(VlgV) + O(ElgV) 이기 때문에 O((E+V)lgV)만큼 걸린다.
+
+priority queue를 이진 힙이 아닌 fibonacci heap으로 구현하면 decrease-key의 시간을 좀더 줄일 수 있다.
+
+<br><br>
+
+## 구현 코드
+
+<br>
+
+아래 코드는 사이클이없는 무방향의 그래프이고, 가중치를 무작위로 생성한 그래프이다.
+
+또한 같은 vertex를 가르키는 간선이 여러개 주어졌을때 최소 간선만 선택하는 것이 아닌 모두 matrix나 list로 담아 사용했기 때문에 matrix는 `3차원배열`로 구현이 되어있다.
+
+matrix나 list를 만드는 함수에서 최소값을 비교해 한개의 간선만 저장하게 바꾸면, 2차원 배열로 이용이 가능하다.
+
+<details>
+    <summary style="font-Weight : bold; font-size : 15px; color : #FE642E;" > 소스코드  c++ ( 접기 / 펼치기 )</summary>
+    <div>
+
+```cpp
+#include <time.h>  //시간 측정
+
+#include <algorithm>  //for_each
+#include <cstdlib>    //rand
+#include <ctime>      //time
+#include <iostream>
+#include <set>
+#include <vector>
+
+#define INFINITY 2147483647
+#define II std::pair<int, int>  // first = weight, second = dest
+
+typedef struct edge {
+    int src;     //출발 vertex
+    int dest;    //도착 vertex
+    int weight;  //가중치(비용)
+} edge;
+
+class Graph {
+   private:
+    edge e;
+
+   public:
+    Graph(int src = 0, int dest = 0, int weight = 0) {
+        this->e.src = src;
+        this->e.dest = dest;
+        this->e.weight = weight;
+    }
+    int getSrc() { return this->e.src; }
+    int getDest() { return this->e.dest; }
+    int getWeight() { return this->e.weight; }
+};
+
+void CalcTime();
+void randomPush(std::vector<Graph> &);     // graph에 사이클 없는 연결그래프 cost값 무작위 생성
+void print_edge_info(std::vector<Graph>);  // graph 간선들 보기
+
+int prim_adjList_heap(std::vector<Graph> &, std::vector<std::vector<II>>,
+                      int);  // Adj list와 priority queue 이용해 구현 --> set은 red-black-tree
+void make_adj_list(std::vector<Graph>, std::vector<std::vector<II>> &);  //주어진 그래프를 인접리스트로 표현
+
+int prim_adjMatrix(std::vector<Graph> &, std::vector<std::vector<std::vector<int>>>, int);  // Adj matrix로 구현
+void make_adj_matrix(std::vector<Graph>, std::vector<std::vector<std::vector<int>>> &);     //주어진 그래프를 인접행렬로 표현
+
+int V;                                 // vertex 개수
+clock_t start, finish, used_time = 0;  //실행 시간 측정을 위한 변수
+
+int main() {
+    std::vector<Graph> g;    // graph g
+    int minimum_weight = 0;  // minimum cost
+    std::vector<std::vector<II>> adjList;
+    std::vector<std::vector<std::vector<int>>> adjMatrix;
+
+    randomPush(g);       //간선 random 삽입
+    print_edge_info(g);  // edge info print
+
+    make_adj_list(g, adjList);      //주어진 그래프를 인접리스트로 만들기
+    make_adj_matrix(g, adjMatrix);  //주어진 그래프를 인접행렬로 만들기
+
+    start = clock();
+    // minimum_weight = prim_adjMatrix(g, adjMatrix, 0);  //인접행렬을 이용한 prim's algorithm (0번노드를 첫 노드로 시작)
+    minimum_weight = prim_adjList_heap(g, adjList, 0);  //인접리스트를 이용한 prim's algorithm (0번노드를 첫 노드로 시작)
+    finish = clock();
+    std::cout << "\nminimum cost : " << minimum_weight << std::endl;
+    CalcTime();
+
+    return 0;
+}
+
+int prim_adjList_heap(std::vector<Graph> &g, std::vector<std::vector<II>> adjList, int start) {
+    int sum = 0;
+    std::set<II> q;                               //이진힙으로 queue 만들기 ( set은 red-black tree로 만들어짐 )
+    std::vector<int> vertex_key(V, INFINITY);     // vertex의 최소 weight값 계산
+    std::vector<bool> selected(g.size(), false);  //선택된 vertex인가
+
+    vertex_key[start] = 0;
+    q.insert(II(0, start));  //시작 노드 가중치 0으로 시작
+    std::cout << "\nroute";
+
+    /*vertex 수만큼 반복한다
+     while대신 for(int i=0; i < V ; i++)로 해도 무방
+    */
+    while (!q.empty()) {
+        auto u = q.begin();  // extract-min
+        q.erase(q.begin());  // queue pop
+
+        sum += u->first;             // cost sum
+        selected[u->second] = true;  //해당 vertex 선택
+        std::cout << " -> " << u->second << "(cost : " << u->first << ")";
+
+        /*select한 vertex와 인접한 edge 찾아 큐에 push*/
+        for (auto e : adjList[u->second]) {
+            /* 선택되지 않은 vertex이고 해당 vertex의 key값과 edge의 cost를 비교해 cost가 더 작다면*/
+            if (!selected[e.second] && vertex_key[e.second] > e.first) {
+                q.erase({vertex_key[e.second], e.second});  //같은 노드로 향하는 간선중 weight가 더 작은 간선이 있다면 그 전 간선은 삭제
+                vertex_key[e.second] = e.first;  // vertex key값 갱신
+                q.insert({e.first, e.second});   //큐에 삽입
+            }
+        }
+    }
+
+    std::cout << std::endl;
+    return sum;
+}
+
+void make_adj_list(std::vector<Graph> g, std::vector<std::vector<II>> &adj) {
+    adj.resize(V);
+    for (int i = 0; i < g.size(); i++) {
+        int src = g[i].getSrc();
+        int dest = g[i].getDest();
+        int weight = g[i].getWeight();
+
+        adj[src].push_back({weight, dest});
+        adj[dest].push_back({weight, src});
+    }
+}
+
+int prim_adjMatrix(std::vector<Graph> &g, std::vector<std::vector<std::vector<int>>> adjMatrix, int start) {
+    int sum = 0;
+    std::vector<int> vertex_key(V, INFINITY);     // vertex의 최소 weight값 계산
+    std::vector<bool> selected(g.size(), false);  //선택된 vertex인가
+
+    vertex_key[start] = 0;  //시작노드 key값 0으로 시작
+    std::cout << "\nroute";
+    /*vertex 수만큼 반복한다*/
+    for (int i = 0; i < V; i++) {
+        int v = -1;              //인접 vertex중 가장 작은 가중치를 갖는 vertex
+        int min_key = INFINITY;  //인접 vertex중 가장 작은 가중치
+
+        /* 인접 vertex중 가장 작은 가중치를 갖는 vertex 찾기*/
+        for (int j = 0; j < V; j++) {
+            if (!selected[j] && (min_key > vertex_key[j])) {
+                v = j;
+                min_key = vertex_key[j];
+            }
+        }
+
+        /*현재 코드에서는 연결안된 그래프는 주어지지 않기 때문에
+          없어도 무방하지만 만약을 위한 에러처리*/
+        if (v == -1) {
+            std::cout << "Not MST" << std::endl;
+            exit(1);
+        }
+
+        selected[v] = true;
+        sum += min_key;
+        std::cout << " -> " << v << "(cost : " << min_key << ")";
+
+        /*인접 vertex의 weight가 vertex_key값보다 작다면 key값 갱신 */
+        for (int j = 0; j < V; j++) {
+            for (int k = 0; k < adjMatrix[v][j].size(); k++) {
+                if (vertex_key[j] > adjMatrix[v][j][k]) {
+                    vertex_key[j] = adjMatrix[v][j][k];
+                }
+            }
+        }
+    }
+    std::cout << std::endl;
+    return sum;
+}
+
+void make_adj_matrix(std::vector<Graph> g, std::vector<std::vector<std::vector<int>>> &adj) {
+    adj.assign(V, std::vector<std::vector<int>>(V, std::vector<int>(0)));
+    for (int i = 0; i < g.size(); i++) {
+        int src = g[i].getSrc();
+        int dest = g[i].getDest();
+        int weight = g[i].getWeight();
+
+        adj[src][dest].push_back(weight);
+        adj[dest][src].push_back(weight);
+    }
+}
+
+/*vertex수 입력받은 후 그래프 간선 가중치 random 삽입*/
+void randomPush(std::vector<Graph> &g) {
+    std::cout << "create number of Vertex : ";
+    std::cin >> V;
+
+    srand((unsigned int)time(NULL));
+    for (int i = 0; i < V - 1; i++) {
+        g.push_back(Graph(i, i + 1, rand() % 1000));
+        for (int j = i + 1; j < V; j++) {
+            g.push_back(Graph(i, j, rand() % 1000));
+        }
+    }
+    for (int i = (rand() % 3); i < V - 1; i += (rand() % 10)) {
+        g.push_back(Graph(i, i + 1, rand() % 1000));
+        for (int j = i + 1; j < V; j += (rand() % 10)) {
+            g.push_back(Graph(i, j, rand() % 1000));
+        }
+    }
+}
+
+void print_edge_info(std::vector<Graph> g) {
+    std::cout << "edge info : \n";
+    std::for_each(g.begin(), g.end(), [](Graph a) {
+        std::cout << "src : " << a.getSrc() << " desc : " << a.getDest() << " weight : " << a.getWeight() << std::endl;
+    });
+}
+
+//실행 시간을 측정 및 출력하는 함수
+void CalcTime() {
+    used_time = finish - start;
+    printf("\n*********** result **********\n     time : %lf sec\n", (double)(used_time) / CLOCKS_PER_SEC);
+}
+```
+
+</div>
+
+</details>
+
+<br><br>
