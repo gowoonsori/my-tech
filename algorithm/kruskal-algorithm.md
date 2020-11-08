@@ -22,6 +22,22 @@
 
 <br>
 
+## Pesudo Code
+
+```
+algorithm Kruskal(G) is
+    T := ∅
+    for each v ∈ G.V do
+        MAKE-SET(v)
+    for each (u, v) in G.E ordered by weight(u, v), increasing do
+        if FIND-SET(u) ≠ FIND-SET(v) then
+           T := T ∪ {(u, v)}
+           UNION(FIND-SET(u), FIND-SET(v))
+    return T
+```
+
+<br>
+
 ## 구현
 
 ```
@@ -40,7 +56,22 @@
 
 <br><br>
 
+## 시간복잡도
+
+make_set 하는데 O(V), 정렬하는데 걸리는 시간은 T (간선 E를 가지고 정렬 => O(E), O(1), O(ElgE), O(E^2) 등등 이 될 수있다.)
+
+Union하기 위해 집합이 속하는지 검사하는 Find가 O(E)번 일어나며, Find 에 O(lgV)번 일어난다.
+<br>따라서 Union을 끝내는데 O(ElgV)만큼 걸린다.
+
+때문에 O(ElgV + T)만큼 걸리게 된다.
+
 구현하는 데 있어, 우선 본인의 힘으로 작성해보고 도저히 안되겠을 때 아래의 코드를 보자.
+
+<br><br>
+
+## 구현 코드
+
+구현 방법은 사람마다 정말 다양하니 참고만 하도록 하자
 
 <details>
   <summary style="font-Weight : bold; font-size : 15px; color : #FE642E;" > 소스코드  c++ ( 접기 / 펼치기 )</summary>
@@ -80,6 +111,8 @@ int Find(std::vector<int> &, int);
 bool Union(std::vector<int> &, std::vector<int> &, int, int);
 void randomPush(std::vector<Edge> &);   //graph에 사이클 없는 연결그래프 무작위 생성
 
+int V;
+
 int main() {
     std::vector<Edge> g;    //graph g
     int minimum_weight = 0; //minimum cost
@@ -103,9 +136,9 @@ int Kruskal(std::vector<Edge> &g) {
     int sum = 0;
 
     /*set, rank 초기화 == > make_set */
-    std::vector<int> set(g.size());
-    std::vector<int> rank(g.size(), 0);
-    for (int i = 0; i < g.size(); i++) {
+    std::vector<int> set(V);
+    std::vector<int> rank(V, 0);
+    for (int i = 0; i < V; i++) {
         set[i] = i;
     }
 
@@ -123,10 +156,9 @@ int Kruskal(std::vector<Edge> &g) {
 }
 
 int Find(std::vector<int> &set, int x) {
-    if (set[x] != x)
-        set[x] = Find(set, set[x]);
-    else
-        return set[x];
+    if (set[x] == x)
+        return x;
+    return set[x] = Find(set, set[x]);
 }
 
 bool Union(std::vector<int> &set, std::vector<int> &rank, int x, int y) {
@@ -135,6 +167,7 @@ bool Union(std::vector<int> &set, std::vector<int> &rank, int x, int y) {
 
     if (x == y) return false;
 
+    /*집합에 안속해있다면  union*/
     if (rank[x] < rank[y])
         set[x] = y;
 
@@ -149,7 +182,6 @@ bool Union(std::vector<int> &set, std::vector<int> &rank, int x, int y) {
 
 /*vertex수 입력받은 후 그래프 간선 가중치 random 삽입*/
 void randomPush(std::vector<Edge> &g) {
-    int V;
     std::cout << "create number of Vertex : ";
     std::cin >> V;
 
@@ -174,12 +206,3 @@ void randomPush(std::vector<Edge> &g) {
 </details>
 
 <br><br>
-
-## 시간복잡도
-
-make_set 하는데 O(E), 정렬하는데 걸리는 시간은 T (간선 E를 가지고 정렬 => O(E), O(1), O(ElgE), O(E^2) 등등 이 될 수있다.)
-
-Union하기 위해 집합이 속하는지 검사하는 Find가 O(E)번 일어나며, Find 에 O(lgV)번 일어난다.
-<br>따라서 Union을 끝내는데 O(ElgV)만큼 걸린다.
-
-때문에 O(ElgV + T)만큼 걸리게 된다.

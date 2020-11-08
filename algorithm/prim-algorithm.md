@@ -20,6 +20,26 @@ vertex를 한개씩 선택하며 트리를 구성하는 방법
 
 <br><br>
 
+## Pesudo Code
+
+```
+MST-Prim(G, w, r)
+    Q = V[G];
+    for each u ∈ Q
+        key[u] = INFINITY;
+    key[r] = 0;
+    p[r] = NULL;
+    while (Q not empty)
+        u = ExtractMin(Q);
+        for each v ∈ Adj[u]
+            if (v ∈ Q and w(u,v) < key[v])  //Decrease-key
+                p[v] = u;
+                key[v] = w(u,v);
+
+```
+
+<br><br>
+
 ## 구현 방법
 
 <br>

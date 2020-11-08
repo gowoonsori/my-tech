@@ -10,12 +10,12 @@ typedef struct edge {
     int weight;  //가중치(비용)
 } edge;
 
-class Edge {
+class Graph {
    private:
     edge e;
 
    public:
-    Edge(int src = 0, int dest = 0, int weight = 0) {
+    Graph(int src = 0, int dest = 0, int weight = 0) {
         this->e.src = src;
         this->e.dest = dest;
         this->e.weight = weight;
@@ -23,25 +23,26 @@ class Edge {
     int getSrc() { return this->e.src; }
     int getDest() { return this->e.dest; }
     int getWeight() { return this->e.weight; }
-    bool operator<(Edge &edge) { return this->e.weight < edge.e.weight; }
+    bool operator<(Graph &edge) { return this->e.weight < edge.e.weight; }
 };
 
-int Kruskal(std::vector<Edge> &);
+int Kruskal(std::vector<Graph> &);
 int Find(std::vector<int> &, int);
 bool Union(std::vector<int> &, std::vector<int> &, int, int);
-void randomPush(std::vector<Edge> &);  // graph에 사이클 없는 연결그래프 무작위 생성
+
+void randomPush(std::vector<Graph> &);     // graph에 사이클 없는 연결그래프 무작위 생성
+void print_edge_info(std::vector<Graph>);  // graph 간선들 보기
+
+int V;  // vertex 개수
 
 int main() {
-    std::vector<Edge> g;     // graph g
+    std::vector<Graph> g;    // graph g
     int minimum_weight = 0;  // minimum cost
 
     randomPush(g);  //간선 random 삽입
 
     /*edge info print*/
-    std::cout << "edge info : \n";
-    std::for_each(g.begin(), g.end(), [](Edge a) {
-        std::cout << "src : " << a.getSrc() << " desc : " << a.getDest() << " weight : " << a.getWeight() << std::endl;
-    });
+    print_edge_info(g);  // edge info print
 
     minimum_weight = Kruskal(g);  // kruskal algorithm
 
@@ -50,7 +51,7 @@ int main() {
     return 0;
 }
 
-int Kruskal(std::vector<Edge> &g) {
+int Kruskal(std::vector<Graph> &g) {
     int sum = 0;
 
     /*set, rank 초기화 == > make_set */
@@ -74,10 +75,8 @@ int Kruskal(std::vector<Edge> &g) {
 }
 
 int Find(std::vector<int> &set, int x) {
-    if (set[x] != x)
-        set[x] = Find(set, set[x]);
-    else
-        return set[x];
+    if (set[x] == x) return x;
+    return set[x] = Find(set, set[x]);
 }
 
 bool Union(std::vector<int> &set, std::vector<int> &rank, int x, int y) {
@@ -86,6 +85,7 @@ bool Union(std::vector<int> &set, std::vector<int> &rank, int x, int y) {
 
     if (x == y) return false;
 
+    /*집합에 안속해있다면 union*/
     if (rank[x] < rank[y])
         set[x] = y;
 
@@ -99,23 +99,29 @@ bool Union(std::vector<int> &set, std::vector<int> &rank, int x, int y) {
 }
 
 /*vertex수 입력받은 후 그래프 간선 가중치 random 삽입*/
-void randomPush(std::vector<Edge> &g) {
-    int V;
+void randomPush(std::vector<Graph> &g) {
     std::cout << "create number of Vertex : ";
     std::cin >> V;
 
     srand((unsigned int)time(NULL));
 
     for (int i = 0; i < V - 1; i++) {
-        g.push_back(Edge(i, i + 1, rand() % 100));
+        g.push_back(Graph(i, i + 1, rand() % 1000));
         for (int j = i + 1; j < V; j += (rand() % 4)) {
-            g.push_back(Edge(i, j, rand() % 100));
+            g.push_back(Graph(i, j, rand() % 1000));
         }
     }
     for (int i = V - 1; i > 0; i--) {
-        g.push_back(Edge(i, i - 1, rand() % 100));
+        g.push_back(Graph(i, i - 1, rand() % 1000));
         for (int j = i - 1; j > 0; j -= (rand() % 4)) {
-            g.push_back(Edge(i, j, rand() % 100));
+            g.push_back(Graph(i, j, rand() % 1000));
         }
     }
+}
+
+void print_edge_info(std::vector<Graph> g) {
+    std::cout << "edge info : \n";
+    std::for_each(g.begin(), g.end(), [](Graph a) {
+        std::cout << "src : " << a.getSrc() << " desc : " << a.getDest() << " weight : " << a.getWeight() << std::endl;
+    });
 }
