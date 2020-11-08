@@ -31,6 +31,7 @@
 - [복잡도 계산](/algorithm/computational-complexity.md)
 - [dp (동적 계획법)](/algorithm/dynamic-programming.md)
 - [정렬 알고리즘](/algorithm/sorting-algorithm.md)
+- [최장 증가 수열 (LIS) ](/algorithm/longest-increasing-subsequence.md)
 - [Disjoint Set과 union-find](/algorithm/DisjointSet-unionFind.md)
 - MST
   - [Kruskal's algorithm](/algorithm/kruskal-algorithm.md)
