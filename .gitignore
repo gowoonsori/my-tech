@@ -7,4 +7,5 @@ base.md
 #실행 파일
 *.exe
 
-.
+#setting (.json) file
+.vscode
