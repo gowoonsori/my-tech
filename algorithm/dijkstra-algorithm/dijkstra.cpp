@@ -34,13 +34,11 @@ class Graph {
 void CalcTime();
 void randomPush(std::vector<Graph> &);     // graph에 사이클 없는 연결그래프 cost값 무작위 생성
 void print_edge_info(std::vector<Graph>);  // graph 간선들 보기
+void make_adj_list(std::vector<Graph>, std::vector<std::vector<II>> &);     //주어진 그래프를 인접리스트로 표현
+void make_adj_matrix(std::vector<Graph>, std::vector<std::vector<int>> &);  //주어진 그래프를 인접행려로 표현
 
-int prim_adjList_heap(std::vector<Graph> &, std::vector<std::vector<II>>,
-                      int);  // Adj list와 priority queue 이용해 구현 --> set은 red-black-tree
-void make_adj_list(std::vector<Graph>, std::vector<std::vector<II>> &);  //주어진 그래프를 인접리스트로 표현
-
-int prim_adjMatrix(std::vector<Graph> &, std::vector<std::vector<int>>, int);  // Adj matrix로 구현
-void make_adj_matrix(std::vector<Graph>, std::vector<std::vector<int>> &);     //주어진 그래프를 인접행렬로 표현
+int dijkstra_heap(std::vector<Graph> &, std::vector<std::vector<II>>, int);
+int dijkstra_array(std::vector<Graph> &, std::vector<std::vector<int>>, int);
 
 int V;                                 // vertex 개수
 clock_t start, finish, used_time = 0;  //실행 시간 측정을 위한 변수
@@ -48,57 +46,100 @@ clock_t start, finish, used_time = 0;  //실행 시간 측정을 위한 변수
 int main() {
     std::vector<Graph> g;    // graph g
     int minimum_weight = 0;  // minimum cost
-    std::vector<std::vector<II>> adjList;
     std::vector<std::vector<int>> adjMatrix;
+    std::vector<std::vector<II>> adjList;
 
-    randomPush(g);       //간선 random 삽입
-    print_edge_info(g);  // edge info print
+    randomPush(g);  //간선 random 삽입
+    // 10print_edge_info(g);  // edge info print
 
-    make_adj_list(g, adjList);      //주어진 그래프를 인접리스트로 만들기
     make_adj_matrix(g, adjMatrix);  //주어진 그래프를 인접행렬로 만들기
+    make_adj_list(g, adjList);      //주어진 그래프를 인접리스트로 만들기
 
     start = clock();
-    minimum_weight = prim_adjMatrix(g, adjMatrix, 0);  //인접행렬을 이용한 prim's algorithm (0번노드를 첫 노드로 시작)
-    // minimum_weight = prim_adjList_heap(g, adjList, 0);  //인접리스트를 이용한 prim's algorithm (0번노드를 첫 노드로 시작)
+    // minimum_weight = dijkstra_heap(g, adjList, 0); //binary heap을 이용한 구현
+    minimum_weight = dijkstra_array(g, adjMatrix, 0);  // array 이용한 구현
     finish = clock();
-    std::cout << "\nminimum cost : " << minimum_weight << std::endl;
+    std::cout << "\nall route dis : " << minimum_weight << std::endl;
     CalcTime();
 
     return 0;
 }
 
-int prim_adjList_heap(std::vector<Graph> &g, std::vector<std::vector<II>> adjList, int start) {
+int dijkstra_heap(std::vector<Graph> &g, std::vector<std::vector<II>> adjList, int start) {
     int sum = 0;
-    std::set<II> q;                               //이진힙으로 queue 만들기 ( set은 red-black tree로 만들어짐 )
-    std::vector<int> vertex_key(V, INFINITY);     // vertex의 최소 weight값 계산
-    std::vector<bool> selected(g.size(), false);  //선택된 vertex인가
+    std::set<II> q;                            //이진힙으로 queue 만들기 ( set은 red-black tree로 만들어짐 )
+    std::vector<int> vertex_key(V, INFINITY);  // vertex의 최소 weight값 계산
+    std::vector<bool> selected(V, false);      //선택된 vertex인가
 
     vertex_key[start] = 0;
     q.insert(II(0, start));  //시작 노드 가중치 0으로 시작
-    std::cout << "\nroute";
+    std::cout << "\nstart : 0\n";
 
-    /*vertex 수만큼 반복한다
-     while대신 for(int i=0; i < V ; i++)로 해도 무방
-    */
+    /*Vertex만큼 반복*/
     while (!q.empty()) {
-        auto u = q.begin();  // extract-min
+        /*extract min*/
+        int select_key = q.begin()->second;
+        int min_of_key = q.begin()->first;
+        q.erase(q.begin());
 
-        sum += u->first;             // cost sum
-        selected[u->second] = true;  //해당 vertex 선택
-        std::cout << " -> " << u->second << "(cost : " << u->first << ")";
+        if (selected[select_key]) {
+            std::cout << " NOT MST" << std::endl;
+            exit(1);
+        }
 
-        /*select한 vertex와 인접한 edge 찾아 큐에 push*/
-        for (auto e : adjList[u->second]) {
-            /* 선택되지 않은 vertex이고 해당 vertex의 key값과 edge의 cost를 비교해 cost가 더 작다면*/
-            if (!selected[e.second] && vertex_key[e.second] > e.first) {
+        sum += min_of_key;
+        selected[select_key] = true;
+        std::cout << "dest : " << select_key << " (dis : " << vertex_key[select_key] << ")" << std::endl;
+
+        /*decrease key*/
+        for (auto e : adjList[select_key]) {
+            if (!selected[e.second] && vertex_key[e.second] > e.first + vertex_key[select_key]) {
                 q.erase({vertex_key[e.second], e.second});  //같은 노드로 향하는 간선중 weight가 더 작은 간선이 있다면 그 전 간선은 삭제
-                vertex_key[e.second] = e.first;  // vertex key값 갱신
-                q.insert({e.first, e.second});   //큐에 삽입
+                q.insert({e.first, e.second});  //큐에 삽입
+                vertex_key[e.second] = e.first + vertex_key[select_key];
             }
         }
-        q.erase(q.begin());  // queue pop
     }
+    std::cout << std::endl;
+    return sum;
+}
 
+int dijkstra_array(std::vector<Graph> &g, std::vector<std::vector<int>> adjMatrix, int start) {
+    int sum = 0;
+    std::vector<int> vertex_key(V, INFINITY);  // vertex의 최소 weight값 계산
+    std::vector<bool> selected(V, false);      //선택된 vertex인가
+
+    vertex_key[start] = 0;
+    std::cout << "\nstart : 0\n";
+
+    /*Vertex만큼 반복*/
+    for (int i = 0; i < V; i++) {
+        /*extract min*/
+        int select_idx = -1, min_of_key = INFINITY;
+        for (int j = 0; j < V; j++) {
+            if (!selected[j] && min_of_key > vertex_key[j]) {
+                select_idx = j;
+                min_of_key = vertex_key[j];
+            }
+        }
+
+        if (select_idx == -1) {
+            std::cout << " NOT MST" << std::endl;
+            exit(1);
+        }
+
+        sum += min_of_key;
+        selected[select_idx] = true;
+
+        std::cout << "dest : " << select_idx << " (dis : " << vertex_key[select_idx] << ")" << std::endl;
+
+        /*decrease key*/
+        for (int j = 0; j < V; j++) {
+            if (!selected[j] && vertex_key[j] > adjMatrix[select_idx][j] + vertex_key[select_idx]) {
+                vertex_key[j] = adjMatrix[select_idx][j] + vertex_key[select_idx];
+            }
+        }
+    }
     std::cout << std::endl;
     return sum;
 }
@@ -142,48 +183,6 @@ void make_adj_list(std::vector<Graph> g, std::vector<std::vector<II>> &adj) {
             if (!isEdge) adj[dest].push_back({weight, src});
         }
     }
-}
-
-int prim_adjMatrix(std::vector<Graph> &g, std::vector<std::vector<int>> adjMatrix, int start) {
-    int sum = 0;
-    std::vector<int> vertex_key(V, INFINITY);     // vertex의 최소 weight값 계산
-    std::vector<bool> selected(g.size(), false);  //선택된 vertex인가
-
-    vertex_key[start] = 0;  //시작노드 key값 0으로 시작
-    std::cout << "\nroute";
-    /*vertex 수만큼 반복한다*/
-    for (int i = 0; i < V; i++) {
-        int select_idx = -1;     //인접 vertex중 가장 작은 가중치를 갖는 vertex
-        int min_key = INFINITY;  //인접 vertex중 가장 작은 가중치
-
-        /* 인접 vertex중 가장 작은 가중치를 갖는 vertex 찾기*/
-        for (int j = 0; j < V; j++) {
-            if (!selected[j] && (min_key > vertex_key[j])) {
-                select_idx = j;
-                min_key = vertex_key[j];
-            }
-        }
-
-        /*현재 코드에서는 연결안된 그래프는 주어지지 않기 때문에
-          없어도 무방하지만 만약을 위한 에러처리*/
-        if (select_idx == -1) {
-            std::cout << "Not MST" << std::endl;
-            exit(1);
-        }
-
-        selected[select_idx] = true;
-        sum += min_key;
-        std::cout << " -> " << select_idx << "(cost : " << min_key << ")";
-
-        /*인접 vertex의 weight가 vertex_key값보다 작다면 key값 갱신 */
-        for (int j = 0; j < V; j++) {
-            if (!selected[j] && vertex_key[j] > adjMatrix[select_idx][j]) {
-                vertex_key[j] = adjMatrix[select_idx][j];
-            }
-        }
-    }
-    std::cout << std::endl;
-    return sum;
 }
 
 void make_adj_matrix(std::vector<Graph> g, std::vector<std::vector<int>> &adj) {

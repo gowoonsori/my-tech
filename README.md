@@ -36,6 +36,8 @@
 - MST
   - [Kruskal's algorithm](/algorithm/kruskal-algorithm.md)
   - [Prim's algorithm](/algorithm/prim-algorithm.md)
+- 최단 경로 ( Shortest Path )
+  [Dijkstra's algorithm](/algorithm/dijkstra.md)
 
 <br>
 
