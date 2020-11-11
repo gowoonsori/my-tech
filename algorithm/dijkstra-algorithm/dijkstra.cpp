@@ -5,9 +5,10 @@
 #include <ctime>      //time
 #include <iostream>
 #include <set>
+#include <string>
 #include <vector>
 
-#define INFINITY 2147483647
+#define INFINITY 2140000000
 #define II std::pair<int, int>  // first = weight, second = dest
 
 typedef struct edge {
@@ -37,43 +38,45 @@ void print_edge_info(std::vector<Graph>);  // graph 간선들 보기
 void make_adj_list(std::vector<Graph>, std::vector<std::vector<II>> &);     //주어진 그래프를 인접리스트로 표현
 void make_adj_matrix(std::vector<Graph>, std::vector<std::vector<int>> &);  //주어진 그래프를 인접행려로 표현
 
-int dijkstra_heap(std::vector<Graph> &, std::vector<std::vector<II>>, int);
-int dijkstra_array(std::vector<Graph> &, std::vector<std::vector<int>>, int);
+std::vector<int> dijkstra_heap(std::vector<std::vector<II>>, int);
+std::vector<int> dijkstra_array(std::vector<std::vector<int>>, int);
 
 int V;                                 // vertex 개수
 clock_t start, finish, used_time = 0;  //실행 시간 측정을 위한 변수
 
 int main() {
-    std::vector<Graph> g;    // graph g
-    int minimum_weight = 0;  // minimum cost
+    std::vector<Graph> g;  // graph g
+    std::vector<int> shortestPath;
     std::vector<std::vector<int>> adjMatrix;
     std::vector<std::vector<II>> adjList;
 
-    randomPush(g);  //간선 random 삽입
-    // 10print_edge_info(g);  // edge info print
+    randomPush(g);       //간선 random 삽입
+    print_edge_info(g);  // edge info print
 
     make_adj_matrix(g, adjMatrix);  //주어진 그래프를 인접행렬로 만들기
     make_adj_list(g, adjList);      //주어진 그래프를 인접리스트로 만들기
 
     start = clock();
-    // minimum_weight = dijkstra_heap(g, adjList, 0); //binary heap을 이용한 구현
-    minimum_weight = dijkstra_array(g, adjMatrix, 0);  // array 이용한 구현
+    // shortestPath = dijkstra_heap(adjList, 0);  // binary heap을 이용한 구현
+    shortestPath = dijkstra_array(adjMatrix, 0);  // array 이용한 구현
     finish = clock();
-    std::cout << "\nall route dis : " << minimum_weight << std::endl;
-    CalcTime();
 
+    for (int i = 0; i < V; i++) {
+        std::cout << "dest : " << i << " (cost : " << ((shortestPath[i] == INFINITY) ? "no path" : std::to_string(shortestPath[i])) << " )"
+                  << std::endl;
+    }
+    CalcTime();
     return 0;
 }
 
-int dijkstra_heap(std::vector<Graph> &g, std::vector<std::vector<II>> adjList, int start) {
-    int sum = 0;
+std::vector<int> dijkstra_heap(std::vector<std::vector<II>> adjList, int start) {
     std::set<II> q;                            //이진힙으로 queue 만들기 ( set은 red-black tree로 만들어짐 )
     std::vector<int> vertex_key(V, INFINITY);  // vertex의 최소 weight값 계산
     std::vector<bool> selected(V, false);      //선택된 vertex인가
 
     vertex_key[start] = 0;
     q.insert(II(0, start));  //시작 노드 가중치 0으로 시작
-    std::cout << "\nstart : 0\n";
+    std::cout << "\nstart : " << start << std::endl;
 
     /*Vertex만큼 반복*/
     while (!q.empty()) {
@@ -82,14 +85,7 @@ int dijkstra_heap(std::vector<Graph> &g, std::vector<std::vector<II>> adjList, i
         int min_of_key = q.begin()->first;
         q.erase(q.begin());
 
-        if (selected[select_key]) {
-            std::cout << " NOT MST" << std::endl;
-            exit(1);
-        }
-
-        sum += min_of_key;
         selected[select_key] = true;
-        std::cout << "dest : " << select_key << " (dis : " << vertex_key[select_key] << ")" << std::endl;
 
         /*decrease key*/
         for (auto e : adjList[select_key]) {
@@ -100,17 +96,15 @@ int dijkstra_heap(std::vector<Graph> &g, std::vector<std::vector<II>> adjList, i
             }
         }
     }
-    std::cout << std::endl;
-    return sum;
+    return vertex_key;
 }
 
-int dijkstra_array(std::vector<Graph> &g, std::vector<std::vector<int>> adjMatrix, int start) {
-    int sum = 0;
+std::vector<int> dijkstra_array(std::vector<std::vector<int>> adjMatrix, int start) {
     std::vector<int> vertex_key(V, INFINITY);  // vertex의 최소 weight값 계산
     std::vector<bool> selected(V, false);      //선택된 vertex인가
 
     vertex_key[start] = 0;
-    std::cout << "\nstart : 0\n";
+    std::cout << "\nstart : " << start << std::endl;
 
     /*Vertex만큼 반복*/
     for (int i = 0; i < V; i++) {
@@ -123,15 +117,7 @@ int dijkstra_array(std::vector<Graph> &g, std::vector<std::vector<int>> adjMatri
             }
         }
 
-        if (select_idx == -1) {
-            std::cout << " NOT MST" << std::endl;
-            exit(1);
-        }
-
-        sum += min_of_key;
         selected[select_idx] = true;
-
-        std::cout << "dest : " << select_idx << " (dis : " << vertex_key[select_idx] << ")" << std::endl;
 
         /*decrease key*/
         for (int j = 0; j < V; j++) {
@@ -140,8 +126,7 @@ int dijkstra_array(std::vector<Graph> &g, std::vector<std::vector<int>> adjMatri
             }
         }
     }
-    std::cout << std::endl;
-    return sum;
+    return vertex_key;
 }
 
 void make_adj_list(std::vector<Graph> g, std::vector<std::vector<II>> &adj) {
@@ -167,21 +152,6 @@ void make_adj_list(std::vector<Graph> g, std::vector<std::vector<II>> &adj) {
             }
             if (!isEdge) adj[src].push_back({weight, dest});
         }
-
-        isEdge = false;
-        if (adj[dest].empty()) {
-            adj[dest].push_back({weight, src});
-        } else {
-            for (int j = 0; j < adj[dest].size(); j++) {
-                if (adj[dest][j].second == src) {
-                    isEdge = true;
-                    if (adj[dest][j].first > weight) {
-                        adj[dest][j].first = weight;
-                    }
-                }
-            }
-            if (!isEdge) adj[dest].push_back({weight, src});
-        }
     }
 }
 
@@ -194,9 +164,6 @@ void make_adj_matrix(std::vector<Graph> g, std::vector<std::vector<int>> &adj) {
 
         if (adj[src][dest] > weight) {
             adj[src][dest] = weight;
-        }
-        if (adj[dest][src] > weight) {
-            adj[dest][src] = weight;
         }
     }
 }

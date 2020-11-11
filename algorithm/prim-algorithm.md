@@ -230,22 +230,28 @@ int prim_adjList_heap(std::vector<Graph> &g, std::vector<std::vector<II>> adjLis
      while대신 for(int i=0; i < V ; i++)로 해도 무방
     */
     while (!q.empty()) {
-        auto u = q.begin();  // extract-min
+        /*extract min*/
+        int select_key = q.begin()->second;
+        int min_of_key = q.begin()->first;
+        q.erase(q.begin());
 
-        sum += u->first;             // cost sum
-        selected[u->second] = true;  //해당 vertex 선택
-        std::cout << " -> " << u->second << "(cost : " << u->first << ")";
+        if (selected[select_key]) {
+            std::cout << " NOT MST" << std::endl;
+            exit(1);
+        }
 
-        /*select한 vertex와 인접한 edge 찾아 큐에 push*/
-        for (auto e : adjList[u->second]) {
-            /* 선택되지 않은 vertex이고 해당 vertex의 key값과 edge의 cost를 비교해 cost가 더 작다면*/
-            if (!selected[e.second] && vertex_key[e.second] > e.first) {
+        sum += min_of_key;
+        selected[select_key] = true;
+        std::cout << "dest : " << select_key << " (dis : " << vertex_key[select_key] << ")" << std::endl;
+
+        /*decrease key*/
+        for (auto e : adjList[select_key]) {
+            if (!selected[e.second] && vertex_key[e.second] > e.first + vertex_key[select_key]) {
                 q.erase({vertex_key[e.second], e.second});  //같은 노드로 향하는 간선중 weight가 더 작은 간선이 있다면 그 전 간선은 삭제
-                vertex_key[e.second] = e.first;  // vertex key값 갱신
-                q.insert({e.first, e.second});   //큐에 삽입
+                q.insert({e.first, e.second});  //큐에 삽입
+                vertex_key[e.second] = e.first + vertex_key[select_key];
             }
         }
-        q.erase(q.begin());  // queue pop
     }
 
     std::cout << std::endl;

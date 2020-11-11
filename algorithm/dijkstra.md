@@ -1,10 +1,14 @@
-# Prim's Algorithm
+# Dijkstra's Algorithm
 
-그래프 중에서 `MST (Minumum Spannig Tree)`를 찾는 알고리즘중에 하나이다.
+그래프 중에서 `최단 경로`를 찾는 알고리즘중에 하나로 한 노드에서 다른 노드까지의 가중치의 합이 가장 작은 경로를 찾는 알고리즘 중 하나이다.
 
 `우선순위 큐`의 방법을 이용하는 알고리즘이다.
 
-vertex를 한개씩 선택하며 트리를 구성하는 방법
+vertex를 한개씩 선택하며 최단 경로를 찾는 방법.
+
+`relax`의 개념을 이용하며 relax는 현재 계산된 v노드까지의 거리보다 현재 노드 u까지의 경로와 u에서 v의 가중치 ( `e(u,v)` ) 가 더 작다면 값을 갱신해주는 것.
+
+`relax`는 prim 알고리즘의 `decrease-key`와 유사하며 dp를 추가한 개념
 
 <br><br>
 
@@ -13,6 +17,7 @@ vertex를 한개씩 선택하며 트리를 구성하는 방법
 - 탐욕적인 방법( Greedy Method )
 
 - 정점 선택 기반
+- 음의 가중치 허용 x
 - 시작 정점부터 출발하여 최소 비용의 간선을 갖는 정점을 선택하여 신장 트리 집합을 단계적으로 확장
 - 밀집 그래프에 적합
 
@@ -35,6 +40,13 @@ Dijkstra(G, w , s){
 
 ```
 
+```
+RELAX(u,v,w)
+    if v.d > u.d + w(u,v)
+        v.d = u.d + w(u,v)
+        v.π = u
+```
+
 <br><br>
 
 ## 구현 방법
@@ -49,7 +61,7 @@ Dijkstra(G, w , s){
 1. start vertex의 key값을 0으로 초기화한다. (어떤 vertex를 선택하더라고 MST가 나온다.)
 1. 현재 vertex에 인접한 vertex들 중 선택하지 않았고, 가장 vertex의 key값이 작은 vertex을 찾는다. (`exract-min = 최소값 추출`)
 1. 현재 vertex를 선택한다.
-1. 인접한 vertex중 vertex의 key값보다 간선의 가중치와 현재까지의 거리의 합이 더 작다면 key값을 가중치와 현재까지의 거리의 합으로 갱신 한다. (`decrease -key`)
+1. 인접한 vertex중 vertex의 key값보다 간선의 가중치와 현재까지의 거리의 합이 더 작다면 key값을 가중치와 현재까지의 거리의 합으로 갱신 한다. (`RELAX`)
 1. 인접한 vertex중 선택하지 않았고, 가장 vertex의 key값이 작은 vertex를 기준으로 `3번`부터 다시 반복한다.
 
 1. 모든 vertex가 선택되었다면 끝난다.
@@ -124,17 +136,17 @@ Dijkstra(G, w , s){
 
 `Prim's 알고리즘`과 동일하다.
 
-시간복잡도는 초기화하는데 O(\|V\|), MST계산하는데 O(\|V\|) \* T(extract-min) (가장 적은 값 추출하는데 걸린시간) + O(\|E\|) \* T(decrease-key) ( key값 변경하는데 걸리는 시간 )와 같다.
+시간복잡도는 초기화하는데 O(\|V\|), MST계산하는데 O(\|V\|) \* T(extract-min) (가장 적은 값 추출하는데 걸린시간) + O(\|E\|) \* T(RELAX) ( key값 변경하는데 걸리는 시간 )와 같다.
 
 따라서, priority-queue를 어떻게 구현했는지에 따라 시간복잡도가 달라진다.
 
-일반 배열로 구현했을 경우 T(extract)가 O(\|V\|), T(decrease)는 O(1)만큼 걸려 총 O(\|V^2\|)이 걸린다.
+일반 배열로 구현했을 경우 T(extract)가 O(\|V\|), T(RELAX)는 O(1)만큼 걸려 총 O(\|V^2\|)이 걸린다.
 
-binary heap(이진 힙)으로 구현하면 T(extract)가 O(lgV), T(decrease)는 O(lgV)만큼 걸려 총 O(VlgV) + O(ElgV) 이기 때문에 O((E+V)lgV)만큼 걸린다.
+binary heap(이진 힙)으로 구현하면 T(extract)가 O(lgV), T(RELAX)는 O(lgV)만큼 걸려 총 O(VlgV) + O(ElgV) 이기 때문에 O((E+V)lgV)만큼 걸린다.
 <br>무방향 그래프일때 E의 최소값은 V-1로 거의 대부분이 \|E\| > \|V\| 이므로 O(\|E\|lg\|V\|)라고 할 수 있다.
 
-priority queue를 이진 힙이 아닌 fibonacci heap으로 구현하면 decrease-key의 시간을 좀더 줄일 수 있다.
-<br>decrease-key시간이 O(1)만큼 걸리기 때문에 O(E+VlgV)라고 할 수 있다.
+priority queue를 이진 힙이 아닌 fibonacci heap으로 구현하면 RELAX의 시간을 좀더 줄일 수 있다.
+<br>RELAX시간이 O(1)만큼 걸리기 때문에 O(E+VlgV)라고 할 수 있다.
 <br>
 O(E) or O(VlgV) 인 이유는 최악의 경우에 E는 O(V^2)이기 때문이다.
 
@@ -235,11 +247,6 @@ int dijkstra_heap(std::vector<Graph> &g, std::vector<std::vector<II>> adjList, i
         int min_of_key = q.begin()->first;
         q.erase(q.begin());
 
-        if (selected[select_key]) {
-            std::cout << " NOT MST" << std::endl;
-            exit(1);
-        }
-
         sum += min_of_key;
         selected[select_key] = true;
         std::cout << "dest : " << select_key << " (dis : " << vertex_key[select_key] << ")" << std::endl;
@@ -274,11 +281,6 @@ int dijkstra_array(std::vector<Graph> &g, std::vector<std::vector<int>> adjMatri
                 select_idx = j;
                 min_of_key = vertex_key[j];
             }
-        }
-
-        if (select_idx == -1) {
-            std::cout << " NOT MST" << std::endl;
-            exit(1);
         }
 
         sum += min_of_key;
@@ -320,21 +322,6 @@ void make_adj_list(std::vector<Graph> g, std::vector<std::vector<II>> &adj) {
             }
             if (!isEdge) adj[src].push_back({weight, dest});
         }
-
-        isEdge = false;
-        if (adj[dest].empty()) {
-            adj[dest].push_back({weight, src});
-        } else {
-            for (int j = 0; j < adj[dest].size(); j++) {
-                if (adj[dest][j].second == src) {
-                    isEdge = true;
-                    if (adj[dest][j].first > weight) {
-                        adj[dest][j].first = weight;
-                    }
-                }
-            }
-            if (!isEdge) adj[dest].push_back({weight, src});
-        }
     }
 }
 
@@ -347,9 +334,6 @@ void make_adj_matrix(std::vector<Graph> g, std::vector<std::vector<int>> &adj) {
 
         if (adj[src][dest] > weight) {
             adj[src][dest] = weight;
-        }
-        if (adj[dest][src] > weight) {
-            adj[dest][src] = weight;
         }
     }
 }

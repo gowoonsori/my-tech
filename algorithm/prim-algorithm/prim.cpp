@@ -7,7 +7,7 @@
 #include <set>
 #include <vector>
 
-#define INFINITY 2147483647
+#define INFINITY 2140000000
 #define II std::pair<int, int>  // first = weight, second = dest
 
 typedef struct edge {
@@ -35,12 +35,11 @@ void CalcTime();
 void randomPush(std::vector<Graph> &);     // graph에 사이클 없는 연결그래프 cost값 무작위 생성
 void print_edge_info(std::vector<Graph>);  // graph 간선들 보기
 
-int prim_adjList_heap(std::vector<Graph> &, std::vector<std::vector<II>>,
-                      int);  // Adj list와 priority queue 이용해 구현 --> set은 red-black-tree
+int prim_adjList_heap(std::vector<std::vector<II>>, int);  // Adj list와 priority queue 이용해 구현 --> set은 red-black-tree
 void make_adj_list(std::vector<Graph>, std::vector<std::vector<II>> &);  //주어진 그래프를 인접리스트로 표현
 
-int prim_adjMatrix(std::vector<Graph> &, std::vector<std::vector<int>>, int);  // Adj matrix로 구현
-void make_adj_matrix(std::vector<Graph>, std::vector<std::vector<int>> &);     //주어진 그래프를 인접행렬로 표현
+int prim_adjMatrix(std::vector<std::vector<int>>, int);                     // Adj matrix로 구현
+void make_adj_matrix(std::vector<Graph>, std::vector<std::vector<int>> &);  //주어진 그래프를 인접행렬로 표현
 
 int V;                                 // vertex 개수
 clock_t start, finish, used_time = 0;  //실행 시간 측정을 위한 변수
@@ -58,8 +57,8 @@ int main() {
     make_adj_matrix(g, adjMatrix);  //주어진 그래프를 인접행렬로 만들기
 
     start = clock();
-    minimum_weight = prim_adjMatrix(g, adjMatrix, 0);  //인접행렬을 이용한 prim's algorithm (0번노드를 첫 노드로 시작)
-    // minimum_weight = prim_adjList_heap(g, adjList, 0);  //인접리스트를 이용한 prim's algorithm (0번노드를 첫 노드로 시작)
+    minimum_weight = prim_adjMatrix(adjMatrix, 0);  //인접행렬을 이용한 prim's algorithm (0번노드를 첫 노드로 시작)
+    // minimum_weight = prim_adjList_heap(adjList, 0);  //인접리스트를 이용한 prim's algorithm (0번노드를 첫 노드로 시작)
     finish = clock();
     std::cout << "\nminimum cost : " << minimum_weight << std::endl;
     CalcTime();
@@ -67,11 +66,11 @@ int main() {
     return 0;
 }
 
-int prim_adjList_heap(std::vector<Graph> &g, std::vector<std::vector<II>> adjList, int start) {
+int prim_adjList_heap(std::vector<std::vector<II>> adjList, int start) {
     int sum = 0;
-    std::set<II> q;                               //이진힙으로 queue 만들기 ( set은 red-black tree로 만들어짐 )
-    std::vector<int> vertex_key(V, INFINITY);     // vertex의 최소 weight값 계산
-    std::vector<bool> selected(g.size(), false);  //선택된 vertex인가
+    std::set<II> q;                            //이진힙으로 queue 만들기 ( set은 red-black tree로 만들어짐 )
+    std::vector<int> vertex_key(V, INFINITY);  // vertex의 최소 weight값 계산
+    std::vector<bool> selected(V, false);      //선택된 vertex인가
 
     vertex_key[start] = 0;
     q.insert(II(0, start));  //시작 노드 가중치 0으로 시작
@@ -144,10 +143,10 @@ void make_adj_list(std::vector<Graph> g, std::vector<std::vector<II>> &adj) {
     }
 }
 
-int prim_adjMatrix(std::vector<Graph> &g, std::vector<std::vector<int>> adjMatrix, int start) {
+int prim_adjMatrix(std::vector<std::vector<int>> adjMatrix, int start) {
     int sum = 0;
-    std::vector<int> vertex_key(V, INFINITY);     // vertex의 최소 weight값 계산
-    std::vector<bool> selected(g.size(), false);  //선택된 vertex인가
+    std::vector<int> vertex_key(V, INFINITY);  // vertex의 최소 weight값 계산
+    std::vector<bool> selected(V, false);      //선택된 vertex인가
 
     vertex_key[start] = 0;  //시작노드 key값 0으로 시작
     std::cout << "\nroute";
