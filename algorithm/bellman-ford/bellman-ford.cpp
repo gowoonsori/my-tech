@@ -4,7 +4,6 @@
 #include <cstdlib>    //rand
 #include <ctime>      //time
 #include <iostream>
-#include <set>
 #include <string>
 #include <vector>
 

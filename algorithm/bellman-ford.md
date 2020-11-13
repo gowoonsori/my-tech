@@ -64,7 +64,7 @@ RELAX(u,v,w)
 
 <br>
 
-### 인접 행렬
+- 인접 행렬
 
 ```cpp
     std::vector<int> vertex_key(V, INFINITY);  // vertex의 최소 weight값 계산
@@ -95,7 +95,7 @@ RELAX(u,v,w)
 
 <br>
 
-### 인접 리스트
+- 인접 리스트
 
 ```cpp
 std::vector<int> vertex_key(V, INFINITY);  // vertex의 최소 weight값 계산
@@ -129,7 +129,9 @@ std::vector<int> vertex_key(V, INFINITY);  // vertex의 최소 weight값 계산
     return vertex_key;
 ```
 
-### edge 정보로 주어졌을 경우
+<br>
+
+- edge 정보로 주어졌을 경우
 
 ```cpp
     std::vector<int> vertex_key(V, INFINITY);  // vertex의 최소 weight값 계산

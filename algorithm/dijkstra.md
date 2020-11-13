@@ -29,7 +29,7 @@ vertex를 한개씩 선택하며 최단 경로를 찾는 방법.
 
 ```
 Dijkstra(G, w , s){
-     INITIALIZE-SINGLE-SOURCE(G, s)
+    INITIALIZE-SINGLE-SOURCE(G, s)
     S <- ∅ Q <- V[G]
     while Q != ∅
         do u <- EXTRACT-MIN(∅)
