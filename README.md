@@ -50,9 +50,11 @@
 
 <br>
 
-## 🟦 Spring Framework
+## 🟦 Web
 
+- [구조](./web/structure.md)
 - [Web Server와 WAS](./web/WAS.md)
+- [브라우저 동작 과정](./brower.md)
 
 <br>
 
@@ -73,6 +75,8 @@
 ## 🟦 React
 
 - [특징](/react/react-feature.md)
+
+<br>
 
 ## 🟦 RegExp (regex = 정규표현식)
 
