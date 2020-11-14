@@ -1,5 +1,13 @@
 [모던 JavaScript 튜토리얼](https://ko.javascript.info/)을 가지고 js기초 문법부터 관련 내용들을 공부하면서 기억할것들 정리
 
+해당 사이트를 통해 알고있는 부분은 빠르게 pass하고 기억해야할 부분이나 새로 공부한 부분을 정리하며 공부하기 위함
+
+- [심볼형](./js공부/symbol.md)
 - [형변환](./js공부/type-conversions.md)
 - [비교 연산자](./js공부/comparison.md)
 - [함수](./js공부/function.md)
+- [객체](./js공부/object.md)
+  - [new 연산자와 생성자함수](./js공부/new.md)
+- [옵셔널 체이닝 '?.'](./optionalChaining.md)
+- [가비지 컬렉션](./js공부/garbageCollection.md)
+- [this](./js공부/this.md)
