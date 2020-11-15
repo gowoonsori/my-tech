@@ -234,13 +234,13 @@ edge 정렬이 속도를 결정짓기 때문에 egde 수가 적은 희소 그래
 
 ## ✔ 그래프 알고리즘 복잡도
 
-|                     알고리즘                      |                     |     시간 복잡도     |
-| :-----------------------------------------------: | :-----------------: | :-----------------: |
-|                                                   |   평균 (Average)    |    최악 (Worst)     |
-|                 Kruskal 알고리즘                  | Θ( \|E\| log\|E\| ) |     O( \|V\|^2)     |
-|         프림 알고리즘 (Prim's algorithm))         | Θ( \|E\| log\|V\| ) |    O( \|V\|^2 )     |
-|    다익스트라 알고리즘 (Dijkstra's algorithm)     | Θ( \|E\| log\|V\| ) |    O( \|V\|^2 )     |
-|    벨먼-포드 알고리즘 (Bellman-Ford algorithm)    | Θ( \|E\| \* \|V\| ) | O( \|E\| \* \|V\| ) |
-| 플로이드-워셜 알고리즘 (Floyd-Warshall algorithm) |    Θ( \|V\|^3 )     |    O( \|V\|^3 )     |
-|         A* 알고리즘 (A* search algorithm)         |     Θ( \|E\| )      |      O( b^d )       |
-|           위상 정렬 (Topological sort)            | Θ( \|V\| + \|E\| )  | O( \|V\| + \|E\| )  |
+|                     알고리즘                      |                     |    시간 복잡도     |
+| :-----------------------------------------------: | :-----------------: | :----------------: |
+|                                                   |   평균 (Average)    |    최악 (Worst)    |
+|                 Kruskal 알고리즘                  | Θ( \|E\| log\|E\| ) |    O( \|V\|^2)     |
+|         프림 알고리즘 (Prim's algorithm))         | Θ( \|E\| log\|V\| ) |    O( \|V\|^2 )    |
+|    다익스트라 알고리즘 (Dijkstra's algorithm)     | Θ( \|E\| log\|V\| ) |    O( \|V\|^2 )    |
+|    벨먼-포드 알고리즘 (Bellman-Ford algorithm)    | Θ( \|E\| \* \|V\| ) |    Θ( \|V\|^3 )    |
+| 플로이드-워셜 알고리즘 (Floyd-Warshall algorithm) |    Θ( \|V\|^3 )     |    O( \|V\|^3 )    |
+|         A* 알고리즘 (A* search algorithm)         |     Θ( \|E\| )      |      O( b^d )      |
+|           위상 정렬 (Topological sort)            | Θ( \|V\| + \|E\| )  | O( \|V\| + \|E\| ) |

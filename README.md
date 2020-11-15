@@ -41,6 +41,8 @@
   - [Bellman-Pord algorithm](/algorithm/bellman-ford.md)
 - [위상정렬 (Topological Sort)](/algorithm/topological-sort.md)
 
+- [피셔-예이츨 셔플 알고리즘]
+
 <br>
 
 ## 🟦 개발 상식

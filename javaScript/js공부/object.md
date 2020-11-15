@@ -96,7 +96,14 @@ let user = {};
 
 - `property key`가 `정수`라면 `오름차순`으로 자동 정렬이 되고, 그 외는 추가한 순서대로 정렬된다.
 
-<br>
+- 객체는 논리 평가시 항상 참을 반환한다
+
+  ```JS
+  let zero = new Number(0);
+  if(zero) alert("yes"); //alert가 실행된다
+  ```
+
+  <br>
 
 ## 계산된 프로퍼티 (computed property)
 

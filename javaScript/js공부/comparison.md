@@ -17,3 +17,11 @@
 비교 연산자는 null 을 0으로, undefined는 NaN으로 변환하여 비교를 수행한다.
 
 undefined는 NaN을 반환하기때문에 항상 false가 나온다.
+
+## Objcet.is(val1,val2) 이용해 정확한 비교
+
+```js
+Object.is(NaN,NaN) === true
+Object.is(0,-0) === false
+Object.is(a,b) 는 a === b와 같다.
+```
