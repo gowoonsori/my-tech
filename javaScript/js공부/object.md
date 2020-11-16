@@ -107,7 +107,7 @@ let user = {};
 
 ## 계산된 프로퍼티 (computed property)
 
-객체를 생성할때 객체 리터럴 안의 `프로퍼티 키`가 대괄호로 둘러싸여 있는 경우
+객체를 생성할때 객체 리터럴 안의 `프로퍼티 키`가 대괄호로 둘러싸여 있는 경우를 계산된 프로퍼티라고한다.
 
 ```js
 let key = "name";
@@ -255,3 +255,27 @@ alert(user.sizes === clone.sizes); // true
      }
    };
    ```
+
+## Object.fromEntries()
+
+배열이나 map,set을 객체로 바꾸는 함수
+
+## 객체를 문자열로 전환
+
+네트워크를 통해 객체를 어딘가에 보내거나 로깅 목적으로 객체를 출력해야 한다면, 객체를 문자열로 전환해야 하는데 `toString()`을 이용할 수 있다.
+
+```js
+let user = {
+  name: 'John',
+  age: 30,
+
+  toString() {
+    return `{name: "${this.name}", age: ${this.age}}`;
+  },
+};
+alert(user); // {name: "John", age: 30}
+```
+
+그런데 위 방법은 객체의 프로퍼티가 추가될때마다 `toString()`을 수정해줘야하니 번거러운 작업이기 때문에 `json 메서드를 이용`
+
+[json 메서드 보러가기](./json.md)

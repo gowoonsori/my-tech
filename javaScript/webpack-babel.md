@@ -1,8 +1,10 @@
 # webpack
 
 웹팩은 오픈소스로 js 모듈 bundler이다.
-<br>_(bundler란 어떠한 단위로 여러개의 파일들을 하나로 만들어 요청의 응답을 하기위한 환경을 관리하는 것.
-<br>코드의 종속성(dependecy)문제를 해결하기 위함 [Webpack/Grunt/Gulp 등이 있다.])_
+<br>\_(bundler란 어떠한 단위로 여러개의 파일들을 하나로 만들어 요청의 응답을 하기위한 환경을 관리하는 것.
+<br>코드의 종속성(dependecy)문제를 해결하기 위함
+
+빌드 도구 [Webpack/Grunt/Gulp 등이 있다.])\_
 
 <br>
 
