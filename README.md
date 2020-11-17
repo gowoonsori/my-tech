@@ -39,6 +39,7 @@
 - 최단 경로 ( Shortest Path )
   - [Dijkstra's algorithm](/algorithm/dijkstra.md)
   - [Bellman-Pord algorithm](/algorithm/bellman-ford.md)
+  - [Floyd-Warshall algorithm](/algorithm/floyd-warshall.md)
 - [위상정렬 (Topological Sort)](/algorithm/topological-sort.md)
 
 - [피셔-예이츨 셔플 알고리즘]
