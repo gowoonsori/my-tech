@@ -17,3 +17,5 @@
 - [옵셔널 체이닝 '?.'](./optionalChaining.md)
 - [가비지 컬렉션](./js공부/garbageCollection.md)
 - [this](./js공부/this.md)
+- [변수의 유호범위와 클로저](./js공부/scope_closure.md)
+- [var/let/const](./js공부/var_let_const.md)

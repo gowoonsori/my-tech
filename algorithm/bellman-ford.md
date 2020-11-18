@@ -1,13 +1,10 @@
-# Prim's Algorithm
+# Bellman-ford Algorithm
 
-그래프 중에서 `최단 경로`를 찾는 알고리즘중에 하나로 한 노드에서 다른 노드까지의 가중치의 합이 가장 작은 경로를 찾는 알고리즘 중 하나이다.
+그래프 중에서 `최단 경로`를 찾는 알고리즘중에 하나로 하나의 정점에서 다른 모든 정점까지의 최단경로를 구하는 알고리즘 (single-source shortest path algorithmm)
 
-하나의 정점에서 다른 모든 정점까지의 최단경로를 구하는 알고리즘 (single-source shortest path algorithmm)
 음의 가중치도 계산 할수 있는 알고리즘이다.
 
 Vertex의 개수가 N개일 때, 한 vertex에서 다른 vertex까지 가는데 거치는 edge수는 최소 1개부터, 최대 N-1번 거치게 될 것이다.
-
-이러한 컨셉을 기준으로 어떤 경로까지 가는데 소요되는 cost를 greedy하게 N-1번 반복하여 구하는 방법이다.
 
 `relax`의 개념을 이용하며 relax는 현재 계산된 v노드까지의 거리보다 현재 노드 u까지의 경로와 u에서 v의 가중치 ( `e(u,v)` ) 가 더 작다면 값을 갱신해주는 것.
 

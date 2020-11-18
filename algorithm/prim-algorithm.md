@@ -1,12 +1,10 @@
-# Dijkstra's Algorithm
-
-그래프 중에서 `최단 경로 (shortest path)`를 찾는 알고리즘중에 하나이다.
+# Prim's Algorithm
 
 `우선순위 큐`의 방법을 이용하는 알고리즘이다.
 
-vertex를 한개씩 선택하며 트리를 구성하는 방법으로 `MST`를 찾는 `Prim's 알고리즘`과 굉장히 흡사하다.
+vertex를 한개씩 선택하며 최소 비용의 edge를 찾는 방법.
 
-Prim 알고리즘에서 vertex_key값 갱신에 dp방법을 추가해주면 된다.
+`decrease-key`의 개념을 이용하며 decrease-key는 현재 계산된 v노드까지의 거리보다 현재 노드 u부터 v까지의 경로가 더 작다면 값을 갱신해주는 것.
 
 <br><br>
 
