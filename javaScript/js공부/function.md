@@ -139,7 +139,11 @@ let sum = (a, b) => {
   <br>this를 호출하면 외부에서 값을 가져온다.
   <br>this가 없기 때문에 new와 함께 사용이 불가능해 생성자 함수로 사용할 수 없다.
 
-- arguments가 없다.
+  this가 없기때문에 `arr.forEach()`나 `setTimeout()`과 같은 함수내에서 현재 컨텍스트를 잃지 않고 작업이 가능하다. (forEach는 배열 arr의 요소 대상으로 실행이 가능하고 setTimeout은 내장 스케줄러를 대상으로 실행)
+
+- 유사 배열 객체인 arguments가 없다.
+
+  때문에 this값과 arguments값을 함께 실어 호출을 포워딩해주는 데코레이터를 만들때 유용하다.
 
 ```
 unction defer(f, ms) {
