@@ -52,7 +52,13 @@
 1.  관점지향 프로그래밍 (AOP, Aspect-Oriented Programing)
 
     - 트랜잭션이나, 로깅, 보안같은 여러 모듈에서 공통적으로 사용하는 기능의 경우 해당 기능을 분리하여 관리.
-      <br>이처럼 모든 모듈에서 적용되어야 하는 기능들을 횡단 관심(crosscutting concerns)라고 한다.
+      <br>이처럼 모든 모듈에서 적용되어야 하는 기능들을 횡단 관심(공통 관심사항,cross-cutting concerns)라고 한다.
+
+      ex) 모든 메소드의 실행 시간을 측정하고싶어! 할때, 모든 메소드에 코드를 집어넣기엔 유지 보수가 힘들고 공통 로직을 구현이 힘들때 사용
+      `@Around("execution(* 패키지 명..*(..))")`과 같이 관심 파일들 적용
+      `SpringConfig`에 `@Bean`으로 AOP파일 등록해서 사용 가능
+
+      controller가 해당 service를 실행시 프록시(가짜 스프링빈)을 만들어 AOP를 실행후 joinPoint.proceed()를 호출하여 실제 service를 호출. controller는 proxy와 작용하는 셈
 
 1.  애플리케이션 객체의 생명주기와 설정을 관리한다는 점에서 일종의 컨테이너
 
