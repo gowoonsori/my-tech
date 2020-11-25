@@ -58,6 +58,17 @@
 
 <br>
 
+## 🟦 SQL
+
+- [SQL이란](./SQL/sql.md)
+- Querying data
+  - [SELECT](./SQL/select.md)
+- Sorting data
+  - [ORDER BY (FIELD)](./SQL/orderby.md)
+- Filtering data
+
+<br>
+
 ## 🟦 Web
 
 - [구조](./web/structure.md)
