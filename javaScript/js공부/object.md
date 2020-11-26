@@ -11,8 +11,8 @@ key엔 문자형/심볼형, value에는 모든 자료형이 올 수 있다.
 ## 빈 객체 생성방식
 
 ```
-let user = new Object();
-let user = {};
+let user = new Object(); //사용자 정의 객체 방식 ( 생성자 함수 이용 방식 )
+let user = {};          //객체 리터럴 방식
 ```
 
 <Br>
