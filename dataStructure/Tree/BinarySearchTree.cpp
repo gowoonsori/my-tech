@@ -1,25 +1,29 @@
-#include<iostream>
-#include<Windows.h>
+#include <Windows.h>
 
-enum { _Preorder=1, _Inorder, _Postorder };
+#include <iostream>
 
-template<typename T>
+enum { _Preorder = 1, _Inorder, _Postorder };
+
+template <typename T>
 class Node {
-public:
+   public:
     T key;
     Node* LNode;
     Node* RNode;
-    Node(T key = 0, Node* LNode = NULL, Node* RNode = NULL) { this->key = key; this->LNode = NULL; this->RNode = RNode = NULL; }
+    Node(T key = 0, Node* LNode = NULL, Node* RNode = NULL) {
+        this->key = key;
+        this->LNode = NULL;
+        this->RNode = RNode = NULL;
+    }
 };
 
-
-template<typename T>
+template <typename T>
 class BST {
-private:
+   private:
     Node<T>* root;
 
-public:
-    BST() : root(NULL){}
+   public:
+    BST() : root(NULL) {}
     void add(Node<T>* node);
     void Delete(T item);
     bool search_loop(T item);
@@ -27,24 +31,24 @@ public:
     void Inorder(Node<T>* target);
     void Postorder(Node<T>* target);
     void showTree(int element);
-
-
 };
 
-template<typename T>
+template <typename T>
 
 bool BST<T>::search_loop(T item) {
     Node<T>* s = this->root;
     while (s != NULL) {
-        if (s->key == item) return true;   //key가 존재한다면 true
-        else if (s->key > item) s = s->LNode; //key가 item보다 크다면 왼쪽으로 이동
-        else s = s->RNode;                //key가 item보다 작다면 오른쪽으로 이동
+        if (s->key == item)
+            return true;  // key가 존재한다면 true
+        else if (s->key > item)
+            s = s->LNode;  // key가 item보다 크다면 왼쪽으로 이동
+        else
+            s = s->RNode;  // key가 item보다 작다면 오른쪽으로 이동
     }
     return false;
-
 }
 
-template<typename T>
+template <typename T>
 void BST<T>::add(Node<T>* node) {
     T item = node->key;
     /*트리가 비어있다면*/
@@ -68,8 +72,7 @@ void BST<T>::add(Node<T>* node) {
                 return;
             }
             s = s->RNode;
-        }
-        else {
+        } else {
             if (s->LNode == NULL) {
                 s->LNode = node;
                 return;
@@ -79,11 +82,11 @@ void BST<T>::add(Node<T>* node) {
     }
 }
 
-template<typename T>
+template <typename T>
 void BST<T>::Delete(T item) {
     Node<T>* t = this->root;
     Node<T>* parent = NULL;
-    Node<T>* child, * succ, * succ_p;
+    Node<T>*child, *succ, *succ_p;
 
     /*key값을 찾거나 없다면 break*/
     while (t != NULL && t->key != item) {
@@ -98,31 +101,19 @@ void BST<T>::Delete(T item) {
         return;
     }
 
-    /*자식노드가 없다면*/
-    if (t->RNode == NULL && t->LNode == NULL) {
-        if (parent != NULL) {
-            /*부모노드의 왼쪽에 있다면*/
-            if (parent->LNode == t) parent->LNode = NULL;
-            else parent->RNode = NULL;
-            delete(t);
-        }
-        else {
-            delete(t);
-            this->root = NULL;
-        }
-    }
-
-    /*1개의 자식이 있다면 */
-    else if (t->RNode == NULL || t->LNode == NULL) {
+    /*자식노드가 없거나 1개라면*/
+    if (t->RNode == NULL || t->LNode == NULL) {
         child = (t->LNode == NULL) ? t->RNode : t->LNode;
         if (parent != NULL) {
-            if (parent->LNode == t) parent->LNode = child;
-            else parent->RNode = child;
-            delete(t);
+            if (parent->LNode == t)
+                parent->LNode = child;
+            else
+                parent->RNode = child;
+            delete (t);
         }
         /*삭제할 노드가 root라면*/
         else {
-            delete(t);
+            delete (t);
             this->root = child;
         }
     }
@@ -148,62 +139,61 @@ void BST<T>::Delete(T item) {
         }
         /*삭제하려는 노드의 오른쪽child의 left node가 없다면
         오른쪽 child의 right node를 삭제할 노드의 오른쪽에 연결*/
-        else succ_p->RNode = succ->RNode;
+        else
+            succ_p->RNode = succ->RNode;
 
         /*삭제할 노드와 교환 후 삭제*/
         t->key = succ->key;
         t = succ;
-        delete(t);
+        delete (t);
     }
     return;
-
-
 }
 
 //전위 순회
-template<typename T>
+template <typename T>
 void BST<T>::Preorder(Node<T>* target) {
-    if (target == NULL)return;
+    if (target == NULL) return;
     std::cout << target->key << " ";
     this->Preorder(target->LNode);
     this->Preorder(target->RNode);
 }
 
 //중위 순회
-template<typename T>
+template <typename T>
 void BST<T>::Inorder(Node<T>* target) {
-    if (target == NULL)return;
+    if (target == NULL) return;
     this->Inorder(target->LNode);
     std::cout << target->key << " ";
     this->Inorder(target->RNode);
 }
 
 //후위 순회
-template<typename T>
+template <typename T>
 void BST<T>::Postorder(Node<T>* target) {
-    if (target == NULL)return;
+    if (target == NULL) return;
     this->Postorder(target->LNode);
     this->Postorder(target->RNode);
     std::cout << target->key << " ";
 }
 
-template<typename T>
+template <typename T>
 void BST<T>::showTree(int element) {
     switch (element) {
-    case _Preorder:
-        this->Preorder(this->root);
-        std::cout << std::endl;
-        break;
-    case _Inorder:
-        this->Inorder(this->root);
-        std::cout << std::endl;
-        break;
-    case _Postorder:
-        this->Postorder(this->root);
-        std::cout << std::endl;
-        break;
-    default:
-        break;
+        case _Preorder:
+            this->Preorder(this->root);
+            std::cout << std::endl;
+            break;
+        case _Inorder:
+            this->Inorder(this->root);
+            std::cout << std::endl;
+            break;
+        case _Postorder:
+            this->Postorder(this->root);
+            std::cout << std::endl;
+            break;
+        default:
+            break;
     }
 }
 
