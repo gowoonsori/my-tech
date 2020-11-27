@@ -56,6 +56,7 @@
 
 - [라이브러리와 프레임워크](/develop-common-sense/library-framework.md)
 - [동기-비동기/block-nonBlock](develop-common-sense/sync-async-block-nonblock.md)
+- [API와 REST API](./develop-common-sense/rest-api.md)
 
 <br>
 
@@ -68,11 +69,12 @@
 ## 🟦 SQL
 
 - [SQL이란](./SQL/sql.md)
-- Querying data
+- Querying data (데이터 get)
   - [SELECT](./SQL/select.md)
-- Sorting data
+- Sorting data (정렬)
   - [ORDER BY (FIELD)](./SQL/orderby.md)
 - Filtering data
+  - [WHERE](./SQL/where.md)
 
 <br>
 

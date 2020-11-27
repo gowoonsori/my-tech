@@ -1,27 +1,23 @@
 /*
- * C++ 이용하여 AVL Tree 구현하기
+ * C++ 이용하여 AA Tree 구현하기
  *
- * 목적 : AVL Tree 공부 하기 위해 작성했으며,
+ * 목적 : AA Tree 공부 하기 위해 작성했으며,
  *       C++ 이용하여 작성하시는 분들에게 도움이 되고자 했다.
  *
  * 설명 : key 값은 int만 가능 하며 중복 key는 허용 x
  *       단순 연결 리스트로 구현
  *
- *       class AVLTree
+ *       class AA Tree
  *
  *       변수 :   root => root node
  *
- *       생성자 : AVLTREE =>  root 를 null로 초기화
+ *       생성자 : AATREE =>  root 를 null로 초기화
  *
  *       함수 :   IsKey => key값이 있는지 검사하는 함수
  *
  *               Insert => 재귀를 이용한 삽입 함수 (최종적으로 root를 return)
  *               Delete => 재귀를 이용한 삭제 함수 (최종적을 root를 return)
- *               Balancing => 삽입 / 삭제후 BF 검사하여 규칙깨졌을시 재조정 함수
- *               Transplant => 삭제 시 이용하며, 삭제할 노드의 자식 노드를 부모노드에 연결해주는 함수
  *
- *               getHeight(x) => x의 높이 getter
- *               getBalanceBacotr(x) => x의 BF 계산하여 return
  *               RotateRight(x) => x기준 오른쪽으로 회전
  *               RotateLeft(x) => x기준 왼쪽으로 회전
  *
@@ -45,11 +41,11 @@ struct node {
     int key;
     node *left = nullptr;
     node *right = nullptr;
-    int height = 1;
+    int level = 1;
 };
 typedef node *NodePtr;
 
-class AVLTREE {
+class AATree {
    private:
     NodePtr root;  //루트 노드
 
@@ -65,130 +61,81 @@ class AVLTREE {
     }
 
     /*새로운 key 삽입함수로 root노드 반환*/
-    NodePtr Insert(NodePtr r, int item) {
+    void Insert(int item, NodePtr &x) {
         /*새로운 노드 삽입*/
-        if (r == nullptr) {
-            NodePtr z = new node;
-            z->key = item;
-            r = z;
-            return r;
-        } else if (r->key < item) {  // item이 key값보다 크다면 오른쪽으로 이동
-            r->right = Insert(r->right, item);
-        } else {  // item이 key값보다 작다면 왼쪽으로 이동
-            r->left = Insert(r->left, item);
+        if (!x) {
+            NodePtr y = new node;
+            y->key = item;
+            x = y;
+            return;
+        } else if (x->key < item) {
+            Insert(item, x->right);
+        } else {
+            Insert(item, x->left);
         }
-        r->height = std::max(getHeight(r->left), getHeight(r->right)) + 1;
-        Balancing(r, item);  //새로운 노드가 추가되었으므로 재귀적으로 부모노드들 높이 1증가 시켜주고
-                             // Balace Factor 측정하여 2이상이라면 재조정함수
-        return r;
+
+        /*재귀적으로 Insert를 수행하기 때문에 삽입 위치부터 루트까지 올라가며
+          규칙이 위배되는 지 검사하여 skew, split 수행이 가능하다.*/
+        skew(x);
+        split(x);
     }
 
     /*key 삭제 함수*/
-    NodePtr Delete(NodePtr r, int item) {
-        if (r->key > item && r->left != nullptr) {
-            r->left = Delete(r->left, item);
-        } else if (r->key < item && r->right != nullptr) {
-            r->right = Delete(r->right, item);
-        } else if (r->key == item) {
-            Transplant(r);
-        }
-        /*root를 지운게 아니라면*/
-        if (r != nullptr) {
-            r->height = std::max(getHeight(r->left), getHeight(r->right)) + 1;
-            Balancing(r, item);
-        }
+    void Delete(int item, NodePtr &x) {
+        static NodePtr y, p;  // y : 삭제할 노드가 red leaf인지 판별하기 위한 포인터
+                              // p : 자식이 두개인 경우 successor와 값을 교환후 삭제하기 위한 포인터
 
-        return r;
-    }
-
-    /* balance Factor 측정후 재조정*/
-    void Balancing(NodePtr &r, int item) {
-        int bF = getBalanceFactor(r);
-
-        // case 1 (left left)
-        if (bF > 1 && item < r->left->key) {
-            r = RotateRight(r);
-        }
-        // case 2 (left right)
-        else if (bF > 1 && item > r->left->key) {
-            r->left = RotateLeft(r->left);
-            r = RotateRight(r);
-        }
-        // case 3 (right right)
-        else if (bF < -1 && item > r->right->key) {
-            r = RotateLeft(r);
-        }
-        // case 4 ( right left)
-        else if (bF < -1 && item < r->right->key) {
-            r->right = RotateRight(r->right);
-            r = RotateLeft(r);
-        }
-    }
-
-    /* 삭제시 자식 이식 함수*/
-    void Transplant(NodePtr &x) {
-        NodePtr y = x;  // y를 통해 노드 삭제
-
-        if (x->left == nullptr) {
-            x = x->right;
-        } else if (x->right == nullptr) {
-            x = x->left;
+        if (!x) return;
+        y = x;
+        if (item < x->key) {
+            Delete(item, x->left);
         } else {
-            NodePtr z = x->right;  // z : 삭제할 x의 다음으로 가장 작은 수
-            NodePtr pZ = x;        // p[z] : z의 부모 노드
-
-            /* 오른쪽 자식중 가장 작은 값*/
-            while (z->left != nullptr) {
-                pZ = z;
-                z = z->left;
-            }
-
-            x->key = z->key;  // successor과 key값 교환
-
-            /*오른쪽 자식이 가장 작다면*/
-            if (pZ == x) {
-                x->right = z->right;  // z의 오른쪽 자식 붙여주기
-            } else {
-                pZ->left = z->right;  // 오른쪽 자식의 왼쪽 자식이 있다면
-            }                         // 그 z(successor)의 오른쪽 자식 p[z]의 왼쪽에 붙여주기
-            y = z;                    //값 삭제를 위해 y <- z;
+            p = x;
+            Delete(item, x->right);
         }
-        delete y;
-    }
-    /*높이 getter */
-    int getHeight(NodePtr r) {
-        if (r == nullptr)
-            return 0;
-        else
-            return r->height;
-    }
-    /*좌우 자식 깊이 비교하여 Balnace Factor get*/
-    int getBalanceFactor(NodePtr r) { return getHeight(r->left) - getHeight(r->right); }
 
-    /*x를 중심으로 왼쪽으로 회전*/
-    NodePtr RotateLeft(NodePtr x) {
-        NodePtr y = x->right;
-        x->right = y->left;
-        y->left = x;
-
-        //위치가 바뀌었으므로 높이 재조정
-        x->height = std::max(getHeight(x->left), getHeight(x->right)) + 1;
-        y->height = std::max(getHeight(y->left), getHeight(y->right)) + 1;
-
-        return y;
+        /*삭제할 노드가 red leaf이거나 successor가 red leaf일때*/
+        if (x == y) {
+            p->key = x->key;
+            x = x->right;
+            delete y;
+        } else {
+            /*x의 레벨과 자식의 레벨이 2이상 차이날경우*/
+            if ((x->left && x->left->level < x->level - 1) || (x->right && x->right->level < x->level - 1)) {
+                /*x의 레벨을 감소 시키고 x의 오른쪽 자식이 레드 일경우 자식도 레벨 감소*/
+                if (x->right->level > --x->level) {
+                    x->right->level = x->level;
+                }
+                skew(x);
+                skew(x->right);
+                skew(x->right);
+                split(x);
+                split(x);
+            }
+        }
     }
+    void split(NodePtr &x) {
+        /*x의 손자와 x의 레벨이 같을때 == 이중 레드*/
+        if (x->right && x->right->right && x->right->right->level == x->level) {
+            NodePtr y = x->right;
+            x->right = y->left;
+            y->left = x;
+            x = y;
+            x->level++;
+        }
+    }
+
+    void skew(NodePtr &x) {
+        /*x의 왼쪽자식이 레드일때 레벨의 변화 없이 값 교환*/
+        if (x->left && x->left->level == x->level) {
+            NodePtr y = x->left;
+            x->left = y->right;
+            y->right = x;
+            x = y;
+        }
+    }
+
     /*y를 중심으로 오른쪽으로 회전*/
-    NodePtr RotateRight(NodePtr y) {
-        NodePtr x = y->left;
-        y->left = x->right;
-        x->right = y;
-
-        //위치가 바뀌었으므로 높이 재조정
-        y->height = std::max(getHeight(y->left), getHeight(y->right)) + 1;
-        x->height = std::max(getHeight(x->left), getHeight(x->right)) + 1;
-
-        return x;
-    }
 
     /*show tree*/
     void print_helper(NodePtr root, std::string indent, bool last) {
@@ -203,8 +150,7 @@ class AVLTREE {
                 indent += "|    ";
             }
 
-            int height = std::max(getHeight(root->left), getHeight(root->right)) + 1;
-            std::cout << root->key << " (" << height << ")" << std::endl;
+            std::cout << root->key << " (" << root->level << ")" << std::endl;
             print_helper(root->left, indent, false);
             print_helper(root->right, indent, true);
         }
@@ -233,7 +179,7 @@ class AVLTREE {
     }
 
    public:
-    AVLTREE() { this->root = nullptr; }
+    AATree() { this->root = nullptr; }
     //최솟값 찾기
     NodePtr tree_minimum(NodePtr x) {
         while (x->left != nullptr) {
@@ -250,7 +196,7 @@ class AVLTREE {
     }
 
     void DisplayMenuBoard() {
-        std::cout << "         ** AVL Tree **     " << std::endl;
+        std::cout << "         ** AA Tree **     " << std::endl;
         std::cout << "                            " << std::endl;
         std::cout << "              Menu          " << std::endl;
         std::cout << "          1. Insert Key     " << std::endl;
@@ -305,7 +251,7 @@ class AVLTREE {
             std::cout << "!!! " << item << " is already exists !!!\n";
             return;
         }
-        this->root = Insert(this->root, item);
+        Insert(item, root);
         return;
     }
 
@@ -317,7 +263,7 @@ class AVLTREE {
             std::cout << "!!! " << item << " is not exists !!!\n";
             return;
         }
-        this->root = Delete(this->root, item);
+        Delete(item, root);
         return;
     }
 
@@ -355,7 +301,7 @@ class AVLTREE {
 };
 
 int main() {
-    AVLTREE tree;
+    AATree tree;
     tree.SelectMenu();
 
     return 0;

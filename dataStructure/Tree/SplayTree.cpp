@@ -1,27 +1,25 @@
 /*
- * C++ 이용하여 AVL Tree 구현하기
+ * C++ 이용하여 Splay Tree 구현하기
  *
- * 목적 : AVL Tree 공부 하기 위해 작성했으며,
+ * 목적 : Splay Tree 공부 하기 위해 작성했으며,
  *       C++ 이용하여 작성하시는 분들에게 도움이 되고자 했다.
  *
  * 설명 : key 값은 int만 가능 하며 중복 key는 허용 x
  *       단순 연결 리스트로 구현
  *
- *       class AVLTree
+ *       class SplayTree
  *
  *       변수 :   root => root node
  *
- *       생성자 : RBTREE =>  root 를 null로 초기화
+ *       생성자 : SplayTree =>  root 를 null로 초기화
  *
  *       함수 :   IsKey => key값이 있는지 검사하는 함수
  *
- *               Insert => 재귀를 이용한 삽입 함수 (최종적으로 root를 return)
- *               Delete => 재귀를 이용한 삭제 함수 (최종적을 root를 return)
- *               Balancing => 삽입 / 삭제후 BF 검사하여 규칙깨졌을시 재조정 함수
- *               Transplant => 삭제 시 이용하며, 삭제할 노드의 자식 노드를 부모노드에 연결해주는 함수
+ *               Insert => 일반 BST의 삽입함수에 끝에 Splay 추가 (return void)
+ *               Delete => Splay후 successor를 root로 만드는 함수 (return void)
+ *               Splay(x) => x를 root로 재조정 함수 ( return void)
+ *               replace(x,y) => 삭제할 x와 successor 위치를 바꿔주는 함수 (return void)
  *
- *               getHeight(x) => x의 높이 getter
- *               getBalanceBacotr(x) => x의 BF 계산하여 return
  *               RotateRight(x) => x기준 오른쪽으로 회전
  *               RotateLeft(x) => x기준 왼쪽으로 회전
  *
@@ -32,7 +30,6 @@
  *               Insert_helper,Delete_helper,order_helper,print_helper => 각각 이벤트 수행시 입력받고 조건 에러 처리 위한 함수 와 tree print
  * 해주는 함수
  *
- *        Balancing에서 각 case에 대한 설명은 github에 적어 놓았다.
  *
  * 작성자 : gowoonsori
  * github : https://github.com/gowoonsori/my-tech/tree/master/dataStructure/Tree
