@@ -15,6 +15,7 @@
   - [AVL Tree](./AvlTree.md)
   - [Red Black Tree](./redBlackTree.md)
   - [Splay Tree](./SplayTree.md)
+  - [AA Tree](./aaTree.md)
 
 - [힙 ( Heap )](dataStructure/heap.md)
 - [그래프 ( Graph )](/dataStructure/graph.md)
@@ -91,6 +92,8 @@
 
 - [스프링이란?](/spring/spring.md)
 - [스프링부트](/spring/springboot.md)
+- [spring-bean](/spring/spring-bean.md)
+- [Lombok](/spring/lombok.md)
 
 <br>
 
