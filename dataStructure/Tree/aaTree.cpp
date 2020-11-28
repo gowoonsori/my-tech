@@ -15,11 +15,11 @@
  *
  *       함수 :   IsKey => key값이 있는지 검사하는 함수
  *
- *               Insert => 재귀를 이용한 삽입 함수 (최종적으로 root를 return)
- *               Delete => 재귀를 이용한 삭제 함수 (최종적을 root를 return)
+ *               Insert => 재귀를 이용한 삽입 함수 (return void)
+ *               Delete => 재귀를 이용한 삭제 함수 (return void)
  *
- *               RotateRight(x) => x기준 오른쪽으로 회전
- *               RotateLeft(x) => x기준 왼쪽으로 회전
+ *               split(x) => x가 이중 레드를 가지고 있다면 rotate (return void)
+ *               skewy(x) => x의 왼쪽자식이 레드일때 level변화 없이 교환 (return void)
  *
  *               Inorder,Preorder,Postorder => 순회 함수
  *               tree_minimum(x), tree_maximum(x) => 노드 x 기준으로 가장 왼쪽, 오른쪽 return 함수
