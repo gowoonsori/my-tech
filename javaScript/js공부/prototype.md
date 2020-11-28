@@ -107,3 +107,36 @@ aler(table.glasses);
 Q. 어떤게 더 빠르게 접근이 가능할까?
 
 A. 성능차이가 없다. 모던 js엔진 기준으로 프로퍼티가 어디서 발견했는지 기억했다가 그 정보를 재사용(캐시 기능)하고 변경이 생기면 내부 캐시를 변경
+
+<br>
+
+## 메서드
+
+- Object.create(proto, [설명자]) : proto를 참조하는 빈 객체를 만들기
+- Object.getPrototypeOf(obj) : obj의 [[Prototype]] 반환
+- Object.setPrototypeOf(obj, proto) : obj의 [[Prototype]]을 proto로 설정
+
+```js
+let animal = {
+  eats: true,
+};
+
+// 프로토타입이 animal인 새로운 객체를 생성합니다.
+let rabbit = Object.create(animal);
+
+alert(rabbit.eats); // true
+
+alert(Object.getPrototypeOf(rabbit) === animal); // true
+
+Object.setPrototypeOf(rabbit, {}); // rabbit의 프로토타입을 {}으로 바꿉니다.
+```
+
+### for...in 보다 효과적인 객체 복제 ( 프로토타입 포함 )
+
+```js
+let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
+```
+
+## Q. 프로토타입을 자주 변경해도 될까?
+
+A. 원한다면 언제든 수정이가능하나, js엔진 자체가 처음 객체 생성 후 수정하지 않는 시나리오로 최적화 되어있기 대문에, 프로퍼티 접근은 속도가 느려 질 수 있다.

@@ -24,8 +24,9 @@
   - [프로퍼티 플래그 / 설명자](./js공부/property-flag.md)
   - [프로퍼티 종류](./js공부/property-kinds.md)
 - 프로토타입
-  - [프로토타입 상속](./js공부/prototype.md)
-  - [함수의 prototype 프로퍼티](./js공부/function_protyotype_property.md)
+  - [객체의 프로토타입 상속](./js공부/prototype.md)
+  - [함수의 prototype](./js공부/function_protyotype_property.md)
+  - [내장 프로토타입](./js공부/native_prototype.md)
 - 특수 객체
   - [Date 객체](./js공부/dateObject.md)
   - [배열](./js공부/array.md)
