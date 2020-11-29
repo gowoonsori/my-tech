@@ -74,3 +74,7 @@ ORDER BY
         'Cancelled',
         'End');
 ```
+
+## 동작 순서
+
+`FROM -> SELECT -> ORDER BY` 순서로 SELECT후에 정렬을 수행한다.
