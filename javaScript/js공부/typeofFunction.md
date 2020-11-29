@@ -19,9 +19,9 @@ js에서 함수는 값으로 취급한다고 했다. 그러면 자료형은 무�
   alert(sayHi.name); // sayHi
 
   function f(sayHi = function () {}) {
-    alert(sayHi.name); // sayHi
+    alert(sayHi.name);
   }
-  f();
+  f(); // sayHi
   ```
 
   하지만 적절한 이름을 추론하는 게 불가능 한 상황은 `빈 문자열`이 저장된다.
@@ -29,6 +29,30 @@ js에서 함수는 값으로 취급한다고 했다. 그러면 자료형은 무�
 - length : 함수의 매개변수의 개수
 
   - `다형성` : 인수의 종류에 따라 인수를 다르게 처리하는 방식
+
+- 커스텀 프로퍼티 : 함수에 자체적으로 만든 프로퍼티를 추가가 가능하다
+
+  ```js
+  function makeCounter() {
+    // let count = 0 대신 아래 메서드(프로퍼티)를 사용함
+
+    function counter() {
+      return counter.count++;
+    }
+
+    counter.count = 0;
+
+    return counter;
+  }
+
+  let counter = makeCounter();
+  alert(counter()); // 0
+  alert(counter()); // 1
+  ```
+
+  `클로저`를 이용하여 외부에서 함수 내부의 변수를 bind하여 제어 할 수 있게 하였는 데, 커스텀 프로퍼티를 이용하면 외부에서 값을 수정이 가능하다.
+
+  하지만, 프로퍼티는 변수`let`과 관계가 전혀 없다. 변수가 아니다.
 
 <br>
 

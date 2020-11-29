@@ -17,6 +17,7 @@
   - [this](./js공부/this.md)
   - [바인딩](./js공부/bind.md)
   - [call/apply](./js공부/call-apply.md) (작성중...)
+  - [호출 스케줄링](./js공부/scheduling-call.md)
 - [객체](./js공부/object.md)
   - [new 연산자와 생성자함수](./js공부/new.md)
   - [keys,values,entries](./js공부/objectKeys.md)
@@ -34,4 +35,3 @@
 - [가비지 컬렉션](./js공부/garbageCollection.md)
 - [변수의 유호범위와 클로저](./js공부/scope_closure.md)
 - [var/let/const](./js공부/var_let_const.md)
-- [호출 스케줄링](./js공부/scheduling-call.md)
