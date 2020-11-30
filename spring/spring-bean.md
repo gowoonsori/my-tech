@@ -27,11 +27,11 @@ Spring에서 ApplicationContext가 알고 있는 객체이다.
 
      - `@Service` : MVC패턴중에서 Model부분에 속하며 DAO와 DTO를 통해 비지니스 로직이 돌아가는 부분
 
-     - `@Repository` : DB에 접근하는 클래스임을 명시
+     - `@Repository` : DB에 접근하는 클래스임을 명시 (인터페이스)
 
        `DAO`와 비슷하나 DAO는 DB에서 값을 꺼내와 도메인 오브젝트로 반환해주거나 적절한 값으로 반환해주는 계층이고 `Repository`는 한 도메인 오브젝트에 대해 객체의 값을 보증해주기 위해 도메인 내부에서 DB와 소통하는 객체
 
-     - `@Entity` : 일반적인 DBMS
+     - `@Entity` : DB테이블과 1:1로 맵핑
 
 1. 자바코드로 직접 스프링 빈 등록
    빈 설정파일을 `xml`이나 `java`설정파일로 작성하여 직접 빈을 정의
