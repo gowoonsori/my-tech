@@ -30,7 +30,10 @@
   - [Http 헤더](/network/httpHeader.md)
 - [ 전송 계층 ](/network/transportLayer.md)
 - [ 네트워크 계층 ](/network/networkLayer.md)
+
   - [ 데이터 평면 ](/network/forwarding.md)
+  - [ 제어 평면](/network/routing.md)
+
     <br>
 
 ## 🟦 알고리즘
@@ -59,6 +62,7 @@
 - [라이브러리와 프레임워크](/develop-common-sense/library-framework.md)
 - [동기-비동기/block-nonBlock](develop-common-sense/sync-async-block-nonblock.md)
 - [API와 REST API](./develop-common-sense/rest-api.md)
+- [디자인 패턴(GOF 패턴)](./develop-common-sense/design-pattern.md)
 
 <br>
 
@@ -100,17 +104,21 @@
 ## 🟦 Spring Framework
 
 - [스프링이란?](/spring/spring.md)
-- [스프링부트](/spring/springboot.md)
-- [spring-bean](/spring/spring-bean.md)
-- [Controller](/spring/Controller.md)
-- [Spring MVC](/spring/springMVC.md)
-- [Lombok](/spring/lombok.md)
-- [spring HATEOAS](/spring/hateoas.md)
-- [Spring Data JPA](/spring/jpa.md)
-- [Entity와 DTO](/spring/entity.md)
-- [Model Mapper](/spring/modelMapper.md)
+  - [Controller](/spring/Controller.md)
+  - [Entity와 DTO](/spring/entity.md)
+  - [Spring Bean](/spring/spring-bean.md)
+  - [Spring MVC](/spring/springMVC.md)
+- 스프링 프로젝트
+  - [스프링 Boot](/spring/springboot.md)
+  - [스프링 HATEOAS](/spring/hateoas.md)
+  - 스프링 Data
+    - [Spring Data JPA](/spring/jpa.md)
+- 라이브러리
+  - [Lombok](/spring/lombok.md)
+  - [Model Mapper](/spring/modelMapper.md)
+- 프로젝트 라이플 사이클 관리 도구 (빌드 배포 Tool)
+  - [Maven](/spring/maven.md)
 - [Test](/spring/test.md)
-- [Maven](/spring/maven.md)
 
 <br>
 
