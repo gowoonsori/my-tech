@@ -57,7 +57,7 @@ jsp나 템플릿을 통해 결과물을 특정 경로로 연결 시켜주거나 
 
 - params : Request의 요청 uri 파라미터를 분석하여 변수로 사용
 
-  - @PathVariable : `uri path`로 들어오는 값을 구분하여 변수로 사용하기 위함
+  - `@PathVariable` : `uri path`로 들어오는 값을 구분하여 변수로 사용하기 위함
 
           ```java
           @Controller
@@ -74,7 +74,7 @@ jsp나 템플릿을 통해 결과물을 특정 경로로 연결 시켜주거나 
           ```
           위와 같이 {name}을 변수로 사용하기 위한 어노테이션이지만, `@RequestMapping(value="/{id}")`와 같이 특정 경로 없이 사용하지 말자.
 
-    - @RequestParam : `/store/item?name=pencil`과 같이 들어오는 uri의 `query string`을 이용하기 위한 어노테이션
+    - `@RequestParam` : `/store/item?name=pencil`과 같이 들어오는 uri의 `query string`을 이용하기 위한 어노테이션
 
       ```java
         @Controller
@@ -124,7 +124,9 @@ public class EventController {
 
 비동기를 처리 하는 경우 사용 (View를 통해 출력이 되지않고 http body에 데이터를 직접 써서 보내는 것)
 
-HTTP BODY에 직접반환.<br> 템플릿엔진이 아닌 바로 데이터를 전송하라는 어노테이션. viewResolver가 아닌 HttpMessageConverter가 동작하며, String이면 StringConverter가 객체이면 JsonConverter가 동작하여 default는 객체를 json형식으로만들어서 응답.
+HTTP BODY에 직접반환.<br> 템플릿엔진이 아닌 바로 데이터를 전송하라는 어노테이션.
+
+`viewResolver`가 아닌 `HttpMessageConverter`가 동작하며, `String`이면 `StringConverter`가 `객체`이면 `JsonConverter`가 동작하여 default는 객체를 json형식으로만들어서 응답.
 
 클라이언트의 HTTP Accept헤더와 서버의 컨트롤러 반환 타입 정보 둘을 조합하여 반환방식 자동으로 결정
 
@@ -154,7 +156,7 @@ Spring에서 사용하기 위해 기본적으로 @EnableWebMvc를 사용해서 W
 
 <br>
 
-## RestContoller
+## @RestContoller
 
 @ResponseBody를 모든 메소드에 적용한 것과 동일한 효과
 
@@ -165,11 +167,17 @@ Spring에서 사용하기 위해 기본적으로 @EnableWebMvc를 사용해서 W
 
 ## ResponseEntity
 
-Spring framwork는 HttpEntity라는 클래스를 제공하는데 이는 response/request의 HttpHeader와 HttpBody를 포함하는 클래스이다.
+Spring framwork는 `HttpEntity`라는 클래스를 제공하는데 이는 response/request의 HttpHeader와 HttpBody를 포함하는 클래스이다.
 
 HttpEntity를 상속받아 Response에 해당하는 부분을 담당하는 클래스이다.
 
 status, header, body 부분을 수정/삽입하여 응답헤더를 보낼 수 있게 해준다.
+
+### 메서드
+
+- build() : build 내 parameter로 아무것도 입력을 안할 시 null인 body의 res 반환한다.
+
+  parameter로 body를 받을 수 있다.
 
 <br>
 <br>

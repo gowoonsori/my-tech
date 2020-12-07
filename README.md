@@ -95,7 +95,7 @@
 - [구조](./web/structure.md)
 - [Web Server와 WAS](./web/WAS.md)
 - [브라우저 동작 과정](./web/brower.md)
-- [사용자 인증에 관하여 간단 정리](./web/authentication.md)
+- [사용자 인증(쿠키/세션과 JWT)](./web/authentication.md)
   - [OAuth](./web/OAuth.md)
 - [Http 헤더](/network/httpHeader.md)
 
@@ -116,11 +116,17 @@
 - 라이브러리
   - [Lombok](/spring/lombok.md)
   - [Model Mapper](/spring/modelMapper.md)
+  - JackSon
+    - [Object Mapper](./spring/objectMapper.md)
 - 프로젝트 라이플 사이클 관리 도구 (빌드 배포 Tool)
   - [Maven](/spring/maven.md)
-- [Test](/spring/test.md)
+- Test
 
-<br>
+  - [JUnit5](./spring/Junit5.md)
+  - [AssertJ](./spring/AssertJ.md)
+  - [Mock](/spring/mock.md)
+
+  <br>
 
 ## 🟦 JavaScript
 
@@ -142,3 +148,7 @@
 ## 🟦 VSCode / IntelliJ 단축키
 
 - [통합 단축키 기록](./keymap.md)
+
+## 🟦 gitmoji
+
+- [Gitmoji](./gitmoji.md)
