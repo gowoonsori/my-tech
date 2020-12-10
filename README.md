@@ -63,6 +63,10 @@
 - [동기-비동기/block-nonBlock](develop-common-sense/sync-async-block-nonblock.md)
 - [API와 REST API](./develop-common-sense/rest-api.md)
 - [디자인 패턴(GOF 패턴)](./develop-common-sense/design-pattern.md)
+- [Transaction Script과 Domain Model](./develop-common-sense/transactionScript_domainModel.md)
+- [테스트 종류](./develop-common-sense/kindsOfTesting.md)
+- [Gitmoji](./develop-common-sense/gitmoji.md)
+- [RegExp (regex = 정규표현식)](./develop-common-sense/regex.md)
 
 <br>
 
@@ -106,6 +110,7 @@
 - [스프링이란?](/spring/spring.md)
   - [Controller](/spring/Controller.md)
   - [Entity와 DTO](/spring/entity.md)
+  - [Repository와 DAO](/spring/repository_dao.md)
   - [Spring Bean](/spring/spring-bean.md)
   - [Spring MVC](/spring/springMVC.md)
 - 스프링 프로젝트
@@ -123,10 +128,11 @@
 - Test
 
   - [JUnit5](./spring/Junit5.md)
+    - [JunitParams](./spring/JunitParams.md)
   - [AssertJ](./spring/AssertJ.md)
   - [Mock](/spring/mock.md)
 
-  <br>
+<br>
 
 ## 🟦 JavaScript
 
@@ -140,15 +146,6 @@
 - [특징](/react/react-feature.md)
 
 <br>
-
-## 🟦 RegExp (regex = 정규표현식)
-
-- [기호와 의미](./regex.md)
-
 ## 🟦 VSCode / IntelliJ 단축키
 
 - [통합 단축키 기록](./keymap.md)
-
-## 🟦 gitmoji
-
-- [Gitmoji](./gitmoji.md)

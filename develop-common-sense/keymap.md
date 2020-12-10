@@ -69,6 +69,10 @@
 
 - shift + ctrl + f
 
+## ssh(WSL2 terminal열기)
+
+- ctrl + alt + s
+
 ## 메인 메소드 생성
 
 - psvm
