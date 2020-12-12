@@ -33,6 +33,10 @@ response body에 링크를 제공하여 client가 참고 할 수 있도록 하�
     - udpate-event
     - query-events
 
+## 사용법
+
+Spring 이라면 @EnableHypermediaSupport를 사용해야하지만, Spring boot라면 hateoas만 dependecny추가하면 자동으로 설정이 된다.
+
 ## Links
 
 ```java
