@@ -37,15 +37,15 @@
 
 - ctrl + space
 
-## 해당 커서의 ERROR 해결 (IMPORT)
-
-- ctrl + .
-
 ## 해당 커서의 실행가능 액션
 
 - ctrl + N
 
-## class test 파일 자동생성 및 자동 이도
+## Generator,Getter/setter 생성
+
+- Alt + N
+
+## class test 파일 자동생성 및 자동 이동
 
 - shift + alt + t
 

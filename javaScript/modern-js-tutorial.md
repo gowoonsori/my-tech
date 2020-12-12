@@ -32,6 +32,7 @@
   - [Date 객체](./js공부/dateObject.md)
   - [배열](./js공부/array.md)
   - [맵 / 셋](./js공부/map-set.md)
+- [클래스](./js공부/class.md)
 - [가비지 컬렉션](./js공부/garbageCollection.md)
 - [변수의 유호범위와 클로저](./js공부/scope_closure.md)
 - [var/let/const](./js공부/var_let_const.md)

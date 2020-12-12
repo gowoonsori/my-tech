@@ -116,13 +116,17 @@
 - 스프링 프로젝트
   - [스프링 Boot](/spring/springboot.md)
   - [스프링 HATEOAS](/spring/hateoas.md)
+    - [Representation Model](/spring/representationModel.md)
   - 스프링 Data
     - [Spring Data JPA](/spring/jpa.md)
+      - [MySQL연결하기](/spring/mySQL.md)
+  - [스프링 REST Docs](/spring/restDocs.md)
 - 라이브러리
   - [Lombok](/spring/lombok.md)
   - [Model Mapper](/spring/modelMapper.md)
   - JackSon
-    - [Object Mapper](./spring/objectMapper.md)
+    - [Object Mapper](/spring/objectMapper.md)
+  - [Custom Serialize](/spring/customSerialize.md)
 - 프로젝트 라이플 사이클 관리 도구 (빌드 배포 Tool)
   - [Maven](/spring/maven.md)
 - Test
