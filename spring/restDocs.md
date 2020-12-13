@@ -145,8 +145,27 @@ public class RestDocsConfiguration {
 <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
-                <!-- … -->
-            </plugin>
+                <version>1.5.8</version>
+                <executions>
+                    <execution>
+                        <id>generate-docs</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework.restdocs</groupId>
+                        <artifactId>spring-restdocs-asciidoctor</artifactId>
+                        <version>2.0.5.RELEASE</version>
+                    </dependency>
+                </dependencies>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.7</version>
@@ -182,9 +201,9 @@ public class RestDocsConfiguration {
 
 - maven의 package로 build
 
-  빌드하면 genreated-docs 아래 `index.html`이 생성된다.
+  빌드하면 `asciidoctor-maven-plugin`이 asciidoc파일을 html로 만들어 genreated-docs 아래 `index.html`이 생성된다.
 
-  Maven설정에 따라 build된 generated-docs에 생성한 파일을 build의 static파일 아래 생성해줌으로써 spring boot특성을 이용해 서버실행시 url로 접근이 가능하다.
+  `maven-resources-plugin`에 따라 build된 generated-docs에 생성한 파일을 build의 static파일 아래 생성해줌으로써 spring boot특성을 이용해 서버실행시 url로 접근이 가능하다.
 
 <br><Br>
 
