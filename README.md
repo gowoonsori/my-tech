@@ -89,6 +89,10 @@
 - Join table (테이블 연결)
   - [Alias](./SQL/alias.md)
   - [Join](./SQL/join.md)
+- Grouping (데이터 그룹화)
+  - [Group By](/SQL/groupBy.md)
+  - [HAVING](/SQL/having.md)
+  - [ROLLUP](/SQL/rollup.md)
 - [Concat (문자열 연결)](./SQL/concat.md)
 - [IFNULL](./SQL/ifnull.md)
 
@@ -120,6 +124,7 @@
   - 스프링 Data
     - [Spring Data JPA](/spring/jpa.md)
       - [MySQL연결하기](/spring/mySQL.md)
+      - [Pageable](/spring/pageable.md)
   - [스프링 REST Docs](/spring/restDocs.md)
 - 라이브러리
   - [Lombok](/spring/lombok.md)

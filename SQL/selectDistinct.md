@@ -51,3 +51,11 @@ GROUP BY
 
 - select와 from사이에 집계함수가 들어간 경우
 - 조회결과를 gROUP으로 나누어 봐야하는 겨우
+
+실행 순서는
+
+```
+FROM -> ON -> JOIN -> WHERE -> `GROUP BY`-> HAVING -> SELECT -> DISTINCT -> ORDER BY -> LIMIT
+```
+
+로 group by는 select전에 distinct는 select후에 일어난다.
