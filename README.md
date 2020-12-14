@@ -106,6 +106,7 @@
 - [사용자 인증(쿠키/세션과 JWT)](./web/authentication.md)
   - [OAuth](./web/OAuth.md)
 - [Http 헤더](/network/httpHeader.md)
+- [Https](/network/https.md)
 
 <br>
 
