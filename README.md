@@ -106,7 +106,7 @@
 - [사용자 인증(쿠키/세션과 JWT)](./web/authentication.md)
   - [OAuth](./web/OAuth.md)
 - [Http 헤더](/network/httpHeader.md)
-- [Https](/network/https.md)
+- [Https](/web/https.md)
 
 <br>
 
@@ -127,6 +127,7 @@
       - [MySQL연결하기](/spring/mySQL.md)
       - [Pageable](/spring/pageable.md)
   - [스프링 REST Docs](/spring/restDocs.md)
+  - [스프링 Security](/spring/security.md)
 - 라이브러리
   - [Lombok](/spring/lombok.md)
   - [Model Mapper](/spring/modelMapper.md)
