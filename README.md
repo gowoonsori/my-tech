@@ -78,33 +78,34 @@
 
 ## 🟦 SQL
 
-- [SQL이란](./SQL/sql.md)
+- [SQL이란](/SQL/sql.md)
 - Querying data (데이터 get)
-  - [SELECT](./SQL/select.md)
+  - [SELECT](/SQL/select.md)
 - Sorting data (정렬)
-  - [ORDER BY (FIELD)](./SQL/orderby.md)
+  - [ORDER BY (FIELD)](/SQL/orderby.md)
 - Filtering data (필터링)
-  - [WHERE](./SQL/where.md)
-  - [SELECT DISTINCT](./SQL/selectDistinct.md)
+  - [WHERE](/SQL/where.md)
+  - [SELECT DISTINCT](/SQL/selectDistinct.md)
 - Join table (테이블 연결)
-  - [Alias](./SQL/alias.md)
-  - [Join](./SQL/join.md)
+  - [Alias](/SQL/alias.md)
+  - [Join](/SQL/join.md)
 - Grouping (데이터 그룹화)
   - [Group By](/SQL/groupBy.md)
   - [HAVING](/SQL/having.md)
   - [ROLLUP](/SQL/rollup.md)
-- [Concat (문자열 연결)](./SQL/concat.md)
-- [IFNULL](./SQL/ifnull.md)
+- [Concat (문자열 연결)](/SQL/concat.md)
+- [IFNULL](/SQL/ifnull.md)
+- [공통 테이블 표현식(CTE) / 재귀 CTE](/SQL/cte.md)
 
 <br>
 
 ## 🟦 Web
 
-- [구조](./web/structure.md)
-- [Web Server와 WAS](./web/WAS.md)
-- [브라우저 동작 과정](./web/brower.md)
-- [사용자 인증(쿠키/세션과 JWT)](./web/authentication.md)
-  - [OAuth](./web/OAuth.md)
+- [구조](/web/structure.md)
+- [Web Server와 WAS](/web/WAS.md)
+- [브라우저 동작 과정](/web/brower.md)
+- [사용자 인증(쿠키/세션과 JWT)](/web/authentication.md)
+  - [OAuth](/web/OAuth.md)
 - [Http 헤더](/network/httpHeader.md)
 - [Https](/web/https.md)
 
@@ -128,6 +129,7 @@
       - [Pageable](/spring/pageable.md)
   - [스프링 REST Docs](/spring/restDocs.md)
   - [스프링 Security](/spring/security.md)
+    - [OAuth2](/spring/OAuth.md)
 - 라이브러리
   - [Lombok](/spring/lombok.md)
   - [Model Mapper](/spring/modelMapper.md)

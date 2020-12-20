@@ -42,6 +42,8 @@ Spring에서 ApplicationContext가 알고 있는 객체이다.
 
      `이름Configuration`이라는 클래스를 생성하여 클래스에 `@Configuration`을 붙인 후 그 안에 `@Bean`으로 직접 빈 정의
 
+     Configuration 은 Component를 갖고있다
+
 <br><br>
 
 ---
