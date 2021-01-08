@@ -111,6 +111,12 @@
 
 <br>
 
+## 🟦 Java
+
+- [JVM과 자바 실행 방법](/java/jvm.md)
+
+<br>
+
 ## 🟦 Spring Framework
 
 - [스프링이란?](/spring/spring.md)
