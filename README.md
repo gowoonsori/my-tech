@@ -65,6 +65,7 @@
 - [디자인 패턴(GOF 패턴)](./develop-common-sense/design-pattern.md)
 - [Transaction Script과 Domain Model](./develop-common-sense/transactionScript_domainModel.md)
 - [테스트 종류](./develop-common-sense/kindsOfTesting.md)
+- [Git](/devlop-common-sense/git.md)
 - [Gitmoji](./develop-common-sense/gitmoji.md)
 - [RegExp (regex = 정규표현식)](./develop-common-sense/regex.md)
 
