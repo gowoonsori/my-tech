@@ -247,6 +247,7 @@ class ArrayExample {
 ## 1차원 배열
 
 ![array1](/java/image/array1.PNG)
+
 [사진 참조](https://www.notion.so/2-38b5d67c7f5a48238529bb8f1617ea0d)
 
 1차원 배열의 변수(array1,array2)는 스택영역에 존재하며 `힙 영역`의 `주소값`을 갖는다.
@@ -256,6 +257,7 @@ class ArrayExample {
 ## 2차원 배열
 
 ![array2](/java/image/array2.PNG)
+
 [사진 참조](https://www.notion.so/2-38b5d67c7f5a48238529bb8f1617ea0d)
 
 2차원 배열의 변수(array3,array4)는 스택영역에 존재하며 `힙 영역`의 `주소값`을 갖는다.
