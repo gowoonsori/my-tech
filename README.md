@@ -114,6 +114,7 @@
 ## 🟦 Java
 
 - [JVM과 자바 실행 방법](/java/jvm.md)
+- [데이터타입과 변수,배열](/java/dataType.md)
 
 <br>
 
@@ -150,6 +151,8 @@
     - [JunitParams](./spring/JunitParams.md)
   - [AssertJ](./spring/AssertJ.md)
   - [Mock](/spring/mock.md)
+
+- [@ConfigurationProperties](/spring/configurationProperties.md)
 
 <br>
 

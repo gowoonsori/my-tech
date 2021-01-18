@@ -16,7 +16,7 @@ public class AppProperties {
 ```
 
 스프링이 해당 클래스를 bean으로 등록시키게 하기 위해 `@Configuration`이나 `@Component`를 같이 붙여주어야한다.
-만약에 붙이지 않는다면 main클래스에 `@EnableCongurationProperties(프로퍼티 크래스명.class)`를 붙여주어야하나 spring boot 2.2이후 부터는 생략이 가능하다
+만약에 붙이지 않는다면 main클래스에 `@EnableCongurationProperties(프로퍼티 크래스명.class)`를 붙여주어야한다.
 
 그러면 아래와 같이 .properties파일에 작성을 하면된다.
 
