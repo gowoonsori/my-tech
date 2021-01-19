@@ -131,9 +131,9 @@ Git은 [홈페이지](https://git-scm.com/)에 따르면 소규모 프로젝트�
 - Add : 새롭게 추가하거나 만든 것
   - B를 위해 A를 추가 : Add A for B
   - B에 A를 추가 : Add A to B
+- Implement : Add에 비해 더 큰 단위의 코드에 사용 ( 하나의 기능 )
 - Make : 기존 동작의 변경
   - A를 B하게 만듬 : Make A B
-- Implement : Add에 비해 더 큰 단위의 코드에 사용 ( 하나의 기능 )
 - Remove : 삭제
   - B에서 A를 삭제 : Remove A from B
 - Use : 사용
