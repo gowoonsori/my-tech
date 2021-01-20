@@ -101,3 +101,5 @@ key값은 중복되지 않으며, 부모의 키가 왼쪽 자식보다는 크며
 
 - [AVL Tree](./AvlTree.md)
 - [Red Black Tree](./redBlackTree.md)
+- [AA Tree](./aaTree.md)
+- [Splay Tree](./SplayTree.md)
