@@ -1,4 +1,4 @@
-# Red Black Tree
+# Splay Tree
 
 BST (이진 탐색 트리)를 기반으로 둔 Tree.
 
