@@ -12,10 +12,10 @@
 - [스택 과 큐 ( Stack and Queue )](/dataStructure/stack-queue.md)
 - [트리 ( Tree )](/dataStructure/tree.md)
 
-  - [AVL Tree](./AvlTree.md)
-  - [Red Black Tree](./redBlackTree.md)
-  - [Splay Tree](./SplayTree.md)
-  - [AA Tree](./aaTree.md)
+  - [AVL Tree](/dataStructure/AvlTree.md)
+  - [Red Black Tree](/dataStructure/redBlackTree.md)
+  - [Splay Tree](/dataStructure/SplayTree.md)
+  - [AA Tree](/dataStructure/aaTree.md)
 
 - [힙 ( Heap )](dataStructure/heap.md)
 - [그래프 ( Graph )](/dataStructure/graph.md)
@@ -65,7 +65,7 @@
 - [디자인 패턴(GOF 패턴)](./develop-common-sense/design-pattern.md)
 - [Transaction Script과 Domain Model](./develop-common-sense/transactionScript_domainModel.md)
 - [테스트 종류](./develop-common-sense/kindsOfTesting.md)
-- [Git](/devlop-common-sense/git.md)
+- [Git](./develop-common-sense/git.md)
 - [Gitmoji](./develop-common-sense/gitmoji.md)
 - [RegExp (regex = 정규표현식)](./develop-common-sense/regex.md)
 
@@ -116,7 +116,9 @@
 
 - [JVM과 자바 실행 방법](/java/jvm.md)
 - [데이터타입과 변수,배열](/java/dataType.md)
+- [연산자](/java/operator.md)
 - [Thread](/java/thread.md)
+
   <br>
 
 ## 🟦 Spring Framework
