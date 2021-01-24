@@ -4,6 +4,12 @@ Spring MVC Test를 이용해서 REST API 문서의 조각(`snippets`)을 생성�
 
 기본적으로 `Asciidoctor`를 사용하여 html파일을 생성하고, 원하는 경우 Markdown을 사용할 수 있다.
 
+API를 정의하는데 사용하는 다른 라이브러리는 `Swagger`가 있다.
+
+## Swagger와의 차이점
+
+`Swagger`는 API를 `테스트` 해볼 수 있는 `화면을 제공`하고 `실제 코드`에 어노테이션을 `추가`해야하지만 `Spring Rest Docs`는 테스트코드를 통해 생성되므로 실제코드에는 영향이 없다.
+
 ## 사용법
 
 - MockMvc, WebTestClient등에 사용이 가능하며 test에 사용하는 mockMvc를 만들때 documentationConfiguration을 사용하여 생성하고 MockMvc로 테스트 중 andDo를 이용하여 생성

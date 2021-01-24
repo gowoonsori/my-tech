@@ -1,3 +1,13 @@
+# Mock Object
+
+해석하면 `모의 객체`라는 의미로 프로그램을 테스트 할 때 실제 사용하는 모듈(객체)을 사용하지 않고 실제 모듈을 흉내내는 가짜 모듈을 작성하여 테스트 효용성을 높이는 객체
+
+## Stub과의 차이점
+
+> Stub은 `상태 검증`에 사용하고 Mock Object는 `행위 검증`에 사용하는 것이라고 `마틴 파울러`는 설명하고 있다.
+>
+> 출처 : http://martinfowler.com/articles/mocksArentStubs.html
+
 # Spring 단위 테스트
 
 ## @SpringBootTest
@@ -37,6 +47,8 @@ Contoller 계층만 등록 (서비스 등록 x)
 ### 웹 관련 Bean만 등록을 하여 사용하기 때문에 Repository같은 Bean을 등록하지 않기 때문에 이도 등록하려면 MockBean(Spring Boot Test 내부에 존재) 을 이용하여 테스트를 진행해야 한다.
 
 ## Mockito
+
+Mock 객체를 직접 만들어 테스트 코드 작성하는 것은 번거롭기도하고 Mock클래스 관리도 부담스럽기 때문에 시간을 상대적으로 절약하기 위한 라이브러리
 
 - Mock
   Mockito 라이브러리 내부에 위치해 mock객체가 특정 메서드를 호출 했을 때 동작하는 방식을 설정한다.

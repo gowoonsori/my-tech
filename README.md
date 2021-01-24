@@ -68,6 +68,7 @@
 - [Git](./develop-common-sense/git.md)
 - [Gitmoji](./develop-common-sense/gitmoji.md)
 - [RegExp (regex = 정규표현식)](./develop-common-sense/regex.md)
+- [Asciidoctor](/develop-common-sense/asciidoctor.md)
 
 <br>
 
@@ -109,8 +110,8 @@
   - [OAuth](/web/OAuth.md)
 - [Http 헤더](/network/httpHeader.md)
 - [Https](/web/https.md)
-
-<br>
+- [CSR/SSR, SPA/MPA](/web/csr_ssr.md)
+  <br>
 
 ## 🟦 Java
 
@@ -118,8 +119,9 @@
 - [데이터타입과 변수,배열](/java/dataType.md)
 - [연산자](/java/operator.md)
 - [Thread](/java/thread.md)
+- [Enum](/java/enum.md)
 
-  <br>
+<br>
 
 ## 🟦 Spring Framework
 
@@ -169,6 +171,7 @@
 ## 🟦 React
 
 - [특징](/react/react-feature.md)
+- [NextJs](/react/nextjs.md)
 
 <br>
 
