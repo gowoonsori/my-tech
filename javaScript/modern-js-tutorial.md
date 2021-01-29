@@ -6,7 +6,6 @@
 
 - [자료형](./js공부/type.md)
 
-  - [심볼형](./js공부/symbol.md)
   - [형변환](./js공부/type-conversions.md)
 
 - 연산자
@@ -16,7 +15,7 @@
   - [함수의 자료형](./js공부/typeofFunction.md)
   - [this](./js공부/this.md)
   - [바인딩](./js공부/bind.md)
-  - [call/apply](./js공부/call-apply.md) (작성중...)
+  - [call/apply](./js공부/call-apply.md)
   - [호출 스케줄링](./js공부/scheduling-call.md)
 - [객체](./js공부/object.md)
   - [new 연산자와 생성자함수](./js공부/new.md)
