@@ -234,6 +234,15 @@ public class example {
  }
 ```
 
+ordinal은 Enum을 정의한 순서를 반환하기 때문에 c때처럼 상수라고 생각하며 사용하지 말자.
+
+ordinal은 EnumSet이나 EnumMap, JPA에서 접근하기 위한 내부 함수로 개발자는 거의 사용할일이 없는 메서드이다.
+
+정의 순서가 바뀌거나 값이 추가 되면 전혀 다른 결과가 나오기 때문이다.
+
+그런 이유로 Spring Data JPA에서 default는 ordinal이기 때문에 Enum순서가 바뀐다면 값이 아예 달라진다.
+<br>컬럼으로 Enum을 사용하면 @Enumerated를 이용해 String으로 사용하자.
+
 <br><br>
 
 ## java.lang.Enum
@@ -351,6 +360,22 @@ Map 인터페이스를 구현
 - size() : Map의 요소 개수 반환
 - keySet() : Map에 있는 모든 key들의 Set view를 반환한다. (모든 key들을 보여준다.)
 - values() : Map에 있는 value들의 Collection view를 반환한다. (모든 값들을 보여준다.)
+
+<br><br>
+
+## 추가 내용
+
+### type safety
+
+Runtime이 아닌 Complie타임에 문제를 잡을 수 있는 것으로 JVM은 컴파일할때, 특정 데이터 타입을 알 수 있으나 RUN시에 특정 데이터가 존재 하지 않는다거나 하는 문제가 생길 수 있다.
+
+Enum을 사용하면 오타방지를 할 수 있고, 컴파일타임에 에러를 잡아주기 때문에 디버깅도 쉬워진다.
+
+### Enum에서 값 셋팅 팁
+
+Enum의 값을 추가해줄 때 1,2,3같이 좁은 숫자의 범위가 아닌 10,20,30 같이 범위를 두고 선언해주자.
+
+언제 어떤이유에서 Enum에 값을 사이에 추가 해줄지 모르기 때문이다.
 
 <br><br><br>
 
