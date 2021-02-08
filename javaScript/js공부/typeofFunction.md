@@ -35,11 +35,9 @@ js에서 함수는 값으로 취급한다고 했다. 그러면 자료형은 무�
   ```js
   function makeCounter() {
     // let count = 0 대신 아래 메서드(프로퍼티)를 사용함
-
     function counter() {
       return counter.count++;
     }
-
     counter.count = 0;
 
     return counter;

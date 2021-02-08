@@ -145,7 +145,7 @@ let sum = (a, b) => {
 
   때문에 this값과 arguments값을 함께 실어 호출을 포워딩해주는 데코레이터를 만들때 유용하다.
 
-```
+```js
 unction defer(f, ms) {
   return function() {
     setTimeout(() => f.apply(this, arguments), ms)

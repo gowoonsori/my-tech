@@ -16,7 +16,8 @@
   - [this](./js공부/this.md)
   - [바인딩](./js공부/bind.md)
   - [call/apply](./js공부/call-apply.md)
-  - [호출 스케줄링](./js공부/scheduling-call.md)
+  - [함수의 prototype](./js공부/function_protyotype_property.md)
+- [호출 스케줄링](./js공부/scheduling-call.md)
 - [객체](./js공부/object.md)
   - [new 연산자와 생성자함수](./js공부/new.md)
   - [keys,values,entries](./js공부/objectKeys.md)
@@ -25,7 +26,6 @@
   - [프로퍼티 종류](./js공부/property-kinds.md)
 - 프로토타입
   - [객체의 프로토타입 상속](./js공부/prototype.md)
-  - [함수의 prototype](./js공부/function_protyotype_property.md)
   - [내장 프로토타입](./js공부/native_prototype.md)
 - 특수 객체
   - [Date 객체](./js공부/dateObject.md)
@@ -35,3 +35,4 @@
 - [가비지 컬렉션](./js공부/garbageCollection.md)
 - [변수의 유호범위와 클로저](./js공부/scope_closure.md)
 - [var/let/const](./js공부/var_let_const.md)
+- [json](./js공부/json.md)

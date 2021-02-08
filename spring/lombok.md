@@ -59,7 +59,9 @@ build된 폴더에 가보면 `.class`파일이 생성된것을 볼 수 있다
 
   - (exlude={"제외할 변수"})로 제외하여 생성 가능
 
-- @Data : ToString, EqualsAndHashCode, Getter, Setter, RequiredArgsConstructor 어노테이션을 묶어놓은 어노테이션으로 잘 사용하지 않는다 => 순환 참조 문제로 인해 `stack overflow`가 발생할 수 있기 때문이다.
+- @Data : ToString, EqualsAndHashCode, Getter, Setter, RequiredArgsConstructor 어노테이션을 묶어놓은 어노테이션
+
+  문제점 : Entity에 해당 에노테이션을 적용시 모든 프로퍼티에 대해 EqualsAndHashCode, ToString메서드가 양방향 관계시에 순환 참조 문제로 무한루프를 돌게 되어 `stack overflow`가 발생할 수 있다.
 
 <br>
 
