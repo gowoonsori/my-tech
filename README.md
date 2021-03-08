@@ -139,6 +139,7 @@
     - [Representation Model](/spring/representationModel.md)
   - 스프링 Data
     - [Spring Data JPA](/spring/jpa.md)
+      - [EntityManagerFactory와 EntityManager](/spring/jpa_operation.md)
       - [MySQL연결하기](/spring/mySQL.md)
       - [Pageable](/spring/pageable.md)
   - [스프링 REST Docs](/spring/restDocs.md)
