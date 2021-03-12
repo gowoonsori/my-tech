@@ -38,7 +38,7 @@ JPA에게 객체를 넘기면 JPA는 엔티티를 분석하여, SQL문을 생성
 
 ## 사용법
 
-Entity에서 Spring Data JPA에서 제공하는 JpaRepository인터페이스를 상속하기만 해도 되어, 인터페이스에 따로 @Repository를 추가할 필요가 없다.
+Repository 방식은 Entity에서 Spring Data JPA에서 제공하는 JpaRepository인터페이스를 상속하기만 해도 되어, 인터페이스에 따로 @Repository를 추가할 필요가 없다.
 
 상속받을 때는 JpaRepository<T,ID>의 형태로 Entity의 클래스와 ID값이 들어가게 된다.
 
