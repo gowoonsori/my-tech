@@ -140,6 +140,9 @@
   - 스프링 Data
     - [Spring Data JPA](/spring/jpa.md)
       - [EntityManagerFactory와 EntityManager](/spring/jpa_operation.md)
+      - [연관관계 맵핑](/spring/jpa_relationship.md)
+        - [상속관계 맵핑](/spring/jpa_super_sub_type_relationship.md)
+      - [복합키와 식별관계 맵핑](/spring/jpa_composite_key.md)
       - [MySQL연결하기](/spring/mySQL.md)
       - [Pageable](/spring/pageable.md)
   - [스프링 REST Docs](/spring/restDocs.md)
