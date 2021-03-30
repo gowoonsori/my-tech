@@ -2,6 +2,14 @@
 
 스프링에서 제공하는 애플리케이션 보안(인증,인가 ,권한)등을 담당하고 기능을 제공해주는 하위 프레임워크
 
+## Spring Security 의존성 추가시 일어나는 일
+
+1. 의존성만 추가해도 기본적인 웹 보안설정이 이루어 진다.
+1. 모든 요청은 인증이 되어야 접근이 가능하다.
+1. 인증 방식은 폼 로그인 방식과 httpBasic 로그인 방식 제공
+1. 기본 로그인 페이지 제공
+1. 기본 계정 한개 제공 ( user:console창에 입력되는 random 문자열 )
+
 ## 종류
 
 Spring framework 5.x이후 Webflux가 추가됨에 따라 `Servlet App` ,`Reactive App(Webflux)` 두가지로 나눌 수 있다.
@@ -19,25 +27,21 @@ Spring framework 5.x이후 Webflux가 추가됨에 따라 `Servlet App` ,`Reacti
 
 ![Structure](/spring/image/security-structure.PNG)
 
-인증과 인과 모두 Interceptor를 통해 수행되며 메서드,filter방식으로 동작이 가능하고, 인증에 관한 정보들을 담아 두는곳은 `SecurityContext`에 저장이 되며 `SecurityContextHolder`를 통해 접근이 가능하다.
+인증과 인가 모두 Interceptor를 통해 수행되며 메서드,filter방식으로 동작이 가능하고, 인증에 관한 정보들을 담아 두는곳은 `SecurityContext`에 저장이 되며 `SecurityContextHolder`를 통해 접근이 가능하다.
 <br>_(기본설정은 ThreadLocal에 저장 되며 스레드마다 할당되는 데이터 공간이다)_
 
 Servlet App방식에서 Security는 필터방식으로 동작한다.
 
 필터 : 클라이언트 요청이 서블릿으로 가기전에 먼저 처리할 수 있도록 WAS에서 지원해주는 기능
 
-    기본적인 필터는 자동으로 구성되고 커스텀 필터를 추가하고 싶다면 Bean을 추가하거나 web.xml에 추가해주자
-
-    필터 종류
-
 SecurityContextHolder : 인증 정보에 접근하기 위한 인터페이스
 
 - SecurityContext : 인증 정보를 저장하는 저장소로 별다른 설정 없을시 `ThreadLocal`에 저장
 
   - Authentication : 실제 사용자 인증 정보를 의미하는 인터페이스
-    - Principal
-    - Credentials
-    - Authorities
+    - Principal : 사용자를 구분(일종의 id) -> 접근 주체
+    - Credentials : 접근 주체의 비밀번호
+    - Authorities : 사용자의 ROLE
 
   생성
 
@@ -115,7 +119,7 @@ SecurityContextHolder : 인증 정보에 접근하기 위한 인터페이스
 
   - isEnabled() : 계정이 활성화(사용가능)인 지 리턴 (true: 활성화)
 
-- UserDetailsService : DAO로 사용되며 사용자 정보를 로드하기 위한 인터페이스
+- UserDetailsService : DAO로 사용되며 사용자 정보를 로드하기 위한 인터페이스로 `UserDetails`를 반환하는 하나의 메서드를 갖고있다.
 
 인가
 

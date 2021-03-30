@@ -60,24 +60,30 @@
 
 ## 🟦 개발 상식
 
-- [라이브러리와 프레임워크](/develop-common-sense/library-framework.md)
-- [동기-비동기/block-nonBlock](develop-common-sense/sync-async-block-nonblock.md)
-- [API와 REST API](./develop-common-sense/rest-api.md)
-- [디자인 패턴(GOF 패턴)](./develop-common-sense/design-pattern.md)
-- [Transaction Script과 Domain Model](./develop-common-sense/transactionScript_domainModel.md)
-- [테스트 종류](./develop-common-sense/kindsOfTesting.md)
-- [Git](./develop-common-sense/git.md)
-- [Gitmoji](./develop-common-sense/gitmoji.md)
-- [RegExp (regex = 정규표현식)](./develop-common-sense/regex.md)
-- [Asciidoctor](/develop-common-sense/asciidoctor.md)
+- [라이브러리와 프레임워크](/common/library-framework.md)
+- [동기-비동기/block-nonBlock](common/sync-async-block-nonblock.md)
+- [API와 REST API](/common/rest-api.md)
+- [디자인 패턴(GOF 패턴)](/common/design-pattern.md)
+- [Transaction Script과 Domain Model](/common/transactionScript_domainModel.md)
+- [테스트 종류](/common/kindsOfTesting.md)
+- [Git](/common/git.md)
+- [Gitmoji](/common/gitmoji.md)
+- [RegExp (regex = 정규표현식)](/common/regex.md)
+- [Asciidoctor](/common/asciidoctor.md)
 - [컴파일러](/devlop-common-sense/compiler.md)
-- [ELK](/develop-common-sense/elk.md)
+- [ELK](/common/elk.md)
 
 <br>
 
+## 🟦 Linux
+
+- [Linux와 내부구조](/linux/linux.md)
+- [Linux 디렉토리 구조와 기능](/linux/directory.md)
+- [Linux 개념들과 명령어](/linux/command.md)
+
 ## 🟦 Kubernetes
 
-- [Kubernetes란](./kubernetes/kubernetes.md)
+- [Kubernetes란](/kubernetes/kubernetes.md)
 
 <br>
 
@@ -149,6 +155,7 @@
       - [Pageable](/spring/pageable.md)
   - [스프링 REST Docs](/spring/restDocs.md)
   - [스프링 Security](/spring/security.md)
+    - [spring boot](/spring/security_boot.md)
     - [OAuth2](/spring/OAuth.md)
 - 라이브러리
   - [Lombok](/spring/lombok.md)
@@ -186,4 +193,4 @@
 
 ## 🟦 VSCode / IntelliJ 단축키
 
-- [통합 단축키 기록](./keymap.md)
+- [통합 단축키 기록](/keymap.md)
