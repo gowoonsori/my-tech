@@ -40,6 +40,7 @@
 ## 🟦 알고리즘
 
 - [시간 복잡도 & 공간 복잡도](/algorithm/time-space-complexity.md)
+
 - [복잡도 계산](/algorithm/computational-complexity.md)
 - [dp (동적 계획법)](/algorithm/dynamic-programming.md)
 - [정렬 알고리즘](/algorithm/sorting-algorithm.md)
@@ -61,6 +62,7 @@
 ## 🟦 개발 상식
 
 - [라이브러리와 프레임워크](/common/library-framework.md)
+
 - [동기-비동기/block-nonBlock](common/sync-async-block-nonblock.md)
 - [API와 REST API](/common/rest-api.md)
 - [디자인 패턴(GOF 패턴)](/common/design-pattern.md)
@@ -78,6 +80,7 @@
 ## 🟦 Linux
 
 - [Linux와 내부구조](/linux/linux.md)
+
 - [Linux 디렉토리 구조와 기능](/linux/directory.md)
 - [Linux 개념들과 명령어](/linux/command.md)
 
@@ -90,6 +93,7 @@
 ## 🟦 SQL
 
 - [SQL이란](/SQL/sql.md)
+
 - Querying data (데이터 get)
   - [SELECT](/SQL/select.md)
 - Sorting data (정렬)
@@ -113,6 +117,7 @@
 ## 🟦 Web
 
 - [구조](/web/structure.md)
+
 - [Web Server와 WAS](/web/WAS.md)
 - [브라우저 동작 과정](/web/browser.md)
 - [사용자 인증(쿠키/세션과 JWT)](/web/authentication.md)
@@ -126,6 +131,7 @@
 ## 🟦 Java
 
 - [JVM과 자바 실행 방법](/java/jvm.md)
+
 - [데이터타입과 변수,배열](/java/dataType.md)
 - [연산자](/java/operator.md)
 - [Thread](/java/thread.md)
@@ -136,11 +142,13 @@
 ## 🟦 Spring Framework
 
 - [스프링이란?](/spring/spring.md)
+
   - [Controller](/spring/Controller.md)
   - [Entity와 DTO](/spring/entity.md)
   - [Repository와 DAO](/spring/repository_dao.md)
   - [Spring Bean](/spring/spring-bean.md)
   - [Spring MVC](/spring/springMVC.md)
+
 - 스프링 프로젝트
   - [스프링 Boot](/spring/springboot.md)
   - [스프링 HATEOAS](/spring/hateoas.md)
@@ -150,7 +158,10 @@
       - [EntityManagerFactory와 EntityManager](/spring/jpa_operation.md)
       - [연관관계 맵핑](/spring/jpa_relationship.md)
         - [상속관계 맵핑](/spring/jpa_super_sub_type_relationship.md)
-      - [복합키와 식별관계 맵핑](/spring/jpa_composite_key.md)
+        - [복합키와 식별관계 맵핑](/spring/jpa_composite_key.md)
+        - [프록시와 연관관계 맵핑](/spring/jpa_proxy_relationShip.md)
+      - [데이터 타입](/spring/jpa_valueType.md)
+      - [JPQL과 QueryDSL](/spring/jpa_jpql_querydsl.md)
       - [MySQL연결하기](/spring/mySQL.md)
       - [Pageable](/spring/pageable.md)
   - [스프링 REST Docs](/spring/restDocs.md)
