@@ -90,27 +90,28 @@
 
 <br>
 
-## 🟦 SQL
+## 🟦 DataBase
 
-- [SQL이란](/SQL/sql.md)
+- [Index](/sql/index.md)
 
-- Querying data (데이터 get)
-  - [SELECT](/SQL/select.md)
-- Sorting data (정렬)
-  - [ORDER BY (FIELD)](/SQL/orderby.md)
-- Filtering data (필터링)
-  - [WHERE](/SQL/where.md)
-  - [SELECT DISTINCT](/SQL/selectDistinct.md)
-- Join table (테이블 연결)
-  - [Alias](/SQL/alias.md)
-  - [Join](/SQL/join.md)
-- Grouping (데이터 그룹화)
-  - [Group By](/SQL/groupBy.md)
-  - [HAVING](/SQL/having.md)
-  - [ROLLUP](/SQL/rollup.md)
-- [Concat (문자열 연결)](/SQL/concat.md)
-- [IFNULL](/SQL/ifnull.md)
-- [공통 테이블 표현식(CTE) / 재귀 CTE](/SQL/cte.md)
+- [SQL이란](/sql/sql.md)
+  - Querying data (데이터 get)
+    - [SELECT](/sql/select.md)
+  - Sorting data (정렬)
+    - [ORDER BY (FIELD)](/sql/orderby.md)
+  - Filtering data (필터링)
+    - [WHERE](/sql/where.md)
+    - [SELECT DISTINCT](/sql/selectDistinct.md)
+  - Join table (테이블 연결)
+    - [Alias](/sql/alias.md)
+    - [Join](/sql/join.md)
+  - Grouping (데이터 그룹화)
+    - [Group By](/sql/groupBy.md)
+    - [HAVING](/sql/having.md)
+    - [ROLLUP](/sql/rollup.md)
+  - [Concat (문자열 연결)](/sql/concat.md)
+  - [IFNULL](/sql/ifnull.md)
+  - [공통 테이블 표현식(CTE) / 재귀 CTE](/sql/cte.md)
 
 <br>
 
