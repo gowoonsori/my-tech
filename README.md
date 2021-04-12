@@ -61,6 +61,7 @@
 
 ## 🟦 개발 상식
 
+- [빅엔디안과 리틀 엔디안](/common/endian.md)
 - [라이브러리와 프레임워크](/common/library-framework.md)
 
 - [동기-비동기/block-nonBlock](common/sync-async-block-nonblock.md)
