@@ -9,3 +9,6 @@ base.md
 
 #setting (.json) file
 .vscode
+
+#keymap 파일
+*.xml

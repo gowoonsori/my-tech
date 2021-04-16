@@ -172,7 +172,7 @@ Inner은 생략해서 작성이 가능하다.
 ```java
 String query = "Select m from member m inner join m.team t where t.name = :teamName";
 
-List<Member> members = em.createQueyr(query, Member.class)
+List<Member> members = em.createQueyry(query, Member.class)
     .setParameter("teamName","팀A")
     .getResultList();
 ```
@@ -264,6 +264,16 @@ WHERE T.NAME = '팀A'
 바뀐 SQL을 봐도 일반 조인은 Member의 정보가 빠져있는 것을 볼 수 있다.
 
 **글로벌 전략은 지연로딩을 사용하고 최적화가 필요한 부분에 패치조인을 적용하는 것이 효과적**
+
+<br>
+
+### ◾ distinct
+
+```java
+String jqpl = "select distinct t from Team t join fetch t.members where t.name = '팀A'"
+```
+
+1:N의 의 관계에서 패치조인시에 distinct를 사용하면 1차적으로 SQL문에 distinct문을 삽입해서 중복 데이터를 걸러주고 데이터가 넘어온 애플리케이션단에서 distinct명령어를 보고 또 한번 중복된 데이터를 걸러내기 때문에 Team엔티티 정보가 중복되어 저장하는 것을 방지할 수 있다.
 
 <br>
 
@@ -471,3 +481,11 @@ Member member = em.createQuery("select m from Member m where m.username = '홍�
     .setFlushMode(FlushModeType.COMMIT)
     .getSingleResult();
 ```
+
+<br><br><br>
+
+---
+
+## Reference
+
+자바 ORM 표준 JPA 프로그래밍 책 (김영한 저)

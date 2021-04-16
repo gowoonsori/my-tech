@@ -63,7 +63,7 @@
 
 ## 자동 정렬
 
-- ctrl + alt + f
+- shift + alt + f
 
 ## 모든 페이지 내 검색
 

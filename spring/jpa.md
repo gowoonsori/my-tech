@@ -13,10 +13,15 @@ JPA를 사용하기 위해 반드시 Hibernate를 사용할 필요가 없고 다
 Spring에서 제공하는 모듈 중 하나로 개발자가 JPA를 좀더 편하게 사용할 수 있게 도와주기 위해 Repository라는 인터페이스를 제공 (JPA를 추상화 시킨것)
 
 Repository인터페이스 규칙대로 메서드를 작성하면 Spring이 알아서 JPA를 이용하여 적합한 쿼리를 날리는 구현체를 만들어 BEAN으로 등록 해주는 것.
+(정확히는 메서드명가지고 적합한 JPQL을 생성해준다.)
+
+공통 인터페이스의 구현체는 `SimpleJpaRepository`이다.
 
 ## 동작과정
 
 앱과 JDBC 사이에서 동작하며, JPA를 사용시 JPA내부에서 JDBC API를 사용해 DB와 통신을 한다.
+
+인터페이스만 만들어도 실행할때 인터페이스들을 찾아서 구현체를 만들고 빈으로 등록해준다.
 
 ## 저장/조회 과정
 
@@ -56,6 +61,55 @@ Repository 방식은 Entity에서 Spring Data JPA에서 제공하는 JpaReposito
 - countBy~ : 쿼리 결과 레코드 수를 요청하는 메서드
 
 메서드의 반환형이 Entity객체이면 하나의 결과, List이면 모든 객체를 전달
+
+<br>
+
+## JPA NamedQuery
+
+```java
+@Entity
+@NamedQuery(
+  name = "Member.findByUsername",
+  query = "select m from Member m where m.username = :username")
+public class Member{
+  //...
+}
+```
+
+```xml
+<named-query name="Member.findByUsername">
+  <query><CDATA[
+    select m
+    from Member m
+    where m.username = :username]>
+  </query>
+</named-query>
+```
+
+Entity에 어노테이션이나 xml파일을 이용해서 정의한 내용을 가지고 Repository에 해당 이름으로 메서드를 만들면 NamedQuery에 매칭시켜 생성해주고 만약 NamedQuery가 없다면 메서드명에 맞는 JPQL을 자동으로 생성해준다.
+
+## @Query
+
+```java
+public interface MemberRepository extends JpaRepository<Memeber,Long>{
+  @Query("select m from Memeber m where m.username = :username")
+  Member findByusername(@Param("username") String username);
+}
+```
+
+@Query 어노테이션을 이용해 인터페이스 내에서 직접 JPQL을 생성할 수도 있고, 옵션으로 `natvieQuery = true`옵션을 이용하면 SQL문으로 작성할 수도 있다.
+
+## @Modifying
+
+벌크 쿼리를 날릴 때 사용하는 어노테이션이다.
+
+```java
+@Modifying(clearAutomatically = true)
+@Query("update Product p set p.price = p.price * 1.1 where p.stockAmount < :stockAmount")
+int bulkPriceUp(@Param("stockAmount") String stockAmount);
+```
+
+clearAutomatically옵션으로 쿼리 후 영속성 컨텍스트를 초기화 하는 옵션을 줄 수 있다.
 
 ---
 
