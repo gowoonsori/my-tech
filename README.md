@@ -152,7 +152,9 @@
   - [Spring MVC](/spring/springMVC.md)
 
 - 스프링 프로젝트
+
   - [스프링 Boot](/spring/springboot.md)
+  - [스프링 REST Docs](/spring/restDocs.md)
   - [스프링 HATEOAS](/spring/hateoas.md)
     - [Representation Model](/spring/representationModel.md)
   - 스프링 Data
@@ -171,10 +173,15 @@
       - [성능 최적화](/spring/jpa_optimization.md)
       - [MySQL연결하기](/spring/mySQL.md)
       - [Pageable](/spring/pageable.md)
-  - [스프링 REST Docs](/spring/restDocs.md)
   - [스프링 Security](/spring/security.md)
-    - [spring boot](/spring/security_boot.md)
-    - [OAuth2](/spring/OAuth.md)
+
+    - [DelegatingProxyChain / FilterChainProxy](/spring/security_chain.md)
+    - [SecurityContext](/spring/security_context.md)
+    - [Authentication](/spring/security_authentication.md)
+    - [인증필터](/spring/security_authenticationFilter.md)
+    - [인가](/spring/security_authorizationFilter.md)
+    - [OAuth2](/spring/security_oauth.md)
+
 - 라이브러리
   - [Lombok](/spring/lombok.md)
   - [Model Mapper](/spring/modelMapper.md)
