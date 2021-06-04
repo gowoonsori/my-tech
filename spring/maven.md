@@ -58,3 +58,23 @@ Project Object Model의 약자로 `프로젝트 객체 모델 정보`를 담고 
     - optional : 다른 프로젝트에 의존성이 추가되지 않는다.
 
 [maven과 gradle 차이](https://hyojun123.github.io/2019/04/18/gradleAndMaven/)
+
+<br><br>
+
+## mvn spring-boot:run과 java -jar 차이
+
+보통 mvn은 코드를 빌드,테스트 및 패키징하는데 도와주는 도구로 `올바른 dependecy 버전`을 해결해주거나 `실행가능한 jar/war 파일의 모든 dependecy를 패키지`하고 `java -jar의 -cp옵션이나 경로 지정`을 할 필요가 없다.
+
+하지만 mvn을 통한 실행은 아파치 톰캣의 다운로드와 톰캣의 시작으로 초기화 하고 goal에 맞는 작업을 수행해야하고 만일 `production`에서 실행하게 된다면 `maven 설치`, `jdk`설치, `코드베이스 복사`, `mvn 모든 생명주기 실행`과 같이 시간과 비용적측면에서 모두 낭비가 된다.
+
+develop단계라면 애플리케이션을 실행할때마다 올바른 환경을 구성하고 변수를 설정하는 것은 비효율적이며 둘이상의 서비스를 동시에 실행할 경우는 더더욱 비효울적일 것이다.
+
+이럴때는 maven을 이용하는 것이 더 효율적일 수 있다.
+
+<br><br><br>
+
+---
+
+## Reference
+
+https://www.baeldung.com/spring-boot-run-maven-vs-executable-jar

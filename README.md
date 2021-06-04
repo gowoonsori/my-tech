@@ -85,9 +85,10 @@
 - [Linux 디렉토리 구조와 기능](/linux/directory.md)
 - [Linux 개념들과 명령어](/linux/command.md)
 
-## 🟦 Kubernetes
+## 🟦 DevOps
 
-- [Kubernetes란](/kubernetes/kubernetes.md)
+- [MSA](/devOps/msa.md)
+- [Kubernetes란](/devOps/kubernetes/kubernetes.md)
 
 <br>
 
@@ -181,6 +182,10 @@
     - [인증필터](/spring/security_authenticationFilter.md)
     - [인가](/spring/security_authorizationFilter.md)
     - [OAuth2](/spring/security_oauth.md)
+
+- [스프링 Cloud](/spring/cloud.md)
+
+  - [Eureka](/spring/eureka.md)
 
 - 라이브러리
   - [Lombok](/spring/lombok.md)
