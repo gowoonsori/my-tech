@@ -1,0 +1,43 @@
+## 라라벨 기본 디렉토리 구조
+- .env : 글로벌 설정 중 민감한 값
+- app 
+    - Console : 사용자가 만든 콘솔 명령들
+        - Kernel.php : 콘솔 명령, 크론 잡등 등록
+    - Exceptions 
+        - Handler.php : 전역 예외처리 정의
+    - Http
+        - Controllers : http 요청을 처리하는 컨트롤러
+            - Auth : 라라벨에 기본 내장된 사용자 인증 컨트롤러
+        - Middleware : Authenticate, Encrypt,csrfToken등과 같이 미들웨어들 정의
+        - Kernel.php : http 요청 처리를 위해 기본이 되는 커널
+    - Providers 
+        - AppServiceProvider.php : 서비스를 컨테이너에 등록하기 위한 클래스
+        - AuthServiceProvider.php : 사용자 인가와 관련된 정책 등록하기 위한 클래스
+        - BroadcastServiceProvider.php : 브로드캐스트 메시지 전송 제어 클래스
+        - EventServiceProvider.php : 이벤트와 이벤트 처리기 연결 클래스
+        - RouteServiceProvider.php : routes 디렉토리에서 정의한 라우팅 활성화 클래스
+    - Models
+        - User.php : 기본 내장 User model
+- bootstrap : 프레임워크 부팅 스크립트
+- composer.json : npm의 package.json과 같은 프로젝트 의존성 관리 레지스트리
+- composer.lock : 현재 환경에 설치한 의존성의 버전 잠금 파일
+- config : db, 큐, 메일등 전역 설정을 담는 디렉토리
+- database 
+    - factories : 더미 모델을 만들기 위한 레시피를 담는 디렉토리
+    - migrations : 해당 프로젝트의 db테이블 스키마를 담는 디렉토리
+    - seeds : 생성한 테이블에 더미 데이터를 삽입하는 레시피를 담는 디렉토리
+- package.json : 이 프로젝트가 의존하는 프론트엔드 리소스 레지스트리
+- phpunit.xml : PhpUnit(테스트 프레임워크) 설정
+- public : 웹서버 루트 디렉토리
+- resources 
+    - css/js
+    - lang : 다국어 지원을 위한 언어별 사전을 담는 디렉토리
+    - vies : 뷰 파일을 담는 디렉토리
+- routes 
+    - api.php : api 엔드 포인트
+    - console.php : 클로저 형식으로 작성한 artisan 콘솔 명령
+    - web.php : 웹 엔드 포인트
+- server.php: 로컬 웹 서버 구동을 위한 스크립트
+- storage : 라라벨의 파일 저장소(캐시, 로그 등)
+- tests : 테스트 파일들을 담는 디렉토리
+- vendor : 해당 프로젝트가 의존하는 의존성들을 담는 디렉토리
