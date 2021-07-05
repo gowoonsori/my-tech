@@ -183,9 +183,8 @@
     - [인가](/spring/security_authorizationFilter.md)
     - [OAuth2](/spring/security_oauth.md)
 
-- [스프링 Cloud](/spring/cloud.md)
-
-  - [Eureka](/spring/eureka.md)
+  - [스프링 Cloud](/spring/cloud.md)
+    - [Eureka](/spring/eureka.md)
 
 - 라이브러리
   - [Lombok](/spring/lombok.md)
@@ -203,6 +202,13 @@
   - [Mock](/spring/mock.md)
 
 - [@ConfigurationProperties](/spring/configurationProperties.md)
+
+<br>
+
+## 🟦 PHP
+
+- Laravel
+  - [기본 구조](/php/laravel/architecture.md)
 
 <br>
 
