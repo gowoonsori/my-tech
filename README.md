@@ -219,9 +219,15 @@
   - [paging과 로딩](/php/laravel/pagingLoading.md)
   - [middleware](/php/laravel/middleware.md)
   - [controller](/php/laravel/controller.md)
+  - [validate](/php/laravel/validate.md)
+  - [event](/php/laravel/event.md)
+  - [Exception Handling](/php/laravel/exceptionHandling.md)
+  - [debug](/php/laravel/debug.md)
+  - [Email](/php/laravel/email.md)
 
-
+- [composer](/php/laravel/composer.md)
 - [::](/php/scopeResolutionOperator.md)
+- [Facade](/php/Facade.md)
 
 <br>
 
