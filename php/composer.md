@@ -61,4 +61,4 @@
 }
 ```
 - require : 프로젝트가 의존하는 컴포넌트 목록
-    -  "laravel/framework": "^8.40" : 
+    -  "laravel/framework": "^8.40.*" : laravel은 벤더 이름, framework는 패키지 이름이고 둘을 합쳐서 컴포넌트 이름이라고 한다. 
