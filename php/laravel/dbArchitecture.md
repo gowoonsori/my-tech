@@ -33,8 +33,8 @@ group_concat함수를 이용하여 posts내에 tag정보를 string으로 치환�
 ```sql
 select posts.*, GROUP_CONCAT(t.title separator ', ') as tag_title
 from posts
-left join post_tag pt on posts.id = pt.post_id
-left join tags t on pt.tag_id = t.id
+inner join post_tag pt on posts.id = pt.post_id
+inner join tags t on pt.tag_id = t.id
 where posts.id in (
     select p.id
     from users u
@@ -61,3 +61,12 @@ group by  posts.id;
    그래서 posts와 tags를 한 index에 같이 집어넣고 검색엔진에서 key값을 이용해 tag와 문구내용(content)를 다르게 검색하는 방법으로 이용하고 있다. 이처럼 FTS에도 tags를 posts와 같이 저장하고 조회를 수행한다면 굳이 테이블을 나누지 않고 한개의 컬럼내에 string으로 표현해도 똑같은 기능을 수행할 수 있을 것 같다.
 
    그러면 앞에서 말했던 post-tag간의 join하는 문제의 한 depth가 사라져 위의 고민도 해결 될 수 있을 것 같다.
+
+   posts내에 tag를 json타입으로 저장하고 또 likes내에 posts들의 정보를 json타입으로 저장하는 방법!
+
+   posts 삭제같은 경우 posts, tags, post_tag 와 likes 까지 총 4개의 테이블에 삭제쿼리가 날라간다.
+   posts와 tags만 한개의 테이블로 합치는 역정규화를 했을때는 likes와 posts 두개의 삭제가 발생하고, likes내에 post의 내용을 중복시켜 삽입하는 경우에도 두개의 삭제 쿼리가 발생한다.
+
+
+   tags에서 tag로 조회하게 되면 posts의 정보를 조회하고 해당 posts들의 포함된 tags들을 또 조회해야하는 문제가 발생 => 반정규화 결정
+   => 잃는 것 : likes 같은경우 update가 한번더 발생할 수 있다.
