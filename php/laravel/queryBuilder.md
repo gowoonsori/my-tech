@@ -214,3 +214,77 @@ $users = DB::table('users')
 ```
 
 미리 쿼리를 생성해두었다면 해당 쿼리를 union()메서드를 이용해서 합칠 수 있다.
+
+<br>
+
+## Where
+
+```php
+$users = DB::table('users')->where('votes', 100)->get();
+$users = DB::table('users')->where('votes', '=', 100)->get();
+$users = DB::table('users')->where([
+    ['status', '=', '1'],
+    ['subscribed', '<>', '1'],
+])->get();
+```
+
+where의 메서드는 매개변수로 세개를 가지지만 `=`인 경우에는 생략할 수 있다. 또한 배열을 가질 수 있고 여러 조건을 추가해줄 수도 있다.
+
+### whereBetween() | whereNotBetween()
+
+```php
+$users = DB::table('users')
+           ->whereBetween('votes', [1, 100])
+           ->get();
+```
+
+### whereIn()
+
+```php
+$users = DB::table('users')
+                    ->whereIn('id', [1, 2, 3])
+                    ->get();
+```
+
+### whereNull()
+
+```php
+$users = DB::table('users')
+                    ->whereNull('updated_at')
+                    ->get();
+```
+
+<br>
+
+## 삽입
+
+```php
+DB::table('users')->insert([
+    ['email' => 'taylor@example.com', 'votes' => 0],
+    ['email' => 'dayle@example.com', 'votes' => 0],
+]);
+```
+
+### auto incremet ID 값 얻기
+
+```php
+$id = DB::table('users')->insertGetId(
+    ['email' => 'john@example.com', 'votes' => 0]
+);
+```
+
+<br>
+
+## 컬럼 값 증가
+
+```php
+DB::table('users')->increment('votes');
+
+DB::table('users')->increment('votes', 5);
+
+DB::table('users')->decrement('votes');
+
+DB::table('users')->decrement('votes', 5);
+```
+
+이 메서드를 이용하면 모델 이벤트가 발생하지 않는다.
