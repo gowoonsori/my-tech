@@ -402,6 +402,7 @@ effect
 
 ```sh
 kubectl taint nodes k8s-node1 hw=gpu:NoSchedule #노드에 Taint 설정
+kubectl taint nodes k8s-node1 hw=gpu:NoSchedule- #노드에 Taint 삭제
 ```
 
 #### Toleration
