@@ -236,6 +236,13 @@
 
 <br>
 
+## 🟦 CDC
+
+- [kafka](/cdc/kafka.md)
+  - [connect와 debezium](/cdc/debezium.md)
+
+<br>
+
 ## 🟦 JavaScript
 
 - [Webapck과 Babel](/javaScript/webpack-babel.md)
