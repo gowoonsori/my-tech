@@ -49,8 +49,11 @@ class SaraminProvider extends AbstractProvider
 
     protected $scopes = [
         "openid",
-        //socpes...
+        "scopes",
+        //...
     ];
+
+    protected $scopeSeparator = ' ';
 
     /**
      * {@inheritdoc}
@@ -81,6 +84,7 @@ class SaraminProvider extends AbstractProvider
             self::GATEWAY_URL . '/api/user/oauth/user',
             [
                 'headers' => [
+                    'Accept' => 'application/json',
                     'Authorization' => 'Bearer ' . $token,
                 ],
             ]);
