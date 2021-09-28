@@ -16,13 +16,13 @@
 
 <br>
 
-## Replication Controller / ReplicaSet
+## 1. Replication Controller / ReplicaSet
 
 ![controller-attribute](/devOps/kubernetes/image/controller-attribute.PNG)
 
 Replication Controller는 Deprecated되었고 그 후에 나온 것이 ReplicaSet이다.
 
-### Template / Replicas
+### 1) Template / Replicas
 
 selector를 통해서 label로 컨트롤러와 파드를 연결 하게 되고 `template`로 특정 파드의 형태를 지정할 수 있고 만일 특정 파드가 삭제가 되면 다시 재생성하려는 특징을 가지고 있다. 그래서 template에 파드를 업그레이드해놓고 기존의 파드를 삭제해주면 파드를 재생성해주려는 특성때문에 자동으로 버전업그레이드된 파드를 재생성 하게 된다.
 
@@ -65,7 +65,7 @@ spec:
 
 <br>
 
-### Selector
+### 2) Selector
 
 이는 ReplicaSet에만 있는 기능으로 ReplicaSet에는 Replication Contorller와 달리 `matchLabels, matchExpressions`속성이 추가로 존재한다. Replication Controller에서 파드를 연결할때는 라벨의 key/value가 모두 동일한 파드만 연결이 가능하고 ReplicaSet에서는 matchLabels이 동일한 역할을 수행한다.
 
@@ -105,13 +105,13 @@ spec:
 
 <br>
 
-## Deployment
+## 2. Deployment
 
 ![deployment](/devOps/kubernetes/image/deployment.PNG)
 
 현재 한 서비스가 운영중일때 이 서비스를 업데이트해야되서 재배포를 해야할때 도움이 되는 컨트롤러
 
-### ReCreate
+### 1) ReCreate
 
 ![recreate](/devOps/kubernetes/image/recreate.PNG)
 
@@ -151,7 +151,7 @@ kubectl rollout undo deployment deployment-1 --to-revision=2 #deployment-1의 de
 kubectl rollout history deployment deployment-1 #deployment-1이라는 이름의 deployment의 revision 기록
 ```
 
-### Rolling update
+### 2) Rolling update
 
 ![rolling-update](/devOps/kubernetes/image/rolling-update.PNG)
 
@@ -185,7 +185,7 @@ spec:
 
 이때 의문으로 새로생성된 ReplicaSet은 라벨을 가지고 파드를 연결하는데 기존의 파드들과도 연결될 수 있지 않을까 싶지만, 실제로는 replicaSet이 생성될때 컨트롤러마다 특정한 라벨이 붙게되고 이 라벨을 이용해서 새로운 파드를 만들때 추가적인 라벨을 추가하여 연결하기 때문에 기존의 파드들과는 연결되지 않는다.
 
-### Blue/Green
+### 3) Blue/Green
 
 Deployment를 사용해서 구성할 수도 있지만 ReplicaSet과 같이 replicas를 관리하는 controller를 이용해서 구성할 수 있다.
 
@@ -215,7 +215,7 @@ spec:
       terminationGracePeriodSeconds: 0
 ```
 
-### Canary
+### 4) Canary
 
 ![canary](/devOps/kubernetes/image/canary.PNG)
 
@@ -227,11 +227,11 @@ spec:
 
 <br>
 
-## DeamonSet / Job / CronJob
+## 3. DeamonSet / Job / CronJob
 
 ![controller2](/devOps/kubernetes/image/controller2.PNG)
 
-### DeamonSet
+### 1) DeamonSet
 
 ![daemonset](/devOps/kubernetes/image/daemonset.PNG)
 ReplicaSet은 노드별로 자원상태를 파악하고 그에 따라 유연하게 분배를 하게되지만 DaemonSet은 각 노드의 자원상태에 상관없이 각각의 노드에 한개씩 생성되는 특징이 있다.
@@ -264,7 +264,7 @@ spec:
               hostPort: 18080
 ```
 
-### Job
+### 2) Job
 
 ![job](/devOps/kubernetes/image/job.PNG)
 
@@ -295,7 +295,7 @@ spec:
       terminationGracePeriodSeconds: 0
 ```
 
-### CronJob
+### 3) CronJob
 
 ![cronjob](/devOps/kubernetes/image/cronjob.PNG)
 ![concurrency](/devOps/kubernetes/image/concurrency.PNG)
@@ -338,7 +338,15 @@ suspend가 true가 되면 cronJob은 job을 만들지 않는다.
 
 <br><br>
 
-## 추가
+
+## 4. StatefulSet
+![stateful ](/devOps/kubernetes/image/stateful .PNG)
+
+Apache, nginx와 같은 web server는 stateless application이며 mongodb, mariaDb, redis와 같은 db는 Stateful Application이다. Stateless는 앱이 여러개가 배포되더라도 다 똑같은 역할을 수행하고 Stateful은 Primary/Secondary/Arbiter가 존재하는데 Primary가 main DB로 이것이 죽게되면 Arbiter가 감지해서 Secondary가 primary역할을 수행하도록 한다. 
+
+Stateless는 앱이 하나죽더라도 다른이름의 앱이 하나 재생성되지만 Stateful은 죽은 역할과 같은 역할의 앱이 재생성이 되고 이름또한 하나의 identity로 똑같은 이름이 생성된다. Stateful은 각각의 역할이 다른 만큼 volume도 각각 할당이 되어야 한다.
+
+## 추가)
 
 `kubectl delete replicationcontrollers replication1 --cascade=false` : replicationController를 삭제하더라도 이와 연결된 파드들을 삭제하지 않은 옵션으로 이를 이용해서 replicationContoller를 replicationSet으로 업데이트가 가능하다.
 

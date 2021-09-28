@@ -129,3 +129,93 @@ ServiceAccount에서 cluster자원에 접근하기 위해서는 ClusterRole과 c
 이는 role을 만들어사용하는 것과 동일한데 이렇게 사용하는 이유는 모든 namespace마다 똑같은 role을 부여하고 관리하는 상황에서 role의 내용이 변경이 되는 경우라면 모든 namespace를 하나하나 변경해주어야 하지만 이처럼 사용하면 clusterRole만 변경하면 되기 때문에 사용한다.
 
 ### 2) Role, RoleBinding
+![role-rolebinding](/devOps/kubernetes/image/role-rolebinding.PNG)
+
+Role과 RoleBinding을 통해 ServiceAccount와 연결을 해주게 되면 외부에서 Secret의 token값을 가지고 API Server에 접근할 수 있고, 한 토큰으로 클러스터단위의 자원을 조회하기 위해서는  ClusterRoler과 ClusterRoleBinding을 생성하여 ClusterRoleBinding을 ServiceAccount에 연결해주면 된다.
+
+#### 한 namespace내 자원 접근
+```yml
+#Role
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: r-01
+  namespace: nm-01
+rules:
+- apiGroups: [""]
+  verbs: ["get", "list"]
+  resources: ["pods"]
+
+#RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: rb-01
+  namespace: nm-01
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: r-01
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: nm-01
+
+#Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-1
+spec:
+  selector:
+    app: pod
+  ports:
+  - port: 8080
+    targetPort: 8080
+```
+#### 한 cluster내 여러 namespace 자원 접근
+```yml
+#namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nm-02
+
+#ServiceAccount
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-02
+  namespace: nm-02
+
+#ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cr-02
+rules:
+- apiGroups: ["*"]
+  verbs: ["*"]
+  resources: ["*"]
+
+#ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: rb-02
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cr-02
+subjects:
+- kind: ServiceAccount
+  name: sa-02
+  namespace: nm-02
+```
+
+
+<br><br><br>
+
+### Reference
+
+[인프런-김태민님 강의](https://www.inflearn.com/course/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EC%B4%88/dashboard)
