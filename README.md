@@ -5,7 +5,7 @@
 <br>
 <br>
 
-## 🟦 자료구조
+##  자료구조
 
 - [자료구조에 따른 공간 복잡도 & 시간 복잡도](/dataStructure/complexity.md)
 - [배열과 리스트 ( Array and List )](/dataStructure/array-list.md)
@@ -22,7 +22,7 @@
 
 <br>
 
-## 🟦 네트워크
+##  네트워크
 
 - [ 오류 검출 / 정정 기법 ](/network/errorDetection-correction.md)
 - [ 네트워크와 관련 개념 ](/network/network.md)
@@ -37,7 +37,7 @@
 
     <br>
 
-## 🟦 알고리즘
+##  알고리즘
 
 - [시간 복잡도 & 공간 복잡도](/algorithm/time-space-complexity.md)
 
@@ -59,7 +59,7 @@
 
 <br>
 
-## 🟦 개발 상식
+##  개발 상식
 
 - [빅엔디안과 리틀 엔디안](/common/endian.md)
 - [라이브러리와 프레임워크](/common/library-framework.md)
@@ -78,21 +78,21 @@
 
 <br>
 
-## 🟦 Linux
+##  Linux
 
 - [Linux와 내부구조](/linux/linux.md)
 
 - [Linux 디렉토리 구조와 기능](/linux/directory.md)
 - [Linux 개념들과 명령어](/linux/command.md)
 
-## 🟦 DevOps
+##  DevOps
 
 - [MSA](/devOps/msa.md)
 - [Kubernetes란](/devOps/kubernetes/kubernetes.md)
 
 <br>
 
-## 🟦 DataBase
+##  DataBase
 
 - [Index](/sql/index.md)
 
@@ -117,7 +117,7 @@
 
 <br>
 
-## 🟦 Web
+##  Web
 
 - [구조](/web/structure.md)
 
@@ -131,7 +131,7 @@
 
   <br>
 
-## 🟦 Java
+##  Java
 
 - [JVM과 자바 실행 방법](/java/jvm.md)
 
@@ -142,7 +142,7 @@
 
 <br>
 
-## 🟦 Spring Framework
+##  Spring Framework
 
 - [스프링이란?](/spring/spring.md)
 
@@ -209,7 +209,7 @@
 
 <br>
 
-## 🟦 PHP
+##  PHP
 
 - Laravel
 
@@ -236,14 +236,14 @@
 
 <br>
 
-## 🟦 CDC
+##  CDC
 
 - [kafka](/cdc/kafka.md)
   - [connect와 debezium](/cdc/debezium.md)
 
 <br>
 
-## 🟦 JavaScript
+##  JavaScript
 
 - [Webapck과 Babel](/javaScript/webpack-babel.md)
   - [CommonJs, AMD](/javaScript/moduleProject.md)
@@ -251,13 +251,13 @@
 
 <br>
 
-## 🟦 React
+##  React
 
 - [특징](/react/react-feature.md)
 - [NextJs](/react/nextjs.md)
 
 <br>
 
-## 🟦 VSCode / IntelliJ 단축키
+##  VSCode / IntelliJ 단축키
 
 - [통합 단축키 기록](/keymap.md)
