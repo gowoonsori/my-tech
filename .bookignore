@@ -4,5 +4,8 @@
 .yml
 .bookignore
 .gitignore
+.png
+.PNG
+.img
 keymap.md
 LICENSE
