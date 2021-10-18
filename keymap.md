@@ -6,8 +6,9 @@
 
 - 페이지 내 같은 단어 : ctrl + d
 
-- 한 단어 건너뛰고 다음 단어 : ctrl + q
+- 한 단어 건너뛰고 다음 단어 (Find Next / Move to Next Occurrence) : ctrl + q
 - 단어 선택 취소 : ctrl + u
+
 
 ## 디렉토리 scope에서 파일 생성 | 페이지 scope에서 GENERATER 생성
 
