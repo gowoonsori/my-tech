@@ -1,0 +1,105 @@
+자바의 `다형성`을 극대화하여 개발코드 수정을 줄이고 `유지보수`를 용이하게 하기 위함
+
+>다형성? 동일한 메시지를 수신했을 때 객체의 타입에 따라 다르게 응답할 수 있는 능력
+
+## 추상클래스와 인터페이스
+추상클래스를 가짐으로써 다형성을 극대화하여 어떤 `역할`을 구현하는 방법(객체들이 따라야 하는 책임의 집합을 서술한 것)이라는 공통점이 있다.
+
+하지만 추상 클래스는 `is-a`관계로 `-는 -이다.`의 개념이며 책임의 일부를 구현해놓은 것이고 인터페이스는 `has-a`의 관계로 `-는 -를 할 수 있다`의 개념으로 책임의 집합들을 나열해 놓은 것.
+
+>상속의 가장큰 문제점은 캡슐화를 위반한다는 것과 설계가 유연하지 않다는 것.
+
+>코드의 재사용을 위해서는 상속이 아니라 합성을 사용하는 것이 바람직하고 상속은 타입계층을 구조화하기 위해 사용해야 한다.
+
+>의존성에 의한 영향이 적은 경우에도 추상화에 의존하고 의존성을 명시적으로 드러내는 것이 좋은 설계 습관이다.
+
+## 인터페이스의 장점
+1. 개발 기간 단축 : 팀내에서 서로 다른 부분을 개발할때 인터페이스만 잘 정의해두어도 서로의 개발이 끝나지 않아도 따로 코드를 작성할 수 있다.
+2. 클래스간의 낮은 결합도 : 코드의 종속을 줄이고 유지보수성을 높일 수 있다.
+3. 표준화 가능 : 협업시에도 일정한 틀의 형태로 개발을 할 수 있게 한다.
+
+## 인터페이스 특징
+1. 필드로는 상수만 가능 ( 변수는 불가능 하다. ) : 무조건 `public static final`로 선언 되며 생략 가능
+2. 추상 메서드 존재 : 무조건 public abstract으로 선언되며 생략 가능
+
+## Java 8의 인터페이스 변화
+### 1. Static method 추가
+인스턴스 없이 수행할 수 있는 행동을 정의 한 것으로 해당 인터페이스를 구현한 모든 객체에게 해당 타입과 관련된 유틸,헬퍼 메소드를 제공하고 싶을 때 이용 할 수 있다.
+```java
+public interface ExInterface {
+    static void staticMethod(){
+        return "스태틱 메서드입니다";
+    }
+}
+
+// byte code
+public static method()I
+   L0
+    LINENUMBER 5 L0
+    ICONST_1
+    IRETURN
+    MAXSTACK = 1
+    MAXLOCALS = 0
+}
+```
+접근지정자를 생략하면 기본적으로 public이 붙게되고 java8에서는 static method가 `public`만 가능하지만 java9 이상부터는 `private`도 가능하다. 당연히 private이기 때문에 외부에서는 접근이 불가능하다. 
+
+#### private 메서드의 조건
+1. 구현부가 존재해야 한다.
+2. 해당 인터페이스 내부에서만 사용이 가능하다.
+
+
+### 2. Default method 추가
+추상 메서드가 아니라 구현이 된 메서드를 제공하는 방법으로 코드의 중복을 피하고 기능을 추가하는 방법
+
+#### 특징
+1. 해당 인터페이스를 구현한 구현체도 모르게 기능이 추가가 되기 때문에 많은 위험의 소지가 있다. ( 메서드의 조건들을 모르기 때문에 컴파일타임에는 괜찮더라고 런타임에 에러가 발생할 수 있다. -> 문서화를 철저히 하여 이런 위험발생의 가능성을 최대한 줄이자.)
+
+```java
+public interface Foo {
+    void printName();
+
+    /**
+     * @implSpec 이 구현체는 getName()으로 가져온 문자열을 대문자로 바꿔출력한다.
+     */
+    default void printNameUpperCase(){
+        System.out.println(getName().toUpperCase());
+
+    }
+
+    /**
+     * null 방지 하여 구현
+     */
+    default void printNameUpperCase(){
+        if(getName() == null) System.out.println("");
+        else System.out.println(getName().toUpperCase());
+
+    }
+
+    String getName();       
+}
+```
+이 Foo를 구현한 객체가 getName()이라는 함수의 반환을 `null`로 정의하고 `printNameUpperCase()`를 사용하려한다면 null에서 toUpperCase()를 참조하려고하기 때문에 runtime 에러가 발생할 수 있다. 이러한 문제점때문에 문서화를 꼼꼼히 하거나 에러 처리를 꼼꼼히 하여 정의 해야한다.
+
+
+2. Object 타입이 제공하는 메서드는 기본메서드로 정의가 불가능하다.
+![error](/java/image/default-method-error.png)
+
+3. 인터페이스의 구현체는 이 default 메서드를 ovverride가 가능하다.
+
+4. 같은 이름의 default method를 가진 인터페이스를 여러개 구현할때는 override해주어야 한다.
+![erro2r](/java/image/default-method-error2.png)
+구현하려는 인터페이스가 같은 이름의 default 메서드를 가지고 있다면 위 사진과 같이 에러가 발생하기 때문에 재정의 해주거나 사용하려는 인터페이스를 지정할 수 있다.
+
+```java
+@Override
+    public int method() {
+        return Ex1.super.method();      //Ex1의 default method를 사용
+        //return Ex2.super.method();
+    }
+```
+
+
+#### 사용 목적
+`하위 호환성` 이 가장 큰 목적으로 어떤 인터페이스에 기능을 추가했을때 이를 상속,구현한 클래스들이 깨지지 않게 하기위한 목적으로 default 메서드를 사용할 수 있다. 대표적으로 Collection의 of나 forEach 등이 있다.
+
