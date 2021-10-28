@@ -68,6 +68,12 @@ public class Ex{
 ```
 ForkJoinPool생성자 매개변수로 size를 전달하고 submit()메서드에 람다로 작업할 내용을 정의해주고 get()을 통해 terminate()해주어야 실행이 된다.
 
+3. default Pool size 변경
+```
+-Djava.util.concurrent.ForkJoinPool.common.parallelism=16
+```
+build시에 위 옵션으로 기본 풀 사이즈를 변경이 가능하다.
+    
 <Br>
 
 ### 단점
