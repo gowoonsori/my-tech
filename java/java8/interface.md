@@ -86,22 +86,21 @@ public interface Foo {
      */
     default void printNameUpperCase(){
         System.out.println(getName().toUpperCase());
-
-    }
-
-    /**
-     * null 방지 하여 구현
-     */
-    default void printNameUpperCase(){
-        if(getName() == null) System.out.println("");
-        else System.out.println(getName().toUpperCase());
-
     }
 
     String getName();       
 }
 ```
 이 Foo를 구현한 객체가 getName()이라는 함수의 반환을 `null`로 정의하고 `printNameUpperCase()`를 사용하려한다면 null에서 toUpperCase()를 참조하려고하기 때문에 runtime 에러가 발생할 수 있다. 이러한 문제점때문에 문서화를 꼼꼼히 하거나 에러 처리를 꼼꼼히 하여 정의 해야한다.
+```java
+/**
+* null 방지 하여 구현
+*/
+default void printNameUpperCase(){
+   if(getName() == null) System.out.println("");
+   else System.out.println(getName().toUpperCase());
+}
+```
 
 
 2. Object 타입이 제공하는 메서드는 기본메서드로 정의가 불가능하다.
@@ -111,6 +110,7 @@ public interface Foo {
 
 4. 같은 이름의 default method를 가진 인터페이스를 여러개 구현할때는 override해주어야 한다.
 ![erro2r](/java/image/default-method-error2.png)
+
 구현하려는 인터페이스가 같은 이름의 default 메서드를 가지고 있다면 위 사진과 같이 에러가 발생하기 때문에 재정의 해주거나 사용하려는 인터페이스를 지정할 수 있다.
 
 ```java
