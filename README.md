@@ -11,12 +11,10 @@
 - [배열과 리스트 ( Array and List )](/dataStructure/array-list.md)
 - [스택 과 큐 ( Stack and Queue )](/dataStructure/stack-queue.md)
 - [트리 ( Tree )](/dataStructure/tree.md)
-
   - [AVL Tree](/dataStructure/AvlTree.md)
   - [Red Black Tree](/dataStructure/redBlackTree.md)
   - [Splay Tree](/dataStructure/SplayTree.md)
   - [AA Tree](/dataStructure/aaTree.md)
-
 - [힙 ( Heap )](dataStructure/heap.md)
 - [그래프 ( Graph )](/dataStructure/graph.md)
 
@@ -24,23 +22,20 @@
 
 ##  네트워크
 
-- [ 오류 검출 / 정정 기법 ](/network/errorDetection-correction.md)
 - [ 네트워크와 관련 개념 ](/network/network.md)
+- [ 오류 검출 / 정정 기법 ](/network/errorDetection-correction.md)
 - [ 응용 계층 ](/network/applicationLayer.md)
   - [Http 헤더](/network/httpHeader.md)
   - [HTTP/1, HTTP/2, HTTP/3](/network/http1.1_2.0.md)
 - [ 전송 계층 ](/network/transportLayer.md)
 - [ 네트워크 계층 ](/network/networkLayer.md)
-
-  - [ 데이터 평면 ](/network/forwarding.md)
   - [ 제어 평면](/network/routing.md)
 
-    <br>
+<br>
 
 ##  알고리즘
 
 - [시간 복잡도 & 공간 복잡도](/algorithm/time-space-complexity.md)
-
 - [복잡도 계산](/algorithm/computational-complexity.md)
 - [dp (동적 계획법)](/algorithm/dynamic-programming.md)
 - [정렬 알고리즘](/algorithm/sorting-algorithm.md)
@@ -55,7 +50,6 @@
   - [Floyd-Warshall algorithm](/algorithm/floyd-warshall.md)
 - [위상정렬 (Topological Sort)](/algorithm/topological-sort.md)
 
-- [피셔-예이츨 셔플 알고리즘]
 
 <br>
 
@@ -63,7 +57,6 @@
 
 - [빅엔디안과 리틀 엔디안](/common/endian.md)
 - [라이브러리와 프레임워크](/common/library-framework.md)
-
 - [동기-비동기/block-nonBlock](common/sync-async-block-nonblock.md)
 - [API와 REST API](/common/rest-api.md)
 - [디자인 패턴(GOF 패턴)](/common/design-pattern.md)
@@ -81,21 +74,28 @@
 ##  Linux
 
 - [Linux와 내부구조](/linux/linux.md)
-
 - [Linux 디렉토리 구조와 기능](/linux/directory.md)
 - [Linux 개념들과 명령어](/linux/command.md)
+
+<br>
 
 ##  DevOps
 
 - [MSA](/devOps/msa.md)
-- [Kubernetes란](/devOps/kubernetes/kubernetes.md)
+- [Kubernetes](/devOps/kubernetes/kubernetes.md)
+  - [Pod](/devOps/kubernetes/pod.md)
+  - [AccessingAPI](/devOps/kubernetes/AccessingAPI.md)
+  - [Controller](/devOps/kubernetes/controller.md)
+  - [Dashboard](/devOps/kubernetes/dashboard.md)
+  - [Object](/devOps/kubernetes/object.md)
+  - [Service](/devOps/kubernetes/service.md)
+  - [Volume](/devOps/kubernetes/volume.md)
 
 <br>
 
 ##  DataBase
 
 - [Index](/sql/index.md)
-
 - [SQL이란](/sql/sql.md)
   - Querying data (데이터 get)
     - [SELECT](/sql/select.md)
@@ -120,7 +120,6 @@
 ##  Web
 
 - [구조](/web/structure.md)
-
 - [Web Server와 WAS](/web/WAS.md)
 - [브라우저 동작 과정](/web/browser.md)
 - [사용자 인증(쿠키/세션과 JWT)](/web/authentication.md)
@@ -129,31 +128,35 @@
 - [Https](/web/https.md)
 - [CSR/SSR, SPA/MPA](/web/csr_ssr.md)
 
-  <br>
+<br>
 
 ##  Java
 
 - [JVM과 자바 실행 방법](/java/jvm.md)
-
+- [제어문](/java/controlStatement.md)
 - [데이터타입과 변수,배열](/java/dataType.md)
 - [연산자](/java/operator.md)
 - [Thread](/java/thread.md)
 - [Enum](/java/enum.md)
+- [Annotation](/java/annotation.md)
+- java8
+  - [Interface](/java/java8/interface.md)
+  - [Stream](/java/java8/stream.md)
+  - [Date/Time](/java/java8/date-time.md)
+  - [Optional](/java/java8/optional.md)
+  - [Lambda](/java/java8/lambda.md)
 
 <br>
 
 ##  Spring Framework
 
 - [스프링이란?](/spring/spring.md)
-
   - [Controller](/spring/Controller.md)
   - [Entity와 DTO](/spring/entity.md)
   - [Repository와 DAO](/spring/repository_dao.md)
   - [Spring Bean](/spring/spring-bean.md)
   - [Spring MVC](/spring/springMVC.md)
-
 - 스프링 프로젝트
-
   - [스프링 Boot](/spring/springboot.md)
   - [스프링 REST Docs](/spring/restDocs.md)
   - [스프링 HATEOAS](/spring/hateoas.md)
@@ -175,21 +178,16 @@
       - [MySQL연결하기](/spring/mySQL.md)
       - [Pageable](/spring/pageable.md)
   - [스프링 Security](/spring/security.md)
-
     - [DelegatingProxyChain / FilterChainProxy](/spring/security_chain.md)
     - [SecurityContext](/spring/security_context.md)
     - [Authentication](/spring/security_authentication.md)
     - [인증필터](/spring/security_authenticationFilter.md)
     - [인가](/spring/security_authorizationFilter.md)
     - [OAuth2](/spring/security_oauth.md)
-
   - [스프링 Cloud](/spring/cloud.md)
-
     - [Eureka](/spring/eureka.md)
-
   - Elasticsearch Client API
     - [index](/spring/es_index.md)
-
 - 라이브러리
   - [Lombok](/spring/lombok.md)
   - [Model Mapper](/spring/modelMapper.md)
@@ -199,29 +197,35 @@
 - 프로젝트 라이플 사이클 관리 도구 (빌드 배포 Tool)
   - [Maven](/spring/maven.md)
 - Test
-
   - [JUnit5](./spring/Junit5.md)
     - [JunitParams](./spring/JunitParams.md)
   - [AssertJ](./spring/AssertJ.md)
   - [Mock](/spring/mock.md)
-
 - [@ConfigurationProperties](/spring/configurationProperties.md)
+- [Validation](/spring/validation.md)
 
 <br>
 
 ##  PHP
 
+- [composer](/php/laravel/composer.md)
+- [::](/php/scopeResolutionOperator.md)
+- [Facade](/php/Facade.md)
 - Laravel
-
   - [기본 구조](/php/laravel/architecture.md)
   - [route](/php/laravel/route.md)
   - [view](/php/laravel/view.md)
   - [blade](/php/laravel/blade.md)
   - [model](/php/laravel/model.md)
+  - [Model Factory](/php/laravel/modelFactory.md)
   - [db](/php/laravel/db.md)
   - [eloquent](/php/laravel/eloquent.md)
+  - [Query Builder](/php/laravel/queryBuilder.md)
   - [seeding](/php/laravel/seeding.md)
   - [paging과 로딩](/php/laravel/pagingLoading.md)
+  - [scout](/php/laravel/scout.md)
+  - [Social Provider](/php/laravel/SocialProvider.md)
+  - [TNT Search](/php/laravel/tntsearch.md)
   - [middleware](/php/laravel/middleware.md)
   - [controller](/php/laravel/controller.md)
   - [validate](/php/laravel/validate.md)
@@ -229,10 +233,7 @@
   - [Exception Handling](/php/laravel/exceptionHandling.md)
   - [debug](/php/laravel/debug.md)
   - [Email](/php/laravel/email.md)
-
-- [composer](/php/laravel/composer.md)
-- [::](/php/scopeResolutionOperator.md)
-- [Facade](/php/Facade.md)
+  - [다중연결관계시 엘로퀀트 문제점 해결](/php/dbArchitecture.md)
 
 <br>
 
@@ -252,6 +253,5 @@
 <br>
 
 ##  React
-
 - [특징](/react/react-feature.md)
 - [NextJs](/react/nextjs.md)

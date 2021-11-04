@@ -164,49 +164,10 @@ C/C++과 while문은 동일하고 `while()`괄호안의 조건식이 true이면 
 
 메서드 안에서 사용하며 메서드의 결과를 반환하는 구문
 
-<br><br>
 
-## Junit5
-
-[/spring/Junit5.md]
 
 <br><br>
 
 ## live-study 대시보드 만들기
 https://gist.github.com/gowoonsori/409d7f2b3d79f75bbe566d760502e9db
 
-<br>
-
-## LinkedList
-
-- 정수 저장하는 ListNode 클래스만들기
-- add
-- remove
-- contains
-
-https://gist.github.com/gowoonsori/e27cfc11b677f7936b6f55aac1500420
-
-<br>
-
-## Stack 구현
-
-### int 배열 사용 정수 저장
-
-- push
-- pop
-  https://gist.github.com/gowoonsori/bb28b83d36ab4ef3b07ce22c172e29fc
-
-### ListNode사용해서 Stack구현
-
-- push
-- pop
-  https://gist.github.com/gowoonsori/f897564560148ce4cb11ccacee28f6dc
-
-<br><br>
-
-## Queue구현
-
-### 배열 사용
-- 미구현
-### ListNode사용
-- 미구현
