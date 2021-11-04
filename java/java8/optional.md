@@ -37,9 +37,50 @@ return optionalCar.orElseGet(() -> null);
 orElseGet()은 `Supplier`를 인자로 받으며, 값이 없을때에 해당 supplier가 수행된다. 하지만 orElse()는 Optional로 감싸고 있는 객체타입을 인자로 받으며 값이 있더라도 내부가 수행되고 사용되지 않는 경우 해당 객체를 지우게 되어 필요없는 오버헤드가 발생한다.
 
 ```java
-optionalCar.orElse(new Car());
+Optional<String> optStr = Optional.of("Hi");
+optStr.orElse(new String("hi1"));
+optStr.orElseGet(() -> new String("hi1"));
+
+//bytecode
+ L1
+    LINENUMBER 9 L1
+    ALOAD 1
+    NEW java/lang/String
+    DUP
+    LDC "hi"
+    INVOKESPECIAL java/lang/String.<init> (Ljava/lang/String;)V
+    INVOKEVIRTUAL java/util/Optional.orElse (Ljava/lang/Object;)Ljava/lang/Object;
+    POP
+L2
+    LINENUMBER 11 L2
+    ALOAD 1
+    INVOKEDYNAMIC get()Ljava/util/function/Supplier; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/LambdaMetafactory.metafactory(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      ()Ljava/lang/Object;, 
+      // handle kind 0x6 : INVOKESTATIC
+      study/OptionalEx.lambda$main$0()Ljava/lang/String;, 
+      ()Ljava/lang/String;
+    ]
+    INVOKEVIRTUAL java/util/Optional.orElseGet (Ljava/util/function/Supplier;)Ljava/lang/Object;
+    POP
+
+    ...
+private static synthetic lambda$main$0()Ljava/lang/String;
+ L0
+    LINENUMBER 11 L0
+    NEW java/lang/String
+    DUP
+    LDC "hi"
+    INVOKESPECIAL java/lang/String.<init> (Ljava/lang/String;)V
+    ARETURN
+    MAXSTACK = 3
+    MAXLOCALS = 0
+}
+
 ```
-예를 들어 위와 같은 코드를 작성했을때 optionalCar의 내부에 값이 들어있어도 일단 new 를 통해 객체를 생성하고 Else구문이 실행되지 않기 때문에 버리는 작업이 발생한다는 것이다. 그래서 orElseGet()을 사용하는 것이 더 좋다. 하지만 이미 생성되어있는 객체를 반환하는 것이라면 orElse()를 사용하는 것도 무방하다.
+예를 들어 위와 같은 코드를 작성했을때 optStr은 null이 아니라 new String("hi1")가 실행되지 않을 것 같지만 바이트코드를 보면 새로 문자열을 생성했다가 POP하는 것을 볼 수 있고, orElseGet()은 우리가 lambda에서 봤던것처럼 static 메서드로 생성하여 호출되는 타이밍에 이를 실행해 객체를 생성하는 것을 볼수있어 orElse는 필요없는 오버헤드에 주의해야한다. 하지만 반드시 이미 생성되어있는 객체를 반환하는 것이라면 orElse()를 사용하는 것이 좋을 수도 있다.
 
 ```java
 //before
