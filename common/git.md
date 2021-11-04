@@ -17,9 +17,8 @@ Git은 [홈페이지](https://git-scm.com/)에 따르면 소규모 프로젝트�
   - 사용자명 구성 : git config (--global) user.name "name"
   - 이메일 설정 : git config (--global) user.email "email"
   - 설정 정보 조회 : git config (--global) --list
-
-- 저장소 초기화 : git init
-- 저장소 복제 : git clone <저장소 url>
+  - 터미널에 표시되는 메시지에 칼라를 표시해줌 : git config --global color.ui “auto”
+  - alias 등록 : git config --global alias.`별칭` '!적용할 명령어'
 - remote
 
   - 원격 저장소 추가 : git remote add <remote 별칭> <저장소 url>
@@ -37,18 +36,25 @@ Git은 [홈페이지](https://git-scm.com/)에 따르면 소규모 프로젝트�
   - 모든 변경된 파일에 대해 commit 메시지 추가 : git commit -am "메시지"
   - 마지막 커밋 고치기 : git commit -m "메시지" --amend
 - push : 로컬 저장소에 commit된 파일을 원격저장소에 반영하기
-  git push <remote 별칭> <branch>
+  git push <remote 별칭> <`branch`> 
 - pull : 원격저장소에서 로컬 저장소로 가져오기
-  git pull <remote 별칭> <branch>
+  git pull <remote 별칭> <`branch`>
 
   pull은 fetch와 merge가 합쳐진 명령어
 
 - fetch : 원격 저장소에서 합치지 않고 로컬저장소로 가져오기
   git fetch <remote 별칭>
 - merge : 다른 branch를 현재 checkout된 브랜치에 merge하는 명령
-  git merge <branch>
+  git merge <`branch`>
 
   - merge시 충돌일어났을 때 merge전으로 되돌리기 : git merge --abort
+
+- stash : 하던 작업을 임시로 저장 해두는 명령어
+  - git statsh list : stash 목록 확인
+  - git stash apply [stash이름] --index : 작업을 다시 가져오기
+  - git stash drop [stash이름] : 스택에서 stash 제거 
+  - git stash pop : apply + drop 형태
+  - git stash show -p | git apply -R : stash 적용한 것을 복구
 
 ## 브랜치
 
