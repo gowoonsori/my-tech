@@ -33,7 +33,7 @@ Js를 모듈화 하기 위해 탄생했으며, 그 시작으로는 아래와 같
 
 <br>
 
-[CommonJs와 AMD](/javaScript/moduleProject.md)
+[CommonJs와 AMD](/javascript/moduleProject.md)
 
 ### webpack 핵심 4가지 개념
 
