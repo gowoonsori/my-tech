@@ -1,3 +1,3 @@
 # JavaScript
-- [Webapck과 Babel](/javaScript/webpack-babel.md)
-- [CommonJs, AMD](/javaScript/moduleProject.md)
+- [Webapck과 Babel](/javascript/webpack-babel.md)
+- [CommonJs, AMD](/javascript/moduleProject.md)
