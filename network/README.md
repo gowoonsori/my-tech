@@ -1,4 +1,3 @@
-
 ## 네트워크
 
 - [ 오류 검출 / 정정 기법 ](/network/errorDetection-correction.md)

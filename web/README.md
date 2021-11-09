@@ -1,4 +1,4 @@
-## Web
+## Web 상식
 
 - [구조](/web/structure.md)
 
