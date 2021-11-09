@@ -1,17 +1,17 @@
-/algorithm/bellman-ford/
-/algorithm/dijkstra-algorithm/
-/algorithm/floyd-warshall/
-/algorithm/kruskal-algorithm/
-/algorithm/prim-algorithm/
-/algorithm/Sorting_Algorithm/
-/algorithm/topological-sort/
-/algorithm/lis/
+/알고리즘/bellman-ford/
+/알고리즘/dijkstra-algorithm/
+/알고리즘/floyd-warshall/
+/알고리즘/kruskal-algorithm/
+/알고리즘/prim-algorithm/
+/알고리즘/Sorting_Algorithm/
+/알고리즘/topological-sort/
+/알고리즘/lis/
 
-/dataStructure/Array_List/
-/dataStructure/Graph/
-/dataStructure/Heap/
-/dataStructure/Stack_Queue/
-/dataStructure/Tree/
+/자료구조/Array_List/
+/자료구조/Graph/
+/자료구조/Heap/
+/자료구조/Stack_Queue/
+/자료구조/Tree/
 
 keymap.md
 LICENSE

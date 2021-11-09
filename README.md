@@ -7,16 +7,16 @@
 
 ##  자료구조
 
-- [자료구조에 따른 공간 복잡도 & 시간 복잡도](/dataStructure/complexity.md)
-- [배열과 리스트 ( Array and List )](/dataStructure/array-list.md)
-- [스택 과 큐 ( Stack and Queue )](/dataStructure/stack-queue.md)
-- [트리 ( Tree )](/dataStructure/tree.md)
-  - [AVL Tree](/dataStructure/AvlTree.md)
-  - [Red Black Tree](/dataStructure/redBlackTree.md)
-  - [Splay Tree](/dataStructure/SplayTree.md)
-  - [AA Tree](/dataStructure/aaTree.md)
-- [힙 ( Heap )](dataStructure/heap.md)
-- [그래프 ( Graph )](/dataStructure/graph.md)
+- [자료구조에 따른 공간 복잡도 & 시간 복잡도](/자료구조/complexity.md)
+- [배열과 리스트 ( Array and List )](/자료구조/array-list.md)
+- [스택 과 큐 ( Stack and Queue )](/자료구조/stack-queue.md)
+- [트리 ( Tree )](/자료구조/tree.md)
+  - [AVL Tree](/자료구조/AvlTree.md)
+  - [Red Black Tree](/자료구조/redBlackTree.md)
+  - [Splay Tree](/자료구조/SplayTree.md)
+  - [AA Tree](/자료구조/aaTree.md)
+- [힙 ( Heap )](자료구조/heap.md)
+- [그래프 ( Graph )](/자료구조/graph.md)
 
 <br>
 
@@ -35,20 +35,20 @@
 
 ##  알고리즘
 
-- [시간 복잡도 & 공간 복잡도](/algorithm/time-space-complexity.md)
-- [복잡도 계산](/algorithm/computational-complexity.md)
-- [dp (동적 계획법)](/algorithm/dynamic-programming.md)
-- [정렬 알고리즘](/algorithm/sorting-algorithm.md)
-- [최장 증가 수열 (LIS) ](/algorithm/longest-increasing-subsequence.md)
-- [Disjoint Set과 union-find](/algorithm/DisjointSet-unionFind.md)
+- [시간 복잡도 & 공간 복잡도](/알고리즘/time-space-complexity.md)
+- [복잡도 계산](/알고리즘/computational-complexity.md)
+- [dp (동적 계획법)](/알고리즘/dynamic-programming.md)
+- [정렬 알고리즘](/알고리즘/sorting-algorithm.md)
+- [최장 증가 수열 (LIS) ](/알고리즘/longest-increasing-subsequence.md)
+- [Disjoint Set과 union-find](/알고리즘/DisjointSet-unionFind.md)
 - MST
-  - [Kruskal's algorithm](/algorithm/kruskal-algorithm.md)
-  - [Prim's algorithm](/algorithm/prim-algorithm.md)
+  - [Kruskal's algorithm](/알고리즘/kruskal-algorithm.md)
+  - [Prim's algorithm](/알고리즘/prim-algorithm.md)
 - 최단 경로 ( Shortest Path )
-  - [Dijkstra's algorithm](/algorithm/dijkstra.md)
-  - [Bellman-Pord algorithm](/algorithm/bellman-ford.md)
-  - [Floyd-Warshall algorithm](/algorithm/floyd-warshall.md)
-- [위상정렬 (Topological Sort)](/algorithm/topological-sort.md)
+  - [Dijkstra's algorithm](/알고리즘/dijkstra.md)
+  - [Bellman-Pord algorithm](/알고리즘/bellman-ford.md)
+  - [Floyd-Warshall algorithm](/알고리즘/floyd-warshall.md)
+- [위상정렬 (Topological Sort)](/알고리즘/topological-sort.md)
 
 
 <br>
@@ -248,7 +248,6 @@
 
 - [Webapck과 Babel](/javaScript/webpack-babel.md)
   - [CommonJs, AMD](/javaScript/moduleProject.md)
-- [JS문법과 코어개념 공부](/javaScript/modern-js-tutorial.md)
 
 <br>
 

@@ -8,19 +8,20 @@
 
 ## ✔ 종류
 
-- [선택 정렬 ( Selection Sort )](#Selection-Sort)
-- [버블 정렬 ( Bubble Sort )](#Bubble-Sort)
-- [삽입 정렬 ( Insertion Sort )](#Insertion-Sort)
-- [셸 정렬 ( Shell Sort )](#Shell-Sort)
-- 트리 정렬 ( Tree Sort)
-- [퀵 정렬 ( Quick Sort )](#Quick-Sort)
-- [힙 정렬 ( Heap Sort )](#Heap-Sort)
-- [합병 정렬 ( Merge Sort )](#Merge-Sort)
-- 큐브 정렬 ( Cube Sort )
-- 팀 정렬 ( Tim Sort )
-- 버킷 정렬 ( Bucket Sort )
-- [기수 정렬 ( Radix Sort )](#Radix-Sort)
-- [계수(카운트) 정렬 ( Counting Sort )](#Count-Sort)
+- [정렬](#정렬)
+  - [✔ 종류](#-종류)
+  - [✔ 시간 복잡도 ( Big-O )](#-시간-복잡도--big-o-)
+  - [✔ 공간 복잡도 ( Big-O )](#-공간-복잡도--big-o-)
+  - [정렬의 특성](#정렬의-특성)
+    - [Selection Sort](#selection-sort)
+    - [Insertion Sort](#insertion-sort)
+    - [Bubble Sort](#bubble-sort)
+    - [Merge Sort](#merge-sort)
+    - [Quick Sort](#quick-sort)
+    - [Shell Sort](#shell-sort)
+    - [Heap Sort](#heap-sort)
+    - [Radix Sort](#radix-sort)
+    - [Counting Sort](#counting-sort)
 
 <br><br>
 
@@ -131,7 +132,7 @@
     }
 ```
 
-[Code 보기 (c++)](/algorithm/Sorting_Algorithm/SelectionSort.cpp)
+[Code 보기 (c++)](/알고리즘/Sorting_Algorithm/SelectionSort.cpp)
 
 <br>
 
@@ -154,7 +155,7 @@
     }
 ```
 
-[Code 보기 (c++)](/algorithm/Sorting_Algorithm/InsertionSort.cpp)
+[Code 보기 (c++)](/알고리즘/Sorting_Algorithm/InsertionSort.cpp)
 
 <br>
 
@@ -173,7 +174,7 @@
                 if(array[j]>array[j+1]) swap(&array[j],&array[j+1]);
 ```
 
-[Code 보기 (c++)](/algorithm/Sorting_Algorithm/BubbleSort.cpp)
+[Code 보기 (c++)](/알고리즘/Sorting_Algorithm/BubbleSort.cpp)
 
 <br>
 
@@ -208,7 +209,7 @@
     }
 ```
 
-[Code 보기 (c++)](/algorithm/Sorting_Algorithm/MergeSort.cpp)
+[Code 보기 (c++)](/알고리즘/Sorting_Algorithm/MergeSort.cpp)
 
 <br>
 
@@ -245,7 +246,7 @@ void QuickSort(int array[],int pivot, int arrlen){
 }
 ```
 
-[Code 보기 (c++)](/algorithm/Sorting_Algorithm/QuickSort.cpp)
+[Code 보기 (c++)](/알고리즘/Sorting_Algorithm/QuickSort.cpp)
 
 <br>
 
@@ -278,7 +279,7 @@ void QuickSort(int array[],int pivot, int arrlen){
     }
 ```
 
-[Code 보기 (c++)](/algorithm/Sorting_Algorithm/ShellSort.cpp)
+[Code 보기 (c++)](/알고리즘/Sorting_Algorithm/ShellSort.cpp)
 
 <br>
 
@@ -321,7 +322,7 @@ void bottom_up_HeapSort(int *array, int arrlen){
 
 ```
 
-[Code 보기 (c++)](/algorithm/Sorting_Algorithm/HeapSort.cpp)
+[Code 보기 (c++)](/알고리즘/Sorting_Algorithm/HeapSort.cpp)
 
 <br>
 
@@ -369,7 +370,7 @@ void RadixSort(int *array,int arrlen){
 }
 ```
 
-[Code 보기 (c++)](/algorithm/Sorting_Algorithm/RadixSort.cpp)
+[Code 보기 (c++)](/알고리즘/Sorting_Algorithm/RadixSort.cpp)
 
 <br>
 
@@ -410,4 +411,4 @@ void RadixSort(int *array,int arrlen){
     }
 ```
 
-[Code 보기 (c++)](/algorithm/Sorting_Algorithm/CountSort.cpp)
+[Code 보기 (c++)](/알고리즘/Sorting_Algorithm/CountSort.cpp)
