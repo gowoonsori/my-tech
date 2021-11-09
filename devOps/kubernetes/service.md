@@ -15,8 +15,8 @@ kubectl exec request-pod -it /bin/bash
 
 ## 2. Type
 
-![type2](/devOps/kubernetes/image/type.PNG)
-![type1](/devOps/kubernetes/image/serviceType.PNG)
+![type2](/devops/kubernetes/image/type.PNG)
+![type1](/devops/kubernetes/image/serviceType.PNG)
 
 ### 1) ClusterIp
 
@@ -108,17 +108,17 @@ spec:
 
 
 ## 3. Objects
-![objects](/devOps/kubernetes/image/service-object.PNG)
+![objects](/devops/kubernetes/image/service-object.PNG)
 위의 type이 k8s의 service에 연결하여 node에 접속하기 위함이었는데 이는 service가 만들어지고 난 후에 그 ip를 이용해서 접근하는 방법이었지만 service의 pod가 동시에 여러개 배포되고 한 pod에서 다른 pod를 연결하고자 할때 pod의 ip는 동적할당이며 재생성시 변경이되기 때문에 접근이 힘들 수 있는데 이럴때 제공하는 object를 이용해 해결할 수 있다.
 ### 1) Headless
 
 cluster 내에 dns가 존재하여 pod에서 service를 연결할때 service이름으로 연결이 가능했었는데 pod와 pod간의 연결도 headless옵션을 이용하면 dns에 `pod이름.service이름`의 이름으로 필드가 생성되어 ip가 관리되기 때문에 pod간에 연결이 가능하다.
 
-![headless-clusterip](/devOps/kubernetes/image/headless-clusterip.PNG)
+![headless-clusterip](/devops/kubernetes/image/headless-clusterip.PNG)
 service를 clusterIP방식으로 생성을 하게 되면 DNS가 위에 사진과 같이 생성이 되는데 보면 `service이름.namespace이름.종류(service/pod...).dns이름`의 규칙으로 domain이름이 생성되는데 이를 `FQDN(Fully Qualified Domain Name)`이라고 한다.
 그리고 한 namespace에서 service는 이름만으로 접근이 가능하지만 pod는 전체 이름으로 조회를 해야하고 pod의 domain name이 동적으로 생성된 ip주소가 붙어 지정이 되기 때문에 pod이름으로 domain을 질의가 불가능해 pod에는 접근이 불가능하다.
 
-![headless](/devOps/kubernetes/image/headless.PNG)
+![headless](/devops/kubernetes/image/headless.PNG)
 service의 clusterIP를 `None`으로 하여 clusterIp를 만들지 않고 pod의 `hostname`에 domain을, `subdomain`에 service이름을 넣어 생성해주면 headless로 생성이 된다. 그렇게 되면 특정 이름으로 dns에 domain들이 생성이 되고 이 이름을 가지고 접근을 할 수 있다.
 
 ```yml
@@ -152,10 +152,10 @@ spec:
 ```
 
 ### 2) Endpoint
-![label-endpoint](/devOps/kubernetes/image/label-endpoint.PNG)
+![label-endpoint](/devops/kubernetes/image/label-endpoint.PNG)
 우리가 service에서 pod를 연결할때 `label`을 이용하여 연결하였는데 이는 내부적으로 endpoint를 이용하여 연결된 방식이다. k8s는 서비스의 이름으로 endpoint를 생성하고 내부에 pod에 접속정보를 입력하여 service-pod 연결을 관리한다.
 
-![endpoint](/devOps/kubernetes/image/endpoint.PNG)
+![endpoint](/devops/kubernetes/image/endpoint.PNG)
 이를 이용하여 직접 endpoint를 설정해서 특정 pod나 외부 주소에 접근을 할 수 있다.
 
 
@@ -198,7 +198,7 @@ subsets:
 ### 3) ExternalName
 외부 ip주소를 알고 있어 endpoint를 이용하여 접근을 하더라도 이 외부 ip는 변경가능성이 있기 때문에 domain이름을 지정하는 방법이 필요한데 이때 사용할 수 있는 방법이다.
 
-![externalName](/devOps/kubernetes/image/externalName.PNG)
+![externalName](/devops/kubernetes/image/externalName.PNG)
 service를 생성할때 ExternalName속성에 domain이름을 지정해주면 dns cache가 내부/외부 DNS에서 주소를 찾아 연결해주기 때문에 ip주소가 바뀌어도 접속이 가능하다.
 
 ```yml

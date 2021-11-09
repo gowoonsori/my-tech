@@ -88,7 +88,7 @@ kubectl exec pod1 -c con1 -it /bin/bash
 
 ## 내부 설정
 
-![pod](/devOps/kubernetes/image/pod.PNG)
+![pod](/devops/kubernetes/image/pod.PNG)
 
 ### 1. 컨테이너
 
@@ -190,7 +190,7 @@ request는 해당 메모리를 요구한다는 의미이고 limits는 최대 사
 
 ## Node Schedule 방법
 
-![nodeSchedule](/devOps/kubernetes/image/nodeSchedule.png)
+![nodeSchedule](/devops/kubernetes/image/nodeSchedule.png)
 
 ```sh
 kubectl label nodes k8s-node1 kr=az-1   #노드 라벨 추가
@@ -236,7 +236,7 @@ spec:
 
 #### NodeAffinity
 
-![nodeAffinity](/devOps/kubernetes/image/nodeAffinity.png)
+![nodeAffinity](/devops/kubernetes/image/nodeAffinity.png)
 
 파드에 key만을 가지고도 매칭되는 노드와 연결이 되며 매칭되는 노드가 존재하지 않더라도 스케줄러가 판단해서 자원이 많은 노드에 할당이되도록 옵션을 줄 수 있다.
 
@@ -289,7 +289,7 @@ matchExpressions를 이용하여 스케줄러가 노드와 파드를 연결해�
 
 #### Pod Affinity
 
-![podAffinity](/devOps/kubernetes/image/podAffinity.png)
+![podAffinity](/devops/kubernetes/image/podAffinity.png)
 
 여러 파드들을 한 노드에 집중하여 할당
 
@@ -334,7 +334,7 @@ spec:
 
 #### Anti-Affinity
 
-![podAntiAffinity](/devOps/kubernetes/image/podAntiAffinity.png)
+![podAntiAffinity](/devops/kubernetes/image/podAntiAffinity.png)
 
 여러 파드들을 집중되는 일 없이 분산되어 할당
 
@@ -382,7 +382,7 @@ spec:
 
 #### Toleration / Taint
 
-![taint](/devOps/kubernetes/image/taint.png)
+![taint](/devops/kubernetes/image/taint.png)
 
 특정 노드에 아무 파드나 할당되지 않도록 제한을 하기 위해 사용
 
@@ -464,7 +464,7 @@ spec:
 
 ## 파드 구조
 
-![pod-architechture](/devOps/kubernetes/image/pod-architechture.PNG)
+![pod-architechture](/devops/kubernetes/image/pod-architechture.PNG)
 
 ```yml
 Status:
@@ -534,9 +534,9 @@ containerStatuses:
 
 ## LifeCycle
 
-![pod-lifecycle](/devOps/kubernetes/image/pod-lifecycle.PNG)
+![pod-lifecycle](/devops/kubernetes/image/pod-lifecycle.PNG)
 
-![pod-lifecycle2](/devOps/kubernetes/image/pod-lifecycle2.PNG)
+![pod-lifecycle2](/devops/kubernetes/image/pod-lifecycle2.PNG)
 
 ### 1. Pending
 
@@ -600,7 +600,7 @@ kubectl describe endpoints svc-readiness  #Service의 endpoint상태 확인(pod�
 
 ### 1. ReadinessProbe
 
-![readinessProbe](/devOps/kubernetes/image/readinessProbe.PNG)
+![readinessProbe](/devops/kubernetes/image/readinessProbe.PNG)
 
 한 서비스가 2개의 Pod가 서로 다른 노드위에서 실행되고 있을때 한개의 노드가 문제가발생해서 한 파드가 죽었다면 auto healing 기능에 의해 새로운 파드가 생성이 되게 되는데 이때 파드와 컨테이너의 상태가 running이 되면 트래픽을 나누어 요청을 처리하게 된다. 그런데 컨테이너는 Running이지만 App이 아직 부팅중이라면 50%의 사용자는 에러를 응답받게 될 것이다.
 
@@ -640,7 +640,7 @@ spec:
 
 ### 2. LivenessProbe
 
-![livenessProbe](/devOps/kubernetes/image/livenessProbe.PNG)
+![livenessProbe](/devops/kubernetes/image/livenessProbe.PNG)
 
 Pod와 Container는 Running상태인데 Memory Overflow와 같은 문제로 App만 죽은 경우에는 Auto Healing기능이 수행되지 않아 지속적인 실패를 발생시키게 되는데 App장애를 감지하고 Pod를 재실행시켜 트래픽의 지속적인 실패를 없애는 기능
 
@@ -671,7 +671,7 @@ spec:
 
 ## QoS classes
 
-![qos](/devOps/kubernetes/image/qos.PNG)
+![qos](/devops/kubernetes/image/qos.PNG)
 
 Quality of Service의 약자로 k8s에서는 앱의 중요도에 따라서 자원을 관리할 수 있도록 지원해주는 기능으로 한 파드에서 추가 자원이 필요할경우 해당 파드가 에러를 발생하는 것이 아닌 다른 파드의 자원을 다운시키고 필요한 파드에게 자원을 할당해줌으로써 관리를 해주는 기능이다.
 
@@ -685,7 +685,7 @@ QoS classes는 별도의 설정으로 할당을 하는 것이 아니라 spec의 
 
 request내의 mem/cpu 값이 limit의 mem/cpu값보다 낮은 경우나, request만 설정된 경우, 파드내 한 컨테이너는 설정이 되었어도 다른 컨테이너가 설정이 안된 경우가 해당된다.
 
-![oom](/devOps/kubernetes/image/oom.PNG)
+![oom](/devops/kubernetes/image/oom.PNG)
 
 등급이 같을경우 `OOM Score`에 따라서 해당 점수가 높은 파드가 먼저 다운된다.
 

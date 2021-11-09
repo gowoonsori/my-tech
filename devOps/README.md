@@ -1,2 +1,2 @@
 #  DevOps
-- [MSA](/devOps/msa.md)
+- [MSA](/devops/msa.md)

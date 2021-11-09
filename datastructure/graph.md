@@ -210,7 +210,7 @@ Minimum Spanning Tree
 
 edge 정렬이 속도를 결정짓기 때문에 egde 수가 적은 희소 그래프 유리
 
-[Kruskal algorithm 설명 보기](/알고리즘/kruskal-algorithm.md)
+[Kruskal algorithm 설명 보기](/algorithm/kruskal-algorithm.md)
 
 <br>
 
@@ -230,7 +230,7 @@ edge 정렬이 속도를 결정짓기 때문에 egde 수가 적은 희소 그래
     3. MST가 n-1개 간선을 가질때 까지 반복
 ```
 
-[Prim algorithm 설명 보기](/알고리즘/prim-algorithm.md)
+[Prim algorithm 설명 보기](/algorithm/prim-algorithm.md)
 
 <br><br>
 

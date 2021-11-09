@@ -1,5 +1,5 @@
 ## v1.10.1
-![dashboard-v1](/devOps/kubernetes/image/dashboard-v1.PNG)
+![dashboard-v1](/devops/kubernetes/image/dashboard-v1.PNG)
 
 기존의 dashboard를 설치하면 dashboard pod가 생성되어 해당 serviceAccount와 cluster를 설치하면 기본적으로 생성되는 ClusterRole인 cluster-admin과 연결되어 api server에 접근 할 수 있었고 이를 proxy서버로 열어 외부에서 ip와 port번호만 알면 누구나 접속이 가능했다.
 
@@ -12,7 +12,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/a
 ```
 
 ## v2.0.0
-![dashboard-v2](/devOps/kubernetes/image/dashboard-v2.PNG)
+![dashboard-v2](/devops/kubernetes/image/dashboard-v2.PNG)
 
 proxy가 아닌 바로 api server에 접근하기 위해 kubeconfig파일을 만들고 인증서를 만들어 해당 token을 이용하여 접근하도록 하여 보안을 강화한 방법.
 

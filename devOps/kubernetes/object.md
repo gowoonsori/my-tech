@@ -1,4 +1,4 @@
-![use case](/devOps/kubernetes/image/useCase.PNG)
+![use case](/devops/kubernetes/image/useCase.PNG)
 
 ## ConfigMap / secret
 
@@ -8,7 +8,7 @@ secret은 데이터가 메모리에 저장되기 때문에 보안에 유리하�
 
 이때 환경변수를 여러 형태로 넣어 사용할 수 있다.
 
-![env](/devOps/kubernetes/image/env.PNG)
+![env](/devops/kubernetes/image/env.PNG)
 
 ### Env(Literal)
 
@@ -111,13 +111,13 @@ spec:
 
 <br><br>
 
-![object2](/devOps/kubernetes/image/object2.PNG)
+![object2](/devops/kubernetes/image/object2.PNG)
 
 ## NameSpace / Resource Quota/ LimitRange
 
 한 클러스터 내에서는 여러 네임스페이스들을 만들 수 있고 네임스페이스 내에서는 여러 파드들을 만들어 사용할 수 있다. 이때 한 네임스페이스의 파드가 서버의 모든 자원을 사용하게 되면 다른 파드들에서 문제가 발생할 수 있기 때문에 네임스페이스들마다 최대 자원량을 제한하는 Resource Quota를 둘 수 있고 한 네임스페이스내에서 한개의 파드가 모든 Resource Quota만큼을 사용하고있다면 다른 파드들이 들어올 수 없기 때문에 한파드당 생성될 수 있는 자원량을 제한할 수 있는 LimitRange가 존재한다.
 
-![namespace](/devOps/kubernetes/image/namespace.PNG)
+![namespace](/devops/kubernetes/image/namespace.PNG)
 
 ### NameSpace
 

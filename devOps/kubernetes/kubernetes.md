@@ -43,7 +43,7 @@ VM은 하나의 VM이 보안이 뚫려도 다른 OS와는 독립적인 공간이
 
 ## Kubernetes 객체 내부
 
-![k8s Object](/devOps/kubernetes/image/k8sObject.PNG)
+![k8s Object](/devops/kubernetes/image/k8sObject.PNG)
 서버 한대는 `Master`(쿠버네티스의 전반적인 역할)로 사용하고 `node`들은 자원을 제공하는 역할로, 이들이 묶어 `Cluster`라는 개념으로 사용하고 Cluster안에 각각의 Namespace가 존재하여 쿠버네티스 Object들을 독립된 공간으로 분리되게 만들어 준다.
 
 한 `Pod`가 배포의 단위이고 이 Pod들을 외부와 연결하기 위해 ip와 포트등 관리하기위한 `Service`가 존재하고 Pod가 문제가 생겨 재생성이 될때 데이터가 날라가는 문제를 해결하기 위해 `volume`을 생성해 저장장치에 저장하여 데이터를 관리

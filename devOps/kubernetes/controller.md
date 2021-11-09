@@ -1,4 +1,4 @@
-![controller](/devOps/kubernetes/image/controller.PNG)
+![controller](/devops/kubernetes/image/controller.PNG)
 
 ## 기능
 
@@ -18,7 +18,7 @@
 
 ## 1. Replication Controller / ReplicaSet
 
-![controller-attribute](/devOps/kubernetes/image/controller-attribute.PNG)
+![controller-attribute](/devops/kubernetes/image/controller-attribute.PNG)
 
 Replication Controller는 Deprecated되었고 그 후에 나온 것이 ReplicaSet이다.
 
@@ -96,7 +96,7 @@ spec:
 
 #### 다른 Operator들
 
-![matchExpressions](/devOps/kubernetes/image/matchExpressions.PNG)
+![matchExpressions](/devops/kubernetes/image/matchExpressions.PNG)
 
 1. Exists : 특정 key가 일치하는 파드를 선택
 1. DoesNotExist : 특정 key가 일치하지 않은 파드를 선택
@@ -107,13 +107,13 @@ spec:
 
 ## 2. Deployment
 
-![deployment](/devOps/kubernetes/image/deployment.PNG)
+![deployment](/devops/kubernetes/image/deployment.PNG)
 
 현재 한 서비스가 운영중일때 이 서비스를 업데이트해야되서 재배포를 해야할때 도움이 되는 컨트롤러
 
 ### 1) ReCreate
 
-![recreate](/devOps/kubernetes/image/recreate.PNG)
+![recreate](/devops/kubernetes/image/recreate.PNG)
 
 Deployment가 기존의 pod를 삭제하고 자원사용량이 없어지게 되고 새로 pod를 생성하는 방식으로 중간 downtime이 존재한다는 단점이 있다.
 
@@ -153,7 +153,7 @@ kubectl rollout history deployment deployment-1 #deployment-1이라는 이름의
 
 ### 2) Rolling update
 
-![rolling-update](/devOps/kubernetes/image/rolling-update.PNG)
+![rolling-update](/devops/kubernetes/image/rolling-update.PNG)
 
 Deployment가 새로운 버전의 pod를 한개 만들어 준 후 요청을 새로운 pod도 더해서 같이 처리하게 해준 후 한개의 기존버전 pod를 삭제하는 방식으로 파드들을 차례로 업데이트 하는 방식인데 이는 downtime이 존재하지 않지만 추가 자원을 필요로 한다는 특징이 있다.
 
@@ -217,7 +217,7 @@ spec:
 
 ### 4) Canary
 
-![canary](/devOps/kubernetes/image/canary.PNG)
+![canary](/devops/kubernetes/image/canary.PNG)
 
 새로운 버전의 파드를 가지고있는 컨트롤러를 새로 생성해서 기존버전의 파드들과 같이 서비스에 연결시켜 새로운 버전에 대해 테스팅을 하는 식으로 배포하는 방식으로 새로운 버전이 문제가 있다면 컨트롤러의 replicas를 0으로 바꿔줌으로써 연결을 끊을 수 있다.
 
@@ -229,11 +229,11 @@ spec:
 
 ## 3. DeamonSet / Job / CronJob
 
-![controller2](/devOps/kubernetes/image/controller2.PNG)
+![controller2](/devops/kubernetes/image/controller2.PNG)
 
 ### 1) DeamonSet
 
-![daemonset](/devOps/kubernetes/image/daemonset.PNG)
+![daemonset](/devops/kubernetes/image/daemonset.PNG)
 ReplicaSet은 노드별로 자원상태를 파악하고 그에 따라 유연하게 분배를 하게되지만 DaemonSet은 각 노드의 자원상태에 상관없이 각각의 노드에 한개씩 생성되는 특징이 있다.
 
 이러한 특징을 사용하는 서비스에는 `성능 수집(모니터링)`, `로그 수집`, 노드들을 `storage`로써 네트워크 파일시스템으로 활용될 수 있고, 네트워크 프록시로써 사용될 수도 있다.
@@ -266,7 +266,7 @@ spec:
 
 ### 2) Job
 
-![job](/devOps/kubernetes/image/job.PNG)
+![job](/devops/kubernetes/image/job.PNG)
 
 일반 Pod생성을 통해 생성한 Pod는 노드에 문제가 생겼을때 같이 삭제되는 문제가 존재하고 controller을 통해 만들어진 파드는 노드가 문제가 발생해도 새로운 노드에 새로 생성이되며, 파드가 일을 하지 않으면 파드를 restart시켜주기 때문에 무슨일이 있어도 서비스가 수행되어야 하는 목적으로 사용된다.
 
@@ -297,8 +297,8 @@ spec:
 
 ### 3) CronJob
 
-![cronjob](/devOps/kubernetes/image/cronjob.PNG)
-![concurrency](/devOps/kubernetes/image/concurrency.PNG)
+![cronjob](/devops/kubernetes/image/cronjob.PNG)
+![concurrency](/devops/kubernetes/image/concurrency.PNG)
 
 Job들을 시간에 따라서 생성하는 목적으로 사용되며 일종의 스케줄링같은 개념
 
@@ -340,7 +340,7 @@ suspend가 true가 되면 cronJob은 job을 만들지 않는다.
 
 
 ## 4. StatefulSet
-![stateful ](/devOps/kubernetes/image/stateful .PNG)
+![stateful ](/devops/kubernetes/image/stateful .PNG)
 
 Apache, nginx와 같은 web server는 stateless application이며 mongodb, mariaDb, redis와 같은 db는 Stateful Application이다. Stateless는 앱이 여러개가 배포되더라도 다 똑같은 역할을 수행하고 Stateful은 Primary/Secondary/Arbiter가 존재하는데 Primary가 main DB로 이것이 죽게되면 Arbiter가 감지해서 Secondary가 primary역할을 수행하도록 한다. 
 

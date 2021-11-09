@@ -1,4 +1,4 @@
-![volume2](/devOps/kubernetes/image/volume2.png)
+![volume2](/devops/kubernetes/image/volume2.png)
 
 데이터를 안정적으로 관리하기 위해 사용되어 cluster와 분리되어 존재
 
@@ -20,7 +20,7 @@ kubectl get storageclasses.storage.k8s.io
 
 ## volume mount
 
-![volume](/devOps/kubernetes/image/Volume.png)
+![volume](/devops/kubernetes/image/Volume.png)
 
 ### 1) emptyDir
 
@@ -181,12 +181,12 @@ spec:
 ```
 
 ## Dynamic Provisioning
-![dynamicProvisioning](/devOps/kubernetes/image/dynamicProvisioning.png)
+![dynamicProvisioning](/devops/kubernetes/image/dynamicProvisioning.png)
 사용자가 pvc를 만들면 알아서 pv를 만들어주고 volume을 연결해주는 기능이며 모든 pv에는 각각의 `상태`가 존재하고 pv를 삭제할때 `정책`의 요소도 존재한다.
 
 
 ### 1) Dynamic Provisioning
-![dp](/devOps/kubernetes/image/dp.png)
+![dp](/devops/kubernetes/image/dp.png)
 
 위에서 local PV를 이용해 PVC를 만들때 ClassName을 `""`로 주었는데 이처럼 ""는 local, 특정 solution/cloud를 이용한 PV를 사용할때는 해당 storageClass를 주어지면 해당 volume이 동적으로 만들어지며 default Storage를 생성해두었다면 className을 아무것도 주어지지 않으면 defalut class를 이용해 생성이된다.
 
@@ -262,7 +262,7 @@ spec:
       storage: 2G
 ```
 ### 2) Status / ReclaimPolicy
-![status-reclaimPolicy](/devOps/kubernetes/image/status-reclaim.png)
+![status-reclaimPolicy](/devops/kubernetes/image/status-reclaim.png)
 
 #### Status
 1. available : 처음 pv가 생성되어있을때의 상태
