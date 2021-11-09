@@ -1,7 +1,5 @@
-## Web 상식
-
+# Web 상식
 - [구조](/web/structure.md)
-
 - [Web Server와 WAS](/web/WAS.md)
 - [브라우저 동작 과정](/web/browser.md)
 - [사용자 인증(쿠키/세션과 JWT)](/web/authentication.md)

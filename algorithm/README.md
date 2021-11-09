@@ -1,4 +1,4 @@
-##  알고리즘
+#  알고리즘
 
 - [시간 복잡도 & 공간 복잡도](/algorithm/time-space-complexity.md)
 

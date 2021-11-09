@@ -1,7 +1,5 @@
-## DataBase
-
+# DataBase
 - [Index](/sql/index.md)
-
 - [SQL이란](/sql/sql.md)
   - Querying data (데이터 get)
     - [SELECT](/sql/select.md)

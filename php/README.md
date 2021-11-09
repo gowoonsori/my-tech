@@ -1,7 +1,5 @@
-## PHP
-
+# PHP
 - Laravel
-
   - [기본 구조](/php/laravel/architecture.md)
   - [route](/php/laravel/route.md)
   - [view](/php/laravel/view.md)
@@ -18,7 +16,6 @@
   - [Exception Handling](/php/laravel/exceptionHandling.md)
   - [debug](/php/laravel/debug.md)
   - [Email](/php/laravel/email.md)
-
 - [composer](/php/laravel/composer.md)
 - [::](/php/scopeResolutionOperator.md)
 - [Facade](/php/Facade.md)

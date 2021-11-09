@@ -1,5 +1,4 @@
-## 코어 자바스크립트
-
+# 코어 자바스크립트
 - [자료형](/javaScript/jsStudy/type.md)
   - [형변환](/javaScript/jsStudy/type-conversions.md)
 - 연산자
