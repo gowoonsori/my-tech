@@ -28,7 +28,7 @@
 
 <br>
 
-[c언어를 이용한 코드 예](/dataStructure/Array_List/LinkedList.c)
+[c언어를 이용한 코드 예](https://gist.github.com/gowoonsori/7139903deb6bfd22b339656b9bf7f90e)
 
 <br>
 
@@ -42,4 +42,4 @@
 
 <br>
 
-[c언어를 이용한 코드 예](/dataStructure/Array_List/doubleLinkedList.c)
+[c언어를 이용한 코드 예](https://gist.github.com/gowoonsori/7139903deb6bfd22b339656b9bf7f90e)

@@ -83,7 +83,7 @@ key값은 중복되지 않으며, 부모의 키가 왼쪽 자식보다는 크며
 
 탐색 연산은 O(logn)을 갖으며 (엄밀히 말하면 O(h), h는 높이 ), 한쪽으로 치우쳐진 `편향 트리(Skewed Tree)`가 되면 **worst case**로 `O(n)`을 갖는다.
 
-[코드 보기 (c++)](/dataStructure/Tree/BinarySearchTree.cpp)
+[코드 보기 (c++)](https://gist.github.com/gowoonsori/cb2e95f1e2ede219694ad082cef34cd1)
 
 <br>
 
@@ -99,7 +99,7 @@ key값은 중복되지 않으며, 부모의 키가 왼쪽 자식보다는 크며
 
 ## Balanced Tree
 
-- [AVL Tree](./AvlTree.md)
-- [Red Black Tree](./redBlackTree.md)
-- [AA Tree](./aaTree.md)
-- [Splay Tree](./SplayTree.md)
+- [AVL Tree](/dataStructrue/AvlTree.md)
+- [Red Black Tree](/dataStructrue/redBlackTree.md)
+- [Splay Tree](/dataStructrue/SplayTree.md)
+- [AA Tree](/dataStructrue/aaTree.md)

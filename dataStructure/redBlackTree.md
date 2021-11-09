@@ -174,7 +174,7 @@ x가 root이거나 double black이 깨질때까지 반복해준 후, x를 black�
 Red Black Tree는 BST의 일종이기 때문에 탐색의 밥법은 일반적인 Bianry Tree의 탐색 방법과 다르지 않다.
 ```
 
-[코드 보기(c++)](/dataStructure/Tree/RedBlackTree.cpp)
+[코드 보기(c++)](https://gist.github.com/gowoonsori/81cbae744163b40597476fc346d476a5)
 
 <br>
 

@@ -117,7 +117,7 @@ Tree는 사이클이 허용되지 않는 그래프이다.
 노드의 수가 n, 간선의 수가 e 인 그래프의 DFS 탐색 시간은 인접 리스트 O(n+e) / 인접 행렬 O(n^2)
 --> 희소 그래프인 경우 dfs에서는 인접 리스트 사용이 시간적으로 더 유리하다.
 
-[c++을 이용한 코드 예](/dataStructure/Graph/Deep_First_Search.cpp)
+[c++을 이용한 코드 예](https://gist.github.com/gowoonsori/72b30fd3199567684f23eec94ffe4d1f)
 
 <br><br>
 
@@ -145,7 +145,7 @@ Tree는 사이클이 허용되지 않는 그래프이다.
 노드의 수 n, 간선의 수 e인 그래프 BFS탐색 시간은 인접 리스트 O(n+e) / 인접 행열 O(n^2)
 --> 희소그래프의 경우 인접 리스트를 사용하는 것이 유리하다.
 
-[c++을 이용한 코드 예](/dataStructure/Graph/Breadth_First_Search.cpp)
+[c++을 이용한 코드 예](https://gist.github.com/gowoonsori/72b30fd3199567684f23eec94ffe4d1f)
 
 <br><br>
 

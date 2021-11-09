@@ -10,14 +10,14 @@ Tree의 형태로, Tree 중에서도 최대,최솟값을 찾아내는 연산을 
 ### ✔ 최대 히프(Max Heap)
 부모 노드의 key값이 자식 노드의 key값보다 크거나 같은 완전 이진 트리
 
-[c++을 이용한 코드 예](/dataStructure/Heap/MaxHeap.cpp)
+[c++을 이용한 코드 예](https://gist.github.com/gowoonsori/a5cfb084aa5482d795ab375dcefb9b95)
 
 <br>
 
 ### ✔ 최소 히프(Min Heap)
 부모 노드의 key값이 자식 노드의 key값보다 작거나 같은 완전 이진 트리
 
-[c++을 이용한 코드 예](/dataStructure/Heap/MinHeap.cpp)
+[c++을 이용한 코드 예](https://gist.github.com/gowoonsori/a5cfb084aa5482d795ab375dcefb9b95)
 
 <br>
 

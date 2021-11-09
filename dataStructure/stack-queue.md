@@ -23,7 +23,7 @@ Last In First Out으로 최근에 추가한 항목이 가장 먼저 제거되는
 
 <br>
 
-[연결 list를 이용한 코드 예(C 언어)](/dataStructure/Stack_Queue/Stack_useList.c)
+[연결 list를 이용한 코드 예(C 언어)](https://gist.github.com/gowoonsori/c7bcf5b285b2f1fc4b8e9b05367efbbf)
 
 <br><br>
 
@@ -52,7 +52,7 @@ First In First Out으로 가장 먼저 추가한 데이터가 먼저 제거되�
 
 <br>
 
-[연결 list를 이용한 코드 예(C 언어)](/dataStructure/Stack_Queue/Queue.c)
+[연결 list를 이용한 코드 예(C 언어)](https://gist.github.com/gowoonsori/c7bcf5b285b2f1fc4b8e9b05367efbbf)
 
 <br>
 

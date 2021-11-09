@@ -96,7 +96,7 @@ AVL Tree도 BST의 일종이기 때문에 탐색의 밥법은 일반적인 Bianr
 
   <br>
 
-[코드 보기(c++)](/dataStructure/Tree/AvlTree.cpp)
+[코드 보기(c++)](https://gist.github.com/gowoonsori/3ea3a2d0fb8b9f3f7c6ac4d8876d8a85)
 
 <br>
 

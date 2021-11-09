@@ -67,28 +67,95 @@ public static void main(String[] args) {
 
 ### 스레드 주요 기능
 - 현재 스레드 멈춰두기 (sleep) : 다른 스레드가 처리하도록 기회를 주지만 락을 걸진 않아 데드락이 걸릴 수 있다.
+  
+  ```java
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(1000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("thread hello");
+        });
+        thread.start();
+        System.out.println("main hello");
+    }
+
+    //print
+    main
+    thread hello
+    ```
+
 - 다른 스레드 깨우기 (interrupted) : 다른 스레드를 깨워서 InterruptedException을 발생 시킨다. 예외가 발생했을 때 할 일을 코딩하기 나름이다.
+
+    ```java
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(1000L);
+            } catch (InterruptedException e) {
+                System.out.println("thread die");
+                return;
+            }
+            System.out.println("thread hello");
+        });
+        thread.start();
+        System.out.println("main");
+        thread.interrupt();
+    }
+
+    // print
+    main
+    thread die
+    ```
+    
+    만일 catch구문에 return 문이 존재하지 않는다면 그대로 catch블럭을 빠져나가 `thread hello`를 출력할 것이다.
+
 - 다른 스레드 기다리기 (join) : 다른 스레드가 끝날때까지 기다린다.
+
+    ```java
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(3000L);
+            } catch (InterruptedException e) {
+                System.out.println("thread die");
+                return;
+            }
+            System.out.println("thread hello");
+        });
+        thread.start();
+        System.out.println("main");
+        thread.join();
+    }
+
+    //print
+    main
+    //3초후
+    thread hello
+    ```
 
 <br>
 
 ### 스레드의 현재 문제
-
-- 스레드가 많아 지면 많아 질 수록 코딩으로 관리하기가 매우 힘들다 ( Interrupt, join에 대한 예외처리할 코드가 기하급수적으로 많아진다.)
+스레드가 많아 지면 많아 질 수록 코딩으로 관리하기가 매우 힘들다. ( Interrupt, join에 대한 예외처리할 코드가 기하급수적으로 많아진다.)
 
 <br><br>
 
 ## Executors
 ![threadpool](/java/image/threadpool.png)
 
-고수준의 Concurrency 프로그래밍
+고수준의 Concurrency 프로그래밍을 지원하는 라이브러리로 위와 같은 스레드 풀 라이브러리 들을 이용하여 구현되어있다.
 
-- 스레드를 만들고 관리하는 작업을 애플리케이션에서 분리하여 Executors에 위임
+스레드를 만들고 관리하는 작업을 애플리케이션에서 분리하여 Executors에 위임한 형태이다.
 
 ### 하는 일
 
 - 스레드 만들기 : 스레드 풀을 만들어 관리
   - ExecutorService executorService = new ThreadPoolExecutorr(core,max,idleTime,TimeUnit.SECONDS,new SynchronousQueue<Runnable>()) : 직접 스레드개수와 유휴시간, 작업큐등을 설정하여 생성 할 수 있다.
+
+  >코어 스레드? 스레드가 생성되고 유휴상태에서도 제거되지 않고 유지되는 최대 개수
 
   - ExecutorService executorService = Executors.newSingleThreadExecutor() : 한개의 스레드를 갖는 스레드풀 생성
   
@@ -112,7 +179,6 @@ public static void main(String[] args) {
     }
     ```
 
-    >코어 스레드? 스레드가 생성되고 유휴상태에서도 제거되지 않고 유지되는 최대 개수
 
   - ExecutorService executorService = Executors.newFixedThreadPool(int nThreads) : 초기 스레드 수는 0, 코어 스레드 수는 nThreads, 최대 스레드 수도 nThreads를 갖는 스레드풀 생성. 스레드가 작업을 처리하지 않고 놀고있더라도 스레드 개수가 줄어들지 않는다.
 

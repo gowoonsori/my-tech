@@ -67,7 +67,7 @@ BST 규칙에 맞게 삽입 후 삽입한 노드를 x(기준)으로 `Splay`를 �
 
 일반 BST와 같이 현재 노드key가 찾고자하는 key보다 작으면 왼쪽, 크면 오른쪽으로 내려가면서 찾고, 찾은 노드에 대해 `Splay`를 수행한다.
 
-[코드 보기(c++)](/dataStructure/Tree/SplayTree.cpp)
+[코드 보기(c++)](https://gist.github.com/gowoonsori/0d6269a9ba200da0f913c9381b48bc42)
 
 <br>
 
