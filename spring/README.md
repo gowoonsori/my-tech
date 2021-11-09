@@ -46,8 +46,8 @@
 - 프로젝트 라이플 사이클 관리 도구 (빌드 배포 Tool)
   - [Maven](/spring/maven.md)
 - Test
-  - [JUnit5](./spring/Junit5.md)
-    - [JunitParams](./spring/JunitParams.md)
-  - [AssertJ](./spring/AssertJ.md)
+  - [JUnit5](/spring/Junit5.md)
+    - [JunitParams](/spring/JunitParams.md)
+  - [AssertJ](/spring/AssertJ.md)
   - [Mock](/spring/mock.md)
 - [@ConfigurationProperties](/spring/configurationProperties.md)

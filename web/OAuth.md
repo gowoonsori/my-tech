@@ -59,7 +59,7 @@
 
   과정
 
-  ![code](./image/code.png)
+  ![code](/web/image/code.png)
 
   1. 클라이언트가 파라미터로 `클라이언트 id`, `리다이렉트 url`, `응답 타입으로 code, scope, state`지정하여 권한 서버에 전달 (이때 응답타입은 code,token이 가능)
   1. 리다이렉트 사이트에 사용자의 로그인
@@ -72,7 +72,7 @@
 
   과정
 
-  ![code](./image/implict.png)
+  ![code](/web/image/implict.png)
 
   1. 클라이언트가 파라미터로 `클라이언트 id`, `리다이렉트 url`, `응답 타입으로 token, scope, state`지정하여 서버에 전달 (이때 응답타입은 code,token이 가능)
   1. 사용자의 로그인

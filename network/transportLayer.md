@@ -46,14 +46,14 @@ _라우터(패킷 스위치)에서는 실행되지 않는다._
 
 ### ✔ 세그먼트 구조
 
-![udp segment](./image/udp.PNG)
+![udp segment](/network/image/udp.PNG)
 
 - source port : 출발지 포트
 - dest port : 목적지 포트
 - length : 세그먼트 길이
 - 체크섬 : 오류검출 코드
 
-  [자세한 설명 보기](./errorDetection-correction.md)
+  [자세한 설명 보기](/network/errorDetection-correction.md)
 
 - payload : 실제 데이터
 
@@ -76,7 +76,7 @@ _라우터(패킷 스위치)에서는 실행되지 않는다._
 
 ### ✔ 세그먼트 구조
 
-![tcp segment](./image/tcp.PNG)
+![tcp segment](/network/image/tcp.PNG)
 
 - source port : 출발지 포트
 - dest port : 목적지 포트

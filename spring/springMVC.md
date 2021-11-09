@@ -17,7 +17,7 @@
 
 ## Spring MVC 전체적인 동작 순서
 
-![동작 사이클](./image/run-cycle2.png)
+![동작 사이클](/spring/image/run-cycle2.png)
 
 1. 요청이 들어오면 DispatcherServlet이 web.xml에 등록된 내용만 요청을 가로챈다.
 

@@ -65,7 +65,7 @@ java java.me.example.hello_world
 
 # JVM 구성요소
 
-![jvm](./image/jvm.PNG)
+![jvm](/java/image/jvm.PNG)
 [사진 출처](https://asfirstalways.tistory.com/158)
 
 - Class Loader : 바이트 코드(.class 파일)를 JVM내로 로딩하고 링크를 통해 배치하는 작업을 수행
@@ -90,7 +90,7 @@ java java.me.example.hello_world
 
 JVM내의 메모리
 
-![memory](./image/memory.PNG)
+![memory](/java/image/memory.PNG)
 [사진 출처](https://asfirstalways.tistory.com/158)
 
 - PC Register : 스레드가 어떤 부분을 어떤 명령으로 실행할지를 기록하는 부분으로 현재 실행중인 메서드가 네이티브가 아니면 JVM명령어 위치에 저장되고 네이티브이면 저장되는 값은 정의 되지 않고 CPU의 Register와 다르게 연산을 위해 필요한 피연산자를 임시로 저장하기 위한 용도로 사용한다.

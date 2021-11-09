@@ -6,7 +6,7 @@
 
 사이클의 여부를 확인할때 `union-find` 알고리즘을 이용하여 찾게 된다.
 
-<br>[union find 알고리즘 설명 보기](./DisjointSet-unionFind.md)
+<br>[union find 알고리즘 설명 보기](/algorithm/DisjointSet-unionFind.md)
 
 <br>
 

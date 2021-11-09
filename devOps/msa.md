@@ -1,6 +1,6 @@
 # IT System Histroy
 
-![history](./image/history.PNG)
+![history](/devops/image/history.PNG)
 
 - Fragile, Cowboys
 - Robust, Distributed
@@ -56,7 +56,7 @@
 
 - Container 가상화
 
-  ![visualize](./image/visualize.PNG)
+  ![visualize](/devops/image/visualize.PNG)
 
   Native환경에서 Cloud환경으로 서버를 이전해서 구축하게된 핵심적인 기술
 
@@ -92,7 +92,7 @@
 
 ## MSA
 
-![monolithVsMsa](./image/monolithVsMsa.PNG)
+![monolithVsMsa](/devops/image/monolithVsMsa.PNG)
 
 ### Monolith
 

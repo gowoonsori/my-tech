@@ -51,7 +51,7 @@ FROM
 LEFT JOIN committees c USING(name);
 ```
 
-![leftjoin](./image/leftjoin.PNG)
+![leftjoin](/sql/image/leftjoin.PNG)
 
 ```sql
 SELECT
@@ -66,7 +66,7 @@ WHERE c.committee_id IS NULL;
 ```
 
 where에 `is null`을 추가하여 왼쪽테이블에서 교집합을 뺀 값을 select할 수 있다.
-![leftjoin_isNull](./image/leftjoin_isNull.PNG)
+![leftjoin_isNull](/sql/image/leftjoin_isNull.PNG)
 
 <br>
 
@@ -85,7 +85,7 @@ FROM
 RIGHT JOIN committees c on c.name = m.name;
 ```
 
-![rightjoin](./image/rightjoin.PNG)
+![rightjoin](/sql/image/rightjoin.PNG)
 
 ```sql
 SELECT
@@ -100,7 +100,7 @@ WHERE c.committee_id IS NULL;
 ```
 
 where에 `is null`을 추가하여 오른쪽테이블에서 교집합을 뺀 값을 select할 수 있다.
-![rightjoin_isNull](./image/rightjoin_isNull.PNG)
+![rightjoin_isNull](/sql/image/rightjoin_isNull.PNG)
 
 <br>
 

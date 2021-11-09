@@ -3,7 +3,7 @@
   - [형변환](/javascript/core/type-conversions.md)
 - 연산자
   - [비교 연산자](/javascript/core/comparison.md)
-  - [옵셔널 체이닝 '?.'](./optionalChaining.md)
+  - [옵셔널 체이닝 '?.'](/javascript/core/optionalChaining.md)
 - [함수](/javascript/core/function.md)
   - [함수의 자료형](/javascript/core/typeofFunction.md)
   - [this](/javascript/core/this.md)

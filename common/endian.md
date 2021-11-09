@@ -6,7 +6,7 @@
 
 MSB(Most Significant Byte) 부터 메모리 앞의 주소에 저장하는 방식
 
-![bigEndian](./image/bigEndian.PNG)
+![bigEndian](/common/image/bigEndian.PNG)
 
 예를 들어 `0x12FF34`라는 데이터가 있을 때 데이터가 메모리에 앞에서부터 12 / FF / 34 순서대로 저장되는 방식이다.
 
@@ -28,7 +28,7 @@ MSB(Most Significant Byte) 부터 메모리 앞의 주소에 저장하는 방식
 
 LSB(Least Significant Byte) 부터 메모리 앞의 주소에 저장하는 방식
 
-![littleEndian](./image/littleEndian.PNG)
+![littleEndian](/common/image/littleEndian.PNG)
 
 똑같이 `0x12FF34`라는 데이터가 있을 때 이번에는 반대로 뒤의 숫자부터 메모리의 앞에 저장되는 방식이고 주로 `인텔, AMD`의 아키텍쳐가 리틀 엔디안으로 동작한다.
 

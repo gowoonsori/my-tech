@@ -71,7 +71,7 @@
 
 ## 모듈
 
-![modules](./image/modules.png)
+![modules](/spring/image/modules.png)
 
 - Core Container : 스프링 프레임워크의 기본 모듈
   - Beans : 스프링 Ioc컨테이너에 의해 관리되며 애플리케이션의 핵심을 이루는 객체들. 의존성 주입 재공
@@ -98,7 +98,7 @@
 
 ## 모듈간 의존성
 
-![모듈간 의존성](./image/module_dependency.png)
+![모듈간 의존성](/spring/image/module_dependency.png)
 
 <br>
 <br>

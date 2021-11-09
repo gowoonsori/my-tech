@@ -278,4 +278,4 @@ alert(user); // {name: "John", age: 30}
 
 그런데 위 방법은 객체의 프로퍼티가 추가될때마다 `toString()`을 수정해줘야하니 번거러운 작업이기 때문에 `json 메서드를 이용`
 
-[json 메서드 보러가기](./json.md)
+[json 메서드 보러가기](/javascript/core/json.md)

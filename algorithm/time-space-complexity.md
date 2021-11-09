@@ -4,7 +4,7 @@
 
 이를 표기하는 방법에는 여러가지가 있는 데 대체로 빅오(O)와 세타( Θ)표기법이 쓰이며, 빅오가 가장 많이 쓰인다.
 
-[표기법에 대한 설명 보기](./Computational-Complexity.md)
+[표기법에 대한 설명 보기](/algorithm/Computational-Complexity.md)
 
 <br>
 
