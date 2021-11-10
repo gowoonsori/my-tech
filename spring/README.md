@@ -1,10 +1,12 @@
 # Spring
+
 - [스프링이란?](/spring/spring.md)
   - [Controller](/spring/Controller.md)
   - [Entity와 DTO](/spring/entity.md)
   - [Repository와 DAO](/spring/repository_dao.md)
   - [Spring Bean](/spring/spring-bean.md)
   - [Spring MVC](/spring/springMVC.md)
+  - [스프링 내부 구조](/spring/architecture.md)
 - 스프링 프로젝트
   - [스프링 Boot](/spring/springboot.md)
   - [스프링 REST Docs](/spring/restDocs.md)
