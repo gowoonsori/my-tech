@@ -28,7 +28,7 @@ SpringMVC에서는 DispatcherServlet이라는 FrontController 역할을 수행�
 
 ### 4. Spring Container
 
-DispatcherServlet 내부에 Servlet WebApplicationContext와 Root WebApplicationContext가 존재한다. Root WebApplicationContext는 Service, datasource,repositories 들을 포함하고 있는 Context이고 Servlet WebApplicationContext는 RootWebApplicationContext를 상속받아 구현된 Context로 주로 Controller,Intercepter,ViewResolver,HandlerMapping과 같은 빈들이 존재한다.
+DispatcherServlet 는 Servlet WebApplicationContext와 Root WebApplicationContext가 존재한다. Root WebApplicationContext는 Service, datasource,repositories 들을 포함하고 있는 Context이고 Servlet WebApplicationContext는 RootWebApplicationContext를 상속받아 구현된 Context로 주로 Controller,Intercepter,ViewResolver,HandlerMapping과 같은 빈들이 존재한다.
 
 Servlet을 구현할때 위처럼 상속관계로 나누어 Servlet WebApplicationContext를 구현한 이유는 서블릿 컨테이너 내부에 여러개의 서블릿이 올 수도 있는데 Service,datasource들은 공통적으로 사용될 수 있기 때문이다.
 
