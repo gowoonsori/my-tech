@@ -267,6 +267,9 @@
 
             Settings를 `LDC`하는 것을 볼 수 있는데 이는 `런타임 상수풀에 값을 push(LDC)`하는 작업이다. 후에 모니터객체와 값을 비교하기위해 클래스를 상수값으로 푸시하는 것을 볼 수 있다.
 
+            이때 instance를 volatile keyword를 사용하지 않을 경우, double-checked locking에서 문제가 발생한다. 
+            <br>두 개의 thread T1, T2가 있다고 가정해보자. T1이 instance를 생성한 후에 synchronized block를 벗어나고 T2가 synchronized block에 들어가서 null 체크를 하는 시점에서 working memory와 main memory 사이의 동기화가 이뤄져있지 않을 수 있다. 즉, T1이 생성한 instance가 main memory에 존재하지 않거나 main memory에는 있지만 T2의 working memory에는 없을 경우 T2 또한 instance를 생성하게 된다.
+
             ```java
             public static Settings getInstance() {
                 if (instance == null) {
@@ -283,6 +286,7 @@
             ```
             동기화 블럭을 사용시 괄호 안의 객체를 전달받고 있으며 이객체를 통해 동기화를 진행한다. 이를 `모니터 객체`라고 부른다.  그래서 여러 스레드에서 이 모니터 객체에 접근하고 이를 통해 동기화를 수행하기 때문에 컴파일타임에 새로 변수에 할당하는 것을 볼 수 있고 바이트 코드를 봐도 DUP을 통해 스택의 최상위에 있는 값(여기서는 Settings.class)를 복제하여 ASTORE하는 것을 볼 수 있다.
 
+        
 
 
         - static inner 클래스 : static inner 클래스를 활용하면 위의 double check locking처럼 getInstance가 호출되는 타이밍에 inner cl
@@ -301,7 +305,40 @@
                     return SettingsHolder.INSTANCE;
                 }
             }
+
+            //bytecode
+            public class study/Settings {
+
+                // compiled from: Settings4.java
+                NESTMEMBER study/Settings$SettingsHolder
+                // access flags 0xA
+                private static INNERCLASS study/Settings$SettingsHolder study/Settings SettingsHolder
+
+                // access flags 0x2
+                private <init>()V
+                L0
+                    LINENUMBER 8 L0
+                    ALOAD 0
+                    INVOKESPECIAL java/lang/Object.<init> ()V
+                    RETURN
+                L1
+                    LOCALVARIABLE this Lstudy/Settings; L0 L1 0
+                    MAXSTACK = 1
+                    MAXLOCALS = 1
+
+                // access flags 0x9
+                public static getInstance()Lstudy/Settings;
+                L0
+                    LINENUMBER 15 L0
+                    GETSTATIC study/Settings$SettingsHolder.INSTANCE : Lstudy/Settings;
+                    ARETURN
+                    MAXSTACK = 1
+                    MAXLOCALS = 0
+            }
             ```
+
+            이를 `Initialization-on-demand holder idiom`라고 하마며 요청시 초기화하여 lazy-load를 하는 패턴. JVM이 Settings 클래스를 load하여 초기화할때 중첩(내부) 클래스는 최초 실행 시점에 load한다는 점을 이용한 것.
+
 
 #### +) 자바의 동기화
 1. 암묵적인 동기화 : synchronized keyword
