@@ -22,13 +22,13 @@
 
 <br><br>
 
-# Blocking 과 Non-Blocking
+## Blocking 과 Non-Blocking
 
 통지(?)를 기준으로 구분
 
 <br>
 
-## Blocking
+### Blocking
 
 코드를 수행하는 데 어떠한 함수의 결과 처리까지 다른 작업 수행을 하지 않고 기다린 후에 수행하는 방식 (기본적으로 절차적으로 수행되기때문이다.)
 
@@ -36,7 +36,7 @@
 
 <br>
 
-## Non-Blocking
+### Non-Blocking
 
 코드를 수행하는 데 어떠한 함수의 결과 처리까지 기다리지 않고 다른 작업 수행을 하고있다가 결과를 조회해 return받는 방식
 
