@@ -8,21 +8,21 @@ jsp나 템플릿을 통해 결과물을 특정 경로로 연결 시켜주거나 
 
 <br><br>
 
-# 어노테이션
+## 어노테이션
 
-## @Controller
+### @Controller
 
 해당 클래스를 controller로 인식하게 해주는 어노테이션
 
 <br>
 
-## @RequestMapping
+### @RequestMapping
 
 클라이언트로부터 요청(request)이 들어왔을때 어떤 요청(uri)인지 구분하여 처리하기 위한 어노테이션
 
 주로 클래스 레벨에서 사용
 
-### 속성
+#### 속성
 
 - name : Request를 구분하기 위한 기본 값으로 어떻게 보면 value와 같아 보일 수 있으나, name은 큰틀로 선언하고 value로 세부 경로를 지정
 
@@ -98,7 +98,7 @@ jsp나 템플릿을 통해 결과물을 특정 경로로 연결 시켜주거나 
 
 <br>
 
-## GetMapping, PostMapping, DeleteMapping, PutMapping ..
+### GetMapping, PostMapping, DeleteMapping, PutMapping ..
 
 @RequestMapping에 특정 method 고정적으로 선언되어 있는 어노테이션이다.
 
@@ -120,7 +120,7 @@ public class EventController {
 
 <br>
 
-## @ResponseBody, @RequestBody
+### @ResponseBody, @RequestBody
 
 비동기를 처리 하는 경우 사용 (View를 통해 출력이 되지않고 http body에 데이터를 직접 써서 보내는 것)
 
@@ -134,7 +134,7 @@ HTTP BODY에 직접반환.<br> 템플릿엔진이 아닌 바로 데이터를 전
 
 HttpMessageConverter가 존재하여 특정 형태(json,xml..)로 들어온 요청 값을 자바 객체로 변환하고 응답을 특정 형태로 보내기 위해 사용된다.
 
-### HttpMessageConverter
+#### HttpMessageConverter
 
 Spring에서 사용하기 위해 기본적으로 @EnableWebMvc를 사용해서 WebMvcConfigurer을 구현해야 한다.
 
@@ -156,16 +156,16 @@ Spring에서 사용하기 위해 기본적으로 @EnableWebMvc를 사용해서 W
 
 <br>
 
-## @RestContoller
+### @RestContoller
 
 @ResponseBody를 모든 메소드에 적용한 것과 동일한 효과
 
 <br>
 <br>
 
-# 클래스
+## 클래스
 
-## ResponseEntity
+### ResponseEntity
 
 Spring framwork는 `HttpEntity`라는 클래스를 제공하는데 이는 response/request의 HttpHeader와 HttpBody를 포함하는 클래스이다.
 
@@ -173,7 +173,7 @@ HttpEntity를 상속받아 Response에 해당하는 부분을 담당하는 클�
 
 status, header, body 부분을 수정/삽입하여 응답헤더를 보낼 수 있게 해준다.
 
-### 메서드
+#### 메서드
 
 - build() : build 내 parameter로 아무것도 입력을 안할 시 null인 body의 res 반환한다.
 

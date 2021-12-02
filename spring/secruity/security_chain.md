@@ -1,3 +1,4 @@
+# Filter Chain
 요청을 Servlet으로 보내기전에 중간에 위치한 Servlet Filter는 `서블릿 스펙`에 정의된 기술로 서블릿 컨테이너에서 실행되고 생성되기 때문에 `스프링`에서 만든 Bean이나 기술을 사용할 수 가 없다.
 
 하지만, Spring Security는 Filter 기반으로 Servlet으로 요청전에 Filter에서 보안처리를 진행하기 때문에 스프링 기술을 사용할 수 있게끔 해야하는 요구사항이 생겼다.

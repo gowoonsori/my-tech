@@ -16,7 +16,7 @@
 
 그러면 쿼리문의 `page`,`size(default =20)`,`sort(필드며,정렬 기준(ASC/DESC)`속성으로 pagination할 수 있다.
 
-# PagedResourcesAssembler
+## PagedResourcesAssembler
 
 pagination을 수행 한 json데이터에 link를 삽입해주기위해 resource로 변환 해주는 클래스
 

@@ -1,3 +1,4 @@
+# Elasticsearch Index API
 [Index API](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/_index_apis.html)
 
 인덱스를 `생성`, `삭제`, `존재여부`, `status`(open/close) 여부, `shrink`(샤드 축소), `split`(샤드 확장), `refresh`(루씬의 flush로 이 작업이 수행되어야 세그먼트 파일이 생성돼 새로운 doc이 검색이 가능해진다. 커널에서 시스템 캐시에 파일만 생성/주기적으로 자동 호출 된다.), `flush`(루씬의 commit으로 dixc에 영속성으로 저장외되는 단계)

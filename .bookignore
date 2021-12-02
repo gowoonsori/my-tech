@@ -1,17 +1,2 @@
-/algorithm/bellman-ford/
-/algorithm/dijkstra-algorithm/
-/algorithm/floyd-warshall/
-/algorithm/kruskal-algorithm/
-/algorithm/prim-algorithm/
-/algorithm/Sorting_Algorithm/
-/algorithm/topological-sort/
-/algorithm/lis/
-
-/datastruture/Array_List/
-/datastruture/Graph/
-/datastruture/Heap/
-/datastruture/Stack_Queue/
-/datastruture/Tree/
-
 keymap.md
 LICENSE

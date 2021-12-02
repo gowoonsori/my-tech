@@ -1,8 +1,7 @@
-# API
-
-Application Programming Interface의 약자로 응용프로그램에서 사용할 수 있도록, 운영 체제나 프로그래밍 언어가 제공하는 기능을 제어 할 수 있게 만든 인터페이스
 
 # REST API
+
+>API? Application Programming Interface의 약자로 응용프로그램에서 사용할 수 있도록, 운영 체제나 프로그래밍 언어가 제공하는 기능을 제어 할 수 있게 만든 인터페이스
 
 REST 아키텍처 스타일을 따르는 API
 

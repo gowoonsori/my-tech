@@ -8,15 +8,15 @@
 >
 > 출처 : http://martinfowler.com/articles/mocksArentStubs.html
 
-# Spring 단위 테스트
+## Spring 단위 테스트
 
-## @SpringBootTest
+### @SpringBootTest
 
 일반적인 테스트로 slicing을 사용하지 않고 전체 프로그램 컨텍스트를 시작하기 때문에 모든 파일을 로드하고 bean을 주입하기 때문에 속도가 느리다.
 
 SpringBootTest에서 `MockMVC`를 사용하기 위해 @AutoConfigureMockMvc를 붙여주면 사용할 수 있다. (내부에 webEnvirment의 기본값이 mock으로 되어있어 사용 가능)
 
-## @WebMvcTest
+### @WebMvcTest
 
 MVC를 위한 테스트로 계층별로 나누어서 웹과 관련된 부분만 테스트하기 때문에 빠르게 테스트가 가능하다.(슬라이스 테스트)
 
@@ -44,9 +44,9 @@ Contoller 계층만 등록 (서비스 등록 x)
 
   Mock과 마찬가지로 mock객체의 행위를 지정해 줄 수 있다.
 
-### 웹 관련 Bean만 등록을 하여 사용하기 때문에 Repository같은 Bean을 등록하지 않기 때문에 이도 등록하려면 MockBean(Spring Boot Test 내부에 존재) 을 이용하여 테스트를 진행해야 한다.
+#### 웹 관련 Bean만 등록을 하여 사용하기 때문에 Repository같은 Bean을 등록하지 않기 때문에 이도 등록하려면 MockBean(Spring Boot Test 내부에 존재) 을 이용하여 테스트를 진행해야 한다.
 
-## Mockito
+### Mockito
 
 Mock 객체를 직접 만들어 테스트 코드 작성하는 것은 번거롭기도하고 Mock클래스 관리도 부담스럽기 때문에 시간을 상대적으로 절약하기 위한 라이브러리
 

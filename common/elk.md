@@ -1,3 +1,4 @@
+# ELK 스택
 Elasticsearch, Logstash, Kibana의 앞 글자를 따서 보통 ELK스택이라고들 부른다.
 
 <br>

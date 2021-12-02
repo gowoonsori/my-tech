@@ -1,3 +1,4 @@
+# EntityManagerFactory와 EntityManager
 ## Entity Manager Factory
 
 엔티티 메니저를 만드는 공장으로 이를 만드는 비용은 상당히 크기 때문에 한개만 만들어서 애플리케이션 전체에서 공유하도록 설계가 되어있다.

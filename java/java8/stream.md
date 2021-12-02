@@ -1,9 +1,10 @@
+# 스트림
 `람다`를 활용할 수 있는 기술 중 하나로 일종의 `무한한 데이터의 흐름`. 배열또는 컬렉션, Map과 같은 자료구조들을 하나의 데이터흐름으로 만듦으로서 함수 여러개를 chaning하여 코드의 양을 줄이고 간결하게 표현할 수 있게 해준다. 
 
 <br>
 
-# 특징
-## 1. 병렬처리 가능
+## 특징
+### 1. 병렬처리 가능
 한가지 작업에 대해 여러 스레드로 나누어 병렬적으로 처리하고 결과들을 합하는 방법으로 병렬처리가 가능하고, 이때 자바는 ForkJoinPool 라이브러리를 이용해서 병렬처리를 한다. 
 
 >ForkJoinPool? Fork(Task를 잘게 쪼개는 것)를 수행하고 해당 Pool에 있는 스레드들이 task를 처리하고 join을 통해 합친다. 이때 ForkJoinPool에는 task가 존재하는 queue가 있고, 스레드들이 이 queue에서 task를 할당받아 자신의 queue에 적재해가며 처리하는데 놀고있는 스레드가 존재한다면 다른 스레드의 queue에서 task를 `steal`하는 방법으로 동작하는 `Work-Stealing`메커니즘을 이용하기 때문에 task가 하위 task를 생성하거나 small task가 많을 경우 효과적이다.
@@ -47,7 +48,7 @@ public class Ex{
 
 <Br>
 
-### +) Pool Size 조절방법
+#### +) Pool Size 조절방법
 1. property
 ```java
  public static void main(String[] args) {
@@ -76,14 +77,14 @@ build시에 위 옵션으로 기본 풀 사이즈를 변경이 가능하다.
     
 <Br>
 
-### 단점
+#### 단점
 위에서 설명한것과 같이 ForkJoinPool 특성상 task를 분할할때(fork) 균등하게 분배를하게 되는데 이때 이 분할하는 작업의 비용이 높게 되면 오히려 성능이 안좋을 수 있다. 예를 들어, 이미 사이즈를 알고 있는 ArrayList같은 경우는 분할하는 작업이 빠를 수 있지만 사이즈를 모르는 LinkedList같은 경우에는 순차작업과 같거나 더 느릴 수가 있다.
 
 병렬로 처리되는 작업이 `독립적`이지 않다면 이도 오히려 성능에 안좋을 수 있다. 예를 들어 sorted()/distinct()와 같은 작업을 수행할때는 내부의 상태에 대한 변수를 작업이 `공유`해야지만 가능한 작업이므로 `lock`의 작업이 추가로 발생하고 스레드가 대기하는 상황이 생기기 때문에 순차적으로 실행하는 경우가 더 효과적일 수 있다.
 
 <br>
 
-## 2. 지연연산을 통한 성능 향상
+### 2. 지연연산을 통한 성능 향상
 내용은 지난주 정리했던 내용중 람다의 지연연산과 동일한 내용이다. 
 
 ```java
@@ -119,7 +120,7 @@ result 1 : 3
 
 <br>
 
-## 3. 지연처리 가능
+### 3. 지연처리 가능
 ```java
 public static void main(String[] args) {
     List<Integer> list = Arrays.asList(1,2,4,51,2,3);
@@ -155,7 +156,7 @@ byte코드를 보면 Strema형태를 참조타입으로 저장하는 것을 볼 
 
 <br>
 
-## 4. 재사용 불가능
+### 4. 재사용 불가능
 스트림은 종료연산을 하지 않는 이상 그전까지가 하나의 인스턴스로써 계속 사용이 가능하지만 종료연산을 수행하면 재사용이 불가하게 되는데 이는 `스트림`은 저장된 데이터를 꺼내서 처리하는 용도이지 데이터를 저장하는 목적이 아니기 때문이다.
 
 ```java
@@ -210,8 +211,8 @@ L1
 
 <br><br>
 
-# 메서드 종류
-## 1. 생성
+## 메서드 종류
+### 1. 생성
 스트림 인스턴스 생성하는 메서드
 
 - **Arrays.stream(배열타입 변수)** : 배열을 Stream 타입 객체로 생성
@@ -226,7 +227,7 @@ L1
     - char들은 ascii 값으로 하나의 숫자로 표현할 수 있기 때문에 IntStream을 반환한다.
 - **list.parallelStream()** : 병렬 스트림
 
-## 2. 가공 
+### 2. 가공 
 필터링, 맵핑과 같이 어떠한 결과를 만들어가는 중간 작업들의 메서드 ( Intermediate operations )
 
 - filter(Predicate) : Predicate의 반환값이 true인 데이터만 선택
@@ -271,7 +272,7 @@ L1
 
 <br>
 
-## 3. 종료
+### 3. 종료
 최종적으로 결과를 만들고 반환함으로써 chaining을 끝내는 메서드 ( terminal operations )
 
 - 단순 계산
@@ -295,7 +296,7 @@ L1
 <br><br><br>
 
 ----
-## Reference
+### Reference
 https://www.inflearn.com/course/the-java-java8/dashboard
 
 https://dev-milk.tistory.com/5

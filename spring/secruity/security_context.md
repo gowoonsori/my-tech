@@ -1,4 +1,4 @@
-## SecurityContext
+# SecurityContext
 
 Authentication 객체가 저장되는 저장소로 ThreadLocal에 저장되어 아무곳에서나 참조가 가능하도록 설계되어있고, 쓰레드마다 각각의 Context가 생기기때문에 Thread Safe하다.
 

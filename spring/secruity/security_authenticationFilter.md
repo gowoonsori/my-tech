@@ -1,3 +1,4 @@
+# Authentication Filter
 ## WebSecurityConfigurerAdapter
 
 WebSecurityCongigurer(SecurityCongigurer)의 구현체로 `스프링 시큐리티의 웹 보안 기능 초기화, 설정`을 정의하는 추상클래스이다.

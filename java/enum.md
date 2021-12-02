@@ -1,4 +1,4 @@
-## Enum
+# Enum
 
 기본적으로 c나 c++의 enum과 같은 기능을 수행하는 `클래스`로 `JDK 1.5`이후에 생긴 클래스이다.
 
@@ -14,7 +14,7 @@ typedef enum _boolean {
 #define TRUE 1
 ```
 
-### Java에서의 Enum 특징
+## Java에서의 Enum 특징
 
 Enum 비교시에 값이 아닌 `타입까지도 체크`가 가능하고 Enum의 상수값이 재정의 되어도 `다시 컴파일하지 않는다.`
 

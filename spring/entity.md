@@ -1,4 +1,5 @@
-# Entity
+# Entity / DTO / VO
+## Entity
 
 실제 DB 테이블과 매칭될 클래스로 `@Entity`,`@Column`,`@Id` 등의 어노테이션을 이용한다.
 
@@ -20,7 +21,7 @@ DB테이블과 1:1로 매핑 되는 클래스로 DB 테이블의 컬럼만 필�
 
 ### Enum 값 매핑시 @Enumerated(EnumType.STRING)을 통해 enum 내부 순서가 바뀌었을 때 문제가 생기는 것을 방지
 
-# DTO
+## DTO
 
 데이터 전송 객체로 주로 비동기 처리를 할때 사용된다.
 
@@ -30,6 +31,6 @@ Spring Boot같은 경우 기본으로 JackSon 라이브러리를 제공해 Objec
 
 View와의 통신을 위해 사용
 
-# VO
+## VO
 
 Read Only의 객체로 equals(), hashcode()를 오버라이딩 하는 것이 핵심 역할이다.

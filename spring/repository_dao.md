@@ -32,8 +32,6 @@ Persistence Layer에 속하는 `FACADE`
 
 <br>
 
-##
-
 [Transaction Script와 Domain Model 차이점](/develop-common-sense/transactionScript_domainModel.md)
 
 `Persistence`는 영속성으로 데이터의 지속성을 뜻한다. (앱을 종료하고 다시 실행해도 데이터의 변경없이 지속되는 것.)

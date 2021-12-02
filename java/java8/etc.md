@@ -1,4 +1,4 @@
-# 어노테이션
+# 어노테이션과 메타스페이스
 
 ## 1. 제네릭타입 선언부에도 사용가능
 
@@ -323,7 +323,7 @@ ChickenConatiner 어노테이션을 생성하여 Chicken 어노테이션들을 v
 
 <br><br>
 
-# 배열 병렬 정렬
+## 배열 병렬 정렬
 
 Arrays.parallerSort()가 추가되어 분산되어 정렬이 가능하다.
 
@@ -349,11 +349,11 @@ public class Example {
 
 <br><Br>
 
-# Metaspace
+## Metaspace
 
 JVM의 여러 메모리 영역 중에 PermGen 메모리 영역이 없어지고 Metaspace 영역이 생겼다.
 
-## PermGen
+### PermGen
 
 - Heap 영역에 속함
 - permanent generation, 클래스 메타데이터를 담는 곳.
@@ -363,7 +363,7 @@ JVM의 여러 메모리 영역 중에 PermGen 메모리 영역이 없어지고 M
 - Old/Eden 영역보다 적은 메모리사이즈를 가지고 있으며 os bit, jdk 버전별로 다르다.
 - 고정된 크기를 가지기 때문에 클래스를 계속해서 만들게 되면 GC가 메모리를 정리해도 PermGen사이즈를 넘어서면 memory out 에러가 발생한다.
 
-## Metaspace
+### Metaspace
 
 - 클래스 메타데이터를 담는 곳
 - Heap영역이 아니라 Native 메모리 영역이다.
@@ -375,7 +375,7 @@ JVM의 여러 메모리 영역 중에 PermGen 메모리 영역이 없어지고 M
 
 <br><br>
 
-## 후기
+### 후기
 
 시작할때만해도 5주가 되게 긴 것처럼 느껴졌고, Java8하나를 너무 오래끄는게 아닌가 싶었는데 막상 진행해보니 분량이 정말 적절했으며 오히려 시간이 부족한 느낌이었다.
 

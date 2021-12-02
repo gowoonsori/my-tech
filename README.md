@@ -29,7 +29,7 @@
   - [HTTP/1, HTTP/2, HTTP/3](/network/http1.1_2.0.md)
 - [ 전송 계층 ](/network/transportLayer.md)
 - [ 네트워크 계층 ](/network/networkLayer.md)
-  - [ 제어 평면](/network/routing.md)
+  - [ 제어 평면 ](/network/routing.md)
 
 <br>
 
@@ -59,7 +59,6 @@
 - [라이브러리와 프레임워크](/common/library-framework.md)
 - [동기-비동기/block-nonBlock](common/sync-async-block-nonblock.md)
 - [API와 REST API](/common/rest-api.md)
-- [디자인 패턴(GOF 패턴)](/common/design-pattern.md)
 - [Transaction Script과 Domain Model](/common/transactionScript_domainModel.md)
 - [테스트 종류](/common/kindsOfTesting.md)
 - [Git](/common/git.md)
@@ -68,6 +67,13 @@
 - [Asciidoctor](/common/asciidoctor.md)
 - [컴파일러](/devlop-common-sense/compiler.md)
 - [ELK](/common/elk.md)
+- [디자인 패턴(GOF 패턴)](/common/designPattern/README.md)
+  - 생성
+    - [싱글톤](/common/designPattern/create/singleton.md)
+    - [추상 팩토리](/common/designPattern/create/abstractFactory.md)
+    - [팩토리 메서드](/common/designPattern/create/factoryMethod.md)
+  - 구조
+  - 행위
 
 <br>
 
@@ -157,6 +163,10 @@
   - [Spring Bean](/spring/spring-bean.md)
   - [Spring MVC](/spring/springMVC.md)
   - [요청 처리구조](/spring/architecture.md)
+- [@ConfigurationProperties](/spring/configurationProperties.md)
+- [Validation](/spring/validation.md)
+- 프로젝트 라이플 사이클 관리 도구 (빌드 배포 Tool)
+  - [Maven](/spring/maven.md)
 - 스프링 프로젝트
   - [스프링 Boot](/spring/springboot.md)
   - [스프링 REST Docs](/spring/restDocs.md)
@@ -195,15 +205,11 @@
   - JackSon
     - [Object Mapper](/spring/objectMapper.md)
   - [Custom Serialize](/spring/customSerialize.md)
-- 프로젝트 라이플 사이클 관리 도구 (빌드 배포 Tool)
-  - [Maven](/spring/maven.md)
 - Test
   - [JUnit5](/spring/Junit5.md)
     - [JunitParams](/spring/JunitParams.md)
   - [AssertJ](/spring/AssertJ.md)
   - [Mock](/spring/mock.md)
-- [@ConfigurationProperties](/spring/configurationProperties.md)
-- [Validation](/spring/validation.md)
 
 <br>
 

@@ -1,16 +1,17 @@
-# CSR
+# CSR 과 SSR
 
+## CSR
 Cilent Side Rendering
 
 브라우저가 특정 url에 접속하면 프론트 서버로 부터 `정적 파일`들을 받아 렌더링 후에 그 안에 들어있는 데이터는 백 서버로부터 필요할때마다 요청해서 받아 렌더링 하는 방식
 
-# SSR
+## SSR
 
 Server Side Rendering
 
 브라우저가 특정 url에 접속하면 프론트 서버는 백서버로부터 파일안의 데이터를 요청후 응답받아 모든 데이터를 포함하여 렌더링해서 보여주는 방식
 
-# SPA
+### SPA
 
 Single Page Application
 
@@ -24,7 +25,7 @@ Single Page Application
 
   `code splitting`으로 어느정도 해결은 할 수 있다.
 
-# MPA
+### MPA
 
 Multi Page Application
 

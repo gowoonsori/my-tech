@@ -13,13 +13,13 @@ WHERE
 
 <br>
 
-# WHERE과 같이 쓰이는 문법
+## WHERE과 같이 쓰이는 문법
 
 `search_condition`에 오는 구문으로 아래의 연산자들중 한개 이상의 표현을 이용하여 작성 할 수 있다.
 
 <br>
 
-## 조건 연산자
+### 조건 연산자
 
 - `=` : 같다
 
@@ -31,7 +31,7 @@ WHERE
 
 <br>
 
-## 논리 연산자
+### 논리 연산자
 
 - AND
 - OR
@@ -39,7 +39,7 @@ WHERE
 
 <br>
 
-## BOOL
+### BOOL
 
 - TRUE
 - FALSE
@@ -47,7 +47,7 @@ WHERE
 
 <br>
 
-## BETWEEN
+### BETWEEN
 
 사이의 값 필터링
 
@@ -66,7 +66,7 @@ ORDER BY officeCode
 
 <br>
 
-## LIKE
+### LIKE
 
 data에 특정 패턴을 검샣나는 구문으로 아래와 같은 `와일드 카드`들을 이용해 정규표현식같이 사용 하여 표현할 수 있게 해준다.
 
@@ -102,7 +102,7 @@ SELECT * FROM employees WHERE first_name LIKE '%\_%'; //_가 포함된 data
 
 <br>
 
-## IN
+### IN
 
 `IN (val1, val2 ...)` val안에 해당하는 data들을 조회하기 위한 문법
 
@@ -120,7 +120,7 @@ ORDER BY
 
 <br>
 
-## IS NULL
+### IS NULL
 
 data가 NULL인지 아닌지 판별해 NULL인 data를 조회
 

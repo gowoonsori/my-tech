@@ -1,3 +1,4 @@
+# JPA 예외처리
 Runtime Exception을 상속받은 PersistenceException 클래스가 JPA의 표준 예외 클래스이다.
 
 ## 롤백을 표시하는 예외

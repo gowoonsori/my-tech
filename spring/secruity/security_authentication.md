@@ -1,4 +1,4 @@
-## Authentication
+# Authentication
 
 인증 정보로 사용자의 인증정보를 저장하는 토큰같은 개념
 
