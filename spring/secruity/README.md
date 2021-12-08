@@ -1,4 +1,4 @@
-# Spring
+# Spring Security
 - [스프링 Security](/spring/secruity/security.md)
   - [DelegatingProxyChain / FilterChainProxy](/spring/secruity/security_chain.md)
   - [SecurityContext](/spring/secruity/security_context.md)

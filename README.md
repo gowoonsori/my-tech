@@ -72,6 +72,7 @@
     - [싱글톤](/common/designPattern/create/singleton.md)
     - [추상 팩토리](/common/designPattern/create/abstractFactory.md)
     - [팩토리 메서드](/common/designPattern/create/factoryMethod.md)
+    - [빌더](/common/designPattern/create/builder.md)
   - 구조
   - 행위
 
@@ -146,11 +147,12 @@
 - [Enum](/java/enum.md)
 - [Annotation](/java/annotation.md)
 - java8
-  - [Interface](/java/java8/interface.md)
   - [Stream](/java/java8/stream.md)
+  - [Completable Future](/java/java8/completableFuture.md)
   - [Date/Time](/java/java8/date-time.md)
+  - [Interface](/java/java8/interface.md)
   - [Optional](/java/java8/optional.md)
-  - [Lambda](/java/java8/lambda.md)
+  - [Etc](/java/java8/etc.md)
 
 <br>
 
