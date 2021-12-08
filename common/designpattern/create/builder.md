@@ -1,15 +1,11 @@
 # 빌더 패턴
 
-객체의 생성과정과 표현 방법을 분리하는 패턴으로 다음과 같은 문제를 해결할 수 있다.
+객체의 생성과정과 표현 방법을 분리하여 동일한 생성 절차에서 다른 표현 결과를 만들 수 있게 하는 패턴.
 
-1. 불필요한 생성자를 제거
-1. 데이터의 순서에 상관없이 객체 생성
-1. 사용자입장에서 이해하기 쉬워야한다.
+<br><br>
 
-## 장점
-
-1. 필요한 데이터만 가지고 객체를 생성할때 편하다.
-
+## 객체 생성 방법
+### 1. 점층적 생성자 패턴
 ```java
 class Person{
     private String firstName;
@@ -17,6 +13,8 @@ class Person{
     private int age;
     private int height;
     private String hobby;
+
+    Person() {}
 
     public Person(String firstName) {
         this.firstName = firstName;
@@ -27,50 +25,24 @@ class Person{
         this.lastName = lastName;
     }
 }
+```
+파라미터의 개수에 따른 서로다른 생성자가 필요할때 그때 그때 생성자를 추가하는 방법으로 가장 일반적인 패턴이다.
 
+이는 특정 생성모양에 따라 계속 생성자를 추가해주어야되는 귀찮음이 존재한다.
+
+```java
 public static void main(String[] args){
     //Constructor
     Person onlyFirstName = new Person("길동");
     Person onlyName = new Person("길동","홍");
     Person onlyLastName = new Person("홍"); //불가능
-
-    //Builder
-    Person onlyFirstName = Person.createBuilder()
-                                    .firstName("길동")
-                                    .build();
-    Person onlyName = Person.createBuilder()
-                                    .firstName("길동")
-                                    .lastName("홍")
-                                    .build();
-    Person onlyLastName = Person.createBuilder()
-                                    .lastName("홍")
-                                    .build();
-}
 ```
+또한, 파라미터 갯수와 파라미터 타입이 동일한 생성자는 한개만 정의가 가능하기 때문에 위와같이 서로 다른 목적으로 사용하고 싶을때 사용할 수 없다.
 
-특정 필드만 포함하는 객체를 생성하려고할때 해당 생성자를 계속 만들어주어야 하며, 생성자의 파라미터 개수당 한개의 생성자만 생성이 가능하기 때문에 위 코드와 같은 방식은 불가능하지만 builder는 가능하다.
+<br>
 
-2. 유연성
-   1번에서 설명한 내용과 비슷하게 로직상 특정 필드의 데이터만 가지고있는 객체를 생성하려고 할때 클래스를 수정(새로운 생성자 생성)하지 않고도 객체를 생성이 가능하다.
 
-3. 가독성 증대
-
-```java
-//생성자
-Person person = new Person("길동","홍",25,180,"음악");
-
-//빌더
-Person person = new PersonBuilder()
-    .firstName("길동")
-    .lastName("홍")
-    .age(25)
-    .height(180)
-    .hobby("음악")
-    .build();
-```
-
-4. 불변성을 갖는 객체를 만들기 쉽다.
-
+### 2. 자바빈 패턴
 ```java
 class Person{
     private String firstName;
@@ -108,20 +80,158 @@ class Person{
         this.hobby = hobby;
     }
 }
-```
 
-위와 같은 클래스가 있을때 객체를 생성하는 과정에서 빌더패턴과 비슷하게 아래와같이 사용할 수 있다. 아래와 같은 패턴을 `자바빈 패턴`이라고 불린다.
-
-```java
+//use
 Person person = new Person();
 person.setAge(25);
 person.setHeight(180);
 person.setHobby("음악");
 ```
 
+위와 같은 클래스가 있을때 객체를 생성하는 과정에서 setter를 이용하여 객체를 정의하는 패턴
+
 하지만 서비스가 멀티스레드 환경에 공유하는 객체가 필요하다라고 하면 객체가 변할수있는 상태라고 한다면 큰 문제가 될 수 있기 때문에 불변성을 만족해야 한다.
 
-하지만 setter들로 인해 해당 객체는 언제든지 변경이 될 수 있는 상태이기때문에 클래스에서 setter는 외부에 열어두지 않는 것이 좋다. 이러한 이유로 builder패턴을 사용하면 불변성을 만족하는 객체를 생성할 수 있다.
+하지만 setter들로 인해 해당 객체는 언제든지 변경이 될 수 있는 상태이기때문에 클래스에서 setter는 외부에 열어두지 않는 것이 좋다.
+
+<br>
+
+### 3. 빌더 패턴
+```java
+//Class
+public class Person{
+    String lastName;
+    String firstName;
+
+     public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+}
+
+//Absract Builder
+public abstract class PersonBuilder{
+    protected Person person;
+
+    public final void createPerson() {
+        person = new Person();
+    }
+
+    public abstract void buildLastName();
+    public abstract void buildFirstName();
+
+    public Person getPerson(){
+        return person;
+    }
+}
+
+//Builder 
+public class StandardPersonBuilder{
+    public void buildLastName(){
+        person.setLastName("홍");
+    }
+    public void buildFirstName(){
+        person.setFirstName("길동");
+    }
+}
+
+public class CustomPersonBuilder{
+    public void buildLastName(){
+        person.setLastName("김");
+    }
+    public void buildFirstName(){
+        person.setFirstName("이박");
+    }
+}
+
+//Director
+public class Director {
+    private Builder builder;
+
+    public Director(Builder builder){
+        this.builder = builder;
+    }
+
+    public void build() {
+        builder.createPerson();
+        builder.buildLastName();
+        builder.buildFirstName();
+    }
+
+    public Person getPerson() {
+        return builder.getPerson();
+    }
+}
+public static void main(String[] args) {
+    Builder personBuilder = new PersonBuilder();
+    Director director = new Director(personBuilder);
+    director.build();
+
+    Person person = director.getPerson();
+}
+```
+객체를 만들어 내는 Builder클래스를 이용하여 사용자는 지시자(Director)에게 특정 형태의 객체를 만들도록 요청할 수 있는 패턴으로 사용자는 서로다른 Builder를 Director에게 끼워주기만 하면 다른 형태의 객체를 만들어 낼 수있는 패턴.
+
+여기서 중요한 건 `동일한 생성 절차`에서 `다른 표현 결과`를 만들 수 있다는 것이다.
+
+물론 해당 구현 방식도 Person이라는 클래스가 setter가 열려있기 때문에 외부에서 언제든지 값을 변경이 가능하다.
+
+<br><br>
+
+
+## Effective Java / Object의 Builder
+```java
+class Person{
+    private String firstName;
+    private String lastName;
+
+    public static Person.PersonBuilder builder() {
+        return new Person.PersonBuilder();
+    }
+
+    public static class PersonBuilder{
+        private String firstName;
+        private String lastName;
+
+        PersonBuilder() {
+        }
+
+        public Person.PersonBuilder firstName(final String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Person.PersonBuilder lastName(final String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Person build() {
+            return new Person(this.firstName, this.lastName);
+        }
+    }
+}
+
+//use
+Person person = new Pesron.builder()
+    .firstName("길동")
+    .lastName("홍")
+    .build();
+```
+
+두 책에서의 말하고 있는 빌더 패턴은 생성자의 인자가 많을 경우 고려하라고 말하고 있으며 다음과 같은 문제를 해결할 수 있다.
+
+1. 불필요한 생성자를 제거
+1. 데이터의 순서에 상관없이 객체 생성
+1. 사용자입장에서 이해하기 쉬워야한다.
+
+setter가 존재하지 않기 때문에 외부에서 값을 건드려 일관성이 깨지는 일이 존재하지 않으며 프로퍼티값을 검증하는 로직을 클래스에 두지 않고 객체를 생성해낼 수 있다.
+
+<br><br>
+
 
 ## 단점
 
@@ -130,6 +240,9 @@ person.setHobby("음악");
 
 1. 코드의 유지보수
    이는 대부분의 디자인패턴들의 공통적인 단점으로 관리하는 클래스들이 많아질 수 있으며 빌더를 inner 클래스에 정의해도 클래스가 길어져 가독성이 떨어질 수 있다. 또한 php와 같은 언어에서는 inner 클래스를 지원해주지 않기 때문에 사용이 불가능하다.
+
+<br><br>
+
 
 ## @Builder
 
@@ -195,30 +308,47 @@ class Person{
 
 다만 build()를 정의하면서 AllargumentsConstructor를 필요로 하기 때문에 원본클래스의 해당 생성자는 필수로 있어야 컴파일에러가 발생하지 않는다.
 
-```java
-public static void main(String[] args) {
-    Person.Builder personBuilder = Person.builder()
-                .lastName("홍")
-                .firstName("길동")
-                .age(25)
-                .hobby("음악")
-                .height(180);
+<br><br>
 
-    Person person1 = personBuilder.build();
-    Person person2 = personBuilder.build();
-
-    System.out.println(person1.equals(person2));    //false
-}
-```
 
 ## 팩토리패턴과 비교해보자
 
-딱 봐도 사용하는 방식이 다르긴 하지만 굳이 비교를 해보자.
+- 팩토리 메서드 패턴 : 객체를 생성하는 패턴에 있어 추상화를 적용할 수 있는 가작 간단한 패턴으로 단일 메서드를 사용하여 간단한 객체를 생성
 
-팩토리 메서드 패턴 : 객체를 생성하는 패턴에 있어 추상화를 적용할 수 있는 가작 간단한 패턴으로 단일 메서드를 사용하여 간단한 객체를 생성
+    빌더패턴은 Director가 Builder를 제어하지만, 팩토리 메서드 패턴은 상위 클래스가 하위 클래스를 제어한다.
 
-추상 팩토리 패턴 : 여러 팩토리 메서드를 사용하여 객체 생성하며 각 메서드들은 하위 객체를 바로 리턴한다.
+- 추상 팩토리 패턴 : 복잡한 객체 생성을 담당한다는 점에서는 빌더 패턴과 유사하나 여러 팩토리 메서드를 사용하여 객체 생성하며 각 메서드들은 하위 객체를 바로 리턴한다. 
 
-빌더 패턴 : 단계별로 복잡한 객체를 생성이 가능하며 각 중간단계에서의 상태를 유지하고 최종적으로 하위 객체들을 합친 최종 객체를 반환한다.
 
-한마디로 빌더패턴은 사용자가 최종결과물을 받고 팩토리 패턴은 최종 결과물에 필요한 재료들을 받게 된다.
+- 빌더 패턴 : 단계별로 복잡한 객체를 생성이 가능하며 각 중간단계에서의 상태를 유지하고 최종적으로 하위 객체들을 합친 최종 객체를 반환한다.
+
+    한마디로 빌더패턴은 사용자가 최종결과물을 받고 추상 팩토리 패턴은 최종 결과물에 필요한 재료들을 받게 된다.
+
+
+<br><br>
+
+## 사용 예시
+![abstractFactory-architecture](/common/image/abstractFactory-architecture.PNG)
+```php
+$partsFactory = new BioDataEngineerFactory($this->getRequest, $this->identity, $this->cookie);
+$header = $partsFactory->createHeader();
+$head = $partsFactory->createHead();
+$body = $partsFactory->createBody();
+$parameter = $partsFactory->createParameter();
+
+$page = new Page($header,$head,$body,$parameter);
+$page->assign();    
+```
+
+
+![builder](/common/image/builder.PNG)
+
+```php
+$partsBuilder = new BioDataEngineerBuilder($this->getRequest, $this->identity, $this->cookie);
+$director = new Director(partsBuilder)
+$director->createPage();
+
+$page = $director->getPage();
+$page->assign();    
+```
+
