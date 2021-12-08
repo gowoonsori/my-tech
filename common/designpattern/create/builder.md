@@ -328,7 +328,7 @@ class Person{
 <br><br>
 
 ## 사용 예시
-![abstractFactory-architecture](/common/image/abstractFactory-architecture.PNG)
+![abstractFactory-architecture](/common/image/abstractFactory-architecture.png)
 ```php
 $partsFactory = new BioDataEngineerFactory($this->getRequest, $this->identity, $this->cookie);
 $header = $partsFactory->createHeader();
@@ -341,7 +341,7 @@ $page->assign();
 ```
 
 
-![builder](/common/image/builder.PNG)
+![builder](/common/image/builder.png)
 
 ```php
 $partsBuilder = new BioDataEngineerBuilder($this->getRequest, $this->identity, $this->cookie);
