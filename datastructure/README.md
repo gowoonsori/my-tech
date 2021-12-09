@@ -7,5 +7,5 @@
   - [Red Black Tree](/datastructure/redBlackTree.md)
   - [Splay Tree](/datastructure/SplayTree.md)
   - [AA Tree](/datastructure/aaTree.md)
-- [힙 ( Heap )](자료구조/heap.md)
+- [힙 ( Heap )](/datastructure/heap.md)
 - [그래프 ( Graph )](/datastructure/graph.md)
