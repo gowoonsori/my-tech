@@ -1,10 +1,1 @@
 #  DevOps
-- [MSA](/devops/msa.md)
-- [Kubernetes](/devops/kubernetes/kubernetes.md)
-  - [Pod](/devops/kubernetes/pod.md)
-  - [AccessingAPI](/devops/kubernetes/AccessingAPI.md)
-  - [Controller](/devops/kubernetes/controller.md)
-  - [Dashboard](/devops/kubernetes/dashboard.md)
-  - [Object](/devops/kubernetes/object.md)
-  - [Service](/devops/kubernetes/service.md)
-  - [Volume](/devops/kubernetes/volume.md)

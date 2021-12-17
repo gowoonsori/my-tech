@@ -1,11 +1,1 @@
 # 자료구조
-- [자료구조에 따른 공간 복잡도 & 시간 복잡도](/datastructure/complexity.md)
-- [배열과 리스트 ( Array and List )](/datastructure/array-list.md)
-- [스택 과 큐 ( Stack and Queue )](/datastructure/stack-queue.md)
-- [트리 ( Tree )](/datastructure/tree.md)
-  - [AVL Tree](/datastructure/AvlTree.md)
-  - [Red Black Tree](/datastructure/redBlackTree.md)
-  - [Splay Tree](/datastructure/SplayTree.md)
-  - [AA Tree](/datastructure/aaTree.md)
-- [힙 ( Heap )](/datastructure/heap.md)
-- [그래프 ( Graph )](/datastructure/graph.md)

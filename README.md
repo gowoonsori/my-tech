@@ -74,6 +74,8 @@
     - [팩토리 메서드](/common/designPattern/create/factoryMethod.md)
     - [빌더](/common/designPattern/create/builder.md)
   - 구조
+    - [브릿지](/common/designPattern/structure/bridge.md)
+    - [데코레이터](/common/designPattern/structure/decorator.md)
   - 행위
 
 <br>
